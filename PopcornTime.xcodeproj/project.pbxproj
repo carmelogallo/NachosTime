@@ -33,6 +33,8 @@
 		95914952215E7C7E004C8FC7 /* MoviesDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914951215E7C7E004C8FC7 /* MoviesDataSourceProtocol.swift */; };
 		95914954215E8716004C8FC7 /* movies_succeful.json in Resources */ = {isa = PBXBuildFile; fileRef = 95914953215E8716004C8FC7 /* movies_succeful.json */; };
 		95914956215E872A004C8FC7 /* MoviesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914955215E872A004C8FC7 /* MoviesTest.swift */; };
+		95914958215E95DE004C8FC7 /* SettingsDataSourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914957215E95DE004C8FC7 /* SettingsDataSourcesTests.swift */; };
+		9591495A215E9781004C8FC7 /* MoviesDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914959215E9781004C8FC7 /* MoviesDataSourceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		95914951215E7C7E004C8FC7 /* MoviesDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataSourceProtocol.swift; sourceTree = "<group>"; };
 		95914953215E8716004C8FC7 /* movies_succeful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_succeful.json; sourceTree = "<group>"; };
 		95914955215E872A004C8FC7 /* MoviesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTest.swift; sourceTree = "<group>"; };
+		95914957215E95DE004C8FC7 /* SettingsDataSourcesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSourcesTests.swift; sourceTree = "<group>"; };
+		95914959215E9781004C8FC7 /* MoviesDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataSourceTests.swift; sourceTree = "<group>"; };
 		A2AB4DF87062050CE7BFC29B /* Pods-PopcornTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.release.xcconfig"; sourceTree = "<group>"; };
 		D76DE8B4B87444B4863E14E8 /* Pods-PopcornTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,7 +175,9 @@
 				9591490E215E06CA004C8FC7 /* Info.plist */,
 				95914939215E39FE004C8FC7 /* ConfigurationTests.swift */,
 				95914946215E4090004C8FC7 /* GenreTests.swift */,
+				95914959215E9781004C8FC7 /* MoviesDataSourceTests.swift */,
 				95914955215E872A004C8FC7 /* MoviesTest.swift */,
+				95914957215E95DE004C8FC7 /* SettingsDataSourcesTests.swift */,
 				95914936215E39D4004C8FC7 /* Assets */,
 				9591493D215E3C94004C8FC7 /* Factories */,
 			);
@@ -250,8 +256,8 @@
 		9591492F215E17BF004C8FC7 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
-				95914934215E207D004C8FC7 /* WebServiceConfiguration.swift */,
 				95914930215E17E1004C8FC7 /* WebService.swift */,
+				95914934215E207D004C8FC7 /* WebServiceConfiguration.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -471,6 +477,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95914958215E95DE004C8FC7 /* SettingsDataSourcesTests.swift in Sources */,
+				9591495A215E9781004C8FC7 /* MoviesDataSourceTests.swift in Sources */,
 				95914947215E4090004C8FC7 /* GenreTests.swift in Sources */,
 				9591493F215E3CA8004C8FC7 /* JSONFactory.swift in Sources */,
 				95914956215E872A004C8FC7 /* MoviesTest.swift in Sources */,

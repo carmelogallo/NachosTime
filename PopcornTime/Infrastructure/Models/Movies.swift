@@ -54,9 +54,9 @@ struct Movies: Decodable {
 struct Movie: Decodable {
 
     // MARK: - Decodable Properties
-    lazy var genres: [Genre] = {
+    var genres: [Genre] {
         return SettingsDataSource.genres.filter { genreIds.contains($0.id) }
-    }()
+    }
 
     // MARK: - Decodable Properties
     
