@@ -1,5 +1,5 @@
 //
-//  WebService.swift
+//  WebServiceConfiguration.swift
 //  PopcornTime
 //
 //  Created by Carmelo Gallo on 28/09/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WebService {
+struct WebServiceConfiguration {
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"

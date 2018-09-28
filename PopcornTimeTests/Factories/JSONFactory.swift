@@ -42,6 +42,21 @@ class JSONFactory {
         
         return try? Configuration(data: data)
     }
-
+    
+    static func makeCorrectGenresResponse() -> Genres? {
+        guard let data = dataFromFile(filename: "genres_succeful", type: "json") else {
+            return nil
+        }
+        
+        return try? Genres(data: data)
+    }
+    
+    static func makeWrongGenresResponse() -> Genres? {
+        guard let data = makeWrongDataResponse() else {
+            return nil
+        }
+        
+        return try? Genres(data: data)
+    }
     
 }

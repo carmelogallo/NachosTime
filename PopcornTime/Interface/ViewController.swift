@@ -28,10 +28,13 @@ class ViewController: UIViewController {
 
     @objc
     func get() {
-        ConfigurationDataSource.getConfiguration { result in
+        SettingsDataSource.getSettings { result in
             switch result {
             case .success:
-                print(ConfigurationDataSource.configutation)
+                print(SettingsDataSource.configutation)
+                print(SettingsDataSource.configutation.images.baseUrl)
+                print(SettingsDataSource.genres)
+                print(SettingsDataSource.genres.first(where: { $0.id == 37 })!)
             case .failure(let error):
                 print(error)
             }
