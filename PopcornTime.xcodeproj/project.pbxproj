@@ -10,11 +10,18 @@
 		24A43F9781EA61CCF6273930 /* Pods_PopcornTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543D0907DFD4786132886623 /* Pods_PopcornTime.framework */; };
 		959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959148F7215E06C8004C8FC7 /* AppDelegate.swift */; };
 		959148FA215E06C8004C8FC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959148F9215E06C8004C8FC7 /* ViewController.swift */; };
-		959148FD215E06C8004C8FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959148FB215E06C8004C8FC7 /* Main.storyboard */; };
 		959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959148FE215E06CA004C8FC7 /* Assets.xcassets */; };
 		95914902215E06CA004C8FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */; };
-		9591490D215E06CA004C8FC7 /* PopcornTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591490C215E06CA004C8FC7 /* PopcornTimeTests.swift */; };
 		95914918215E06CA004C8FC7 /* PopcornTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914917215E06CA004C8FC7 /* PopcornTimeUITests.swift */; };
+		9591492C215E1109004C8FC7 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591492B215E1109004C8FC7 /* Configuration.swift */; };
+		9591492E215E1659004C8FC7 /* ConfigurationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591492D215E1659004C8FC7 /* ConfigurationDataSource.swift */; };
+		95914931215E17E1004C8FC7 /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914930215E17E1004C8FC7 /* WebServiceManager.swift */; };
+		95914933215E1888004C8FC7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914932215E1888004C8FC7 /* Result.swift */; };
+		95914935215E207D004C8FC7 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914934215E207D004C8FC7 /* WebService.swift */; };
+		95914938215E39DE004C8FC7 /* configuration_succeful.json in Resources */ = {isa = PBXBuildFile; fileRef = 95914937215E39DE004C8FC7 /* configuration_succeful.json */; };
+		9591493A215E39FE004C8FC7 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914939215E39FE004C8FC7 /* ConfigurationTests.swift */; };
+		9591493C215E3C41004C8FC7 /* wrong_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9591493B215E3C41004C8FC7 /* wrong_response.json */; };
+		9591493F215E3CA8004C8FC7 /* JSONFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591493E215E3CA8004C8FC7 /* JSONFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,16 +46,23 @@
 		959148F4215E06C8004C8FC7 /* PopcornTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959148F7215E06C8004C8FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959148F9215E06C8004C8FC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		959148FC215E06C8004C8FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		959148FE215E06CA004C8FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95914901215E06CA004C8FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95914903215E06CA004C8FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95914908215E06CA004C8FC7 /* PopcornTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9591490C215E06CA004C8FC7 /* PopcornTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornTimeTests.swift; sourceTree = "<group>"; };
 		9591490E215E06CA004C8FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95914913215E06CA004C8FC7 /* PopcornTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95914917215E06CA004C8FC7 /* PopcornTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornTimeUITests.swift; sourceTree = "<group>"; };
 		95914919215E06CA004C8FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9591492B215E1109004C8FC7 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		9591492D215E1659004C8FC7 /* ConfigurationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationDataSource.swift; sourceTree = "<group>"; };
+		95914930215E17E1004C8FC7 /* WebServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
+		95914932215E1888004C8FC7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		95914934215E207D004C8FC7 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		95914937215E39DE004C8FC7 /* configuration_succeful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = configuration_succeful.json; sourceTree = "<group>"; };
+		95914939215E39FE004C8FC7 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		9591493B215E3C41004C8FC7 /* wrong_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wrong_response.json; sourceTree = "<group>"; };
+		9591493E215E3CA8004C8FC7 /* JSONFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFactory.swift; sourceTree = "<group>"; };
 		A2AB4DF87062050CE7BFC29B /* Pods-PopcornTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.release.xcconfig"; sourceTree = "<group>"; };
 		D76DE8B4B87444B4863E14E8 /* Pods-PopcornTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,11 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				959148F7215E06C8004C8FC7 /* AppDelegate.swift */,
-				959148F9215E06C8004C8FC7 /* ViewController.swift */,
-				959148FB215E06C8004C8FC7 /* Main.storyboard */,
-				959148FE215E06CA004C8FC7 /* Assets.xcassets */,
-				95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */,
-				95914903215E06CA004C8FC7 /* Info.plist */,
+				95914926215E0CC0004C8FC7 /* Base */,
+				95914925215E0CAE004C8FC7 /* Infrastructure */,
+				95914927215E0E1D004C8FC7 /* Interface */,
 			);
 			path = PopcornTime;
 			sourceTree = "<group>";
@@ -134,8 +146,10 @@
 		9591490B215E06CA004C8FC7 /* PopcornTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				9591490C215E06CA004C8FC7 /* PopcornTimeTests.swift */,
+				9591493D215E3C94004C8FC7 /* Factories */,
+				95914936215E39D4004C8FC7 /* Assets */,
 				9591490E215E06CA004C8FC7 /* Info.plist */,
+				95914939215E39FE004C8FC7 /* ConfigurationTests.swift */,
 			);
 			path = PopcornTimeTests;
 			sourceTree = "<group>";
@@ -147,6 +161,85 @@
 				95914919215E06CA004C8FC7 /* Info.plist */,
 			);
 			path = PopcornTimeUITests;
+			sourceTree = "<group>";
+		};
+		95914925215E0CAE004C8FC7 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				9591492F215E17BF004C8FC7 /* Managers */,
+				95914929215E0EB5004C8FC7 /* DataSources */,
+				95914928215E0EAD004C8FC7 /* Models */,
+				9591492A215E0EC1004C8FC7 /* Protocols */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		95914926215E0CC0004C8FC7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				95914903215E06CA004C8FC7 /* Info.plist */,
+				959148FE215E06CA004C8FC7 /* Assets.xcassets */,
+				95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		95914927215E0E1D004C8FC7 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				959148F9215E06C8004C8FC7 /* ViewController.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		95914928215E0EAD004C8FC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9591492B215E1109004C8FC7 /* Configuration.swift */,
+				95914932215E1888004C8FC7 /* Result.swift */,
+				95914934215E207D004C8FC7 /* WebService.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		95914929215E0EB5004C8FC7 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				9591492D215E1659004C8FC7 /* ConfigurationDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		9591492A215E0EC1004C8FC7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9591492F215E17BF004C8FC7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				95914930215E17E1004C8FC7 /* WebServiceManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		95914936215E39D4004C8FC7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9591493B215E3C41004C8FC7 /* wrong_response.json */,
+				95914937215E39DE004C8FC7 /* configuration_succeful.json */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9591493D215E3C94004C8FC7 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				9591493E215E3CA8004C8FC7 /* JSONFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +350,6 @@
 			files = (
 				95914902215E06CA004C8FC7 /* LaunchScreen.storyboard in Resources */,
 				959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */,
-				959148FD215E06C8004C8FC7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +357,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9591493C215E3C41004C8FC7 /* wrong_response.json in Resources */,
+				95914938215E39DE004C8FC7 /* configuration_succeful.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,8 +415,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95914931215E17E1004C8FC7 /* WebServiceManager.swift in Sources */,
+				95914933215E1888004C8FC7 /* Result.swift in Sources */,
+				95914935215E207D004C8FC7 /* WebService.swift in Sources */,
+				9591492C215E1109004C8FC7 /* Configuration.swift in Sources */,
 				959148FA215E06C8004C8FC7 /* ViewController.swift in Sources */,
 				959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */,
+				9591492E215E1659004C8FC7 /* ConfigurationDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +429,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9591490D215E06CA004C8FC7 /* PopcornTimeTests.swift in Sources */,
+				9591493F215E3CA8004C8FC7 /* JSONFactory.swift in Sources */,
+				9591493A215E39FE004C8FC7 /* ConfigurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,14 +458,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		959148FB215E06C8004C8FC7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				959148FC215E06C8004C8FC7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -499,8 +591,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K7BHMGHCL;
-				INFOPLIST_FILE = PopcornTime/Info.plist;
+				DEVELOPMENT_TEAM = RD4L8QF62A;
+				INFOPLIST_FILE = PopcornTime/Base/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,8 +610,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7K7BHMGHCL;
-				INFOPLIST_FILE = PopcornTime/Info.plist;
+				DEVELOPMENT_TEAM = RD4L8QF62A;
+				INFOPLIST_FILE = PopcornTime/Base/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
