@@ -6,9 +6,9 @@
 //  Copyright © 2018 Carmelo Gallo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class WebService: NSObject {
+struct WebService {
     
     private static let baseUrl = "https://api.themoviedb.org/3"
     private static let apiKey = "90a5acd11cdcfb676199c9476c07cbb9"

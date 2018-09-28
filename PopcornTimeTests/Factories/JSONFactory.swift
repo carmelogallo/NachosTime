@@ -59,4 +59,20 @@ class JSONFactory {
         return try? Genres(data: data)
     }
     
+    static func makeCorrectMoviesResponse() -> Movies? {
+        guard let data = dataFromFile(filename: "movies_succeful", type: "json") else {
+            return nil
+        }
+        
+        return try? Movies(data: data)
+    }
+    
+    static func makeWrongMoviesResponse() -> Movies? {
+        guard let data = makeWrongDataResponse() else {
+            return nil
+        }
+        
+        return try? Movies(data: data)
+    }
+    
 }

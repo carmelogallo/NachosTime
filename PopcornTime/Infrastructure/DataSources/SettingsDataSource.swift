@@ -8,10 +8,14 @@
 
 import Foundation
 
-class SettingsDataSource: SettingsWebSeviceProtocol {
+struct SettingsDataSource: SettingsDataSourceProtocol, SettingsWebSeviceProtocol {
 
-    static var configutation: Configuration!
-    static var genres: [Genre]!
+    // MARK: - SettingsDataSourceProtocol
+
+    static private(set) var configutation: Configuration!
+    static private(set) var genres: [Genre]!
+
+    // MARK: - SettingsWebSeviceProtocol
 
     static func getSettings(completion: @escaping ((Result<Bool>) -> Void)) {
         let group = DispatchGroup()
@@ -19,9 +23,7 @@ class SettingsDataSource: SettingsWebSeviceProtocol {
         // configuration
         var webServiceConfiguration = WebServiceConfiguration(method: .get,
                                                               url: "/configuration",
-                                                              headers: [
-                                                                "Content-Type" : "application/json"
-            ],
+                                                              headers: [ "Content-Type" : "application/json" ],
                                                               params: nil,
                                                               paramsEncoding: .json)
         group.enter()

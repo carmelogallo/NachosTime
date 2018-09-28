@@ -39,5 +39,14 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
+        MoviesDataSource.getNowPlaying { result in
+            switch result {
+            case .success(let movies):
+                print(MoviesDataSource.movies!)
+                print(movies)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

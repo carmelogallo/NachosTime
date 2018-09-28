@@ -6,9 +6,8 @@
 //  Copyright © 2018 Carmelo Gallo. All rights reserved.
 //
 
-import Foundation
-
 struct WebServiceConfiguration {
+    
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
@@ -16,13 +15,16 @@ struct WebServiceConfiguration {
         case patch = "PATCH"
         case delete = "DELETE"
     }
+    
     enum Encoding {
         case urlEncoded
         case json
     }
+    
     var method: HTTPMethod
     var url: String
     var headers: [String: String]?
     var params: [String: Any]?
     var paramsEncoding: Encoding
+    
 }

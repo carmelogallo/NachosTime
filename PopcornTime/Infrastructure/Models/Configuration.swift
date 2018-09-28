@@ -24,7 +24,7 @@ struct Configuration: Decodable {
         case changeKeys = "change_keys"
     }
 
-    // MARK: - Decodable Lifecycle
+    // MARK: - Object Lifecycle
 
     init(data: Data) throws {
         self = try JSONDecoder().decode(Configuration.self, from: data)

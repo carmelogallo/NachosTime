@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Genres
+
 struct Genres: Decodable {
     
     // MARK: - Decodable Properties
@@ -20,7 +22,7 @@ struct Genres: Decodable {
         case genres
     }
     
-    // MARK: - Decodable Lifecycle
+    // MARK: - Object Lifecycle
     
     init(data: Data) throws {
         self = try JSONDecoder().decode(Genres.self, from: data)
@@ -33,6 +35,8 @@ struct Genres: Decodable {
         genres = try container.decode([Genre].self, forKey: .genres)
     }
 }
+
+// MARK: - Genre
 
 struct Genre: Decodable {
     
@@ -47,13 +51,7 @@ struct Genre: Decodable {
         case id
         case name
     }
-    
-    // MARK: - Decodable Lifecycle
-    
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Genre.self, from: data)
-    }
-    
+        
     // MARK: - Decodable Lifecycle
     
     init(from decoder: Decoder) throws {
