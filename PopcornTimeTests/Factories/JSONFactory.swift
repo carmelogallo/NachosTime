@@ -19,24 +19,16 @@ class JSONFactory {
         return try? Data(contentsOf: URL(fileURLWithPath: path))
     }
     
-    static func makeWrongDataResponse() -> Data? {
+    static func makeWrongDataResponse<T>() -> T? where T: ModelsProtocol {
         guard let data = dataFromFile(filename: "wrong_response", type: "json") else {
             return nil
         }
         
-        return data
+        return try? T(data: data)
     }
 
     static func makeCorrectConfigurationResponse() -> Configuration? {
         guard let data = dataFromFile(filename: "configuration_succeful", type: "json") else {
-            return nil
-        }
-        
-        return try? Configuration(data: data)
-    }
-    
-    static func makeWrongConfigurationResponse() -> Configuration? {
-        guard let data = makeWrongDataResponse() else {
             return nil
         }
         
@@ -51,14 +43,6 @@ class JSONFactory {
         return try? Genres(data: data)
     }
     
-    static func makeWrongGenresResponse() -> Genres? {
-        guard let data = makeWrongDataResponse() else {
-            return nil
-        }
-        
-        return try? Genres(data: data)
-    }
-    
     static func makeCorrectMoviesResponse() -> Movies? {
         guard let data = dataFromFile(filename: "movies_succeful", type: "json") else {
             return nil
@@ -66,13 +50,5 @@ class JSONFactory {
         
         return try? Movies(data: data)
     }
-    
-    static func makeWrongMoviesResponse() -> Movies? {
-        guard let data = makeWrongDataResponse() else {
-            return nil
-        }
         
-        return try? Movies(data: data)
-    }
-    
 }

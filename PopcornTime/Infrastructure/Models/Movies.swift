@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Movies
 
-struct Movies: Decodable {
+struct Movies: ModelsProtocol {
     
     // MARK: - Decodable Properties
     
@@ -18,7 +18,7 @@ struct Movies: Decodable {
     let page: Int
     let totalPages: Int
     let totalMovies: Int
-    let dates: Dates
+    let dates: Dates?
     
     // MARK: - Private Properties
     
@@ -44,7 +44,7 @@ struct Movies: Decodable {
         page = try container.decode(Int.self, forKey: .page)
         totalPages = try container.decode(Int.self, forKey: .totalPages)
         totalMovies = try container.decode(Int.self, forKey: .totalMovies)
-        dates = try container.decode(Dates.self, forKey: .dates)
+        dates = try container.decodeIfPresent(Dates.self, forKey: .dates)
     }
 
 }

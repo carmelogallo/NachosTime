@@ -16,12 +16,8 @@ class SettingsDataSourcesTests: XCTestCase {
         
         let expectation = self.expectation(description: "\(#function)\(#line)")
         SettingsDataSource.getSettings { result in
-            switch result {
-            case .success:
-                expectation.fulfill()
-            case .failure:
-                XCTFail("Web Service Failed!")
-            }
+            XCTAssertTrue(result.isSuccess)
+            expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed)

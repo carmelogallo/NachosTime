@@ -14,12 +14,8 @@ class MoviesDataSourceTests: XCTestCase {
     func testGetNowPlaying() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
         MoviesDataSource.getNowPlaying { result in
-            switch result {
-            case .success:
-                expectation.fulfill()
-            case .failure:
-                XCTFail("Web Service Failed!")
-            }
+            XCTAssertTrue(result.isSuccess)
+            expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed)
@@ -28,12 +24,8 @@ class MoviesDataSourceTests: XCTestCase {
     func testGetNextNowPlaying() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
         MoviesDataSource.getNextNowPlaying { result in
-            switch result {
-            case .success:
-                expectation.fulfill()
-            case .failure:
-                XCTFail("Web Service Failed!")
-            }
+            XCTAssertTrue(result.isSuccess)
+            expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed)

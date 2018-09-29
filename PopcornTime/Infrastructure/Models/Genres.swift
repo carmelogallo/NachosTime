@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Genres
 
-struct Genres: Decodable {
+struct Genres: ModelsProtocol {
     
     // MARK: - Decodable Properties
     

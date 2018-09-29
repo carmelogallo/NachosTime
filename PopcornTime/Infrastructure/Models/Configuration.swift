@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Configuration
 
-struct Configuration: Decodable {
+struct Configuration: ModelsProtocol {
     
     // MARK: - Decodable Properties
     

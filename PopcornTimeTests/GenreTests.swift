@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import PopcornTime
 
 class GenreTests: XCTestCase {
 
@@ -16,7 +17,9 @@ class GenreTests: XCTestCase {
     }
     
     func testParsingFailure() {
-        let genres = JSONFactory.makeWrongGenresResponse()
+        guard let genres: Genres = JSONFactory.makeWrongDataResponse() else {
+            return
+        }
         XCTAssertNil(genres)
     }
 

@@ -17,7 +17,9 @@ class ConfigurationTests: XCTestCase {
     }
     
     func testParsingFailure() {
-        let configuration = JSONFactory.makeWrongConfigurationResponse()
+        guard let configuration: Configuration = JSONFactory.makeWrongDataResponse() else {
+            return
+        }
         XCTAssertNil(configuration)
     }
 

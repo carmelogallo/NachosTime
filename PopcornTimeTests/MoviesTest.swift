@@ -17,7 +17,9 @@ class MoviesTest: XCTestCase {
     }
     
     func testParsingFailure() {
-        let movies = JSONFactory.makeWrongMoviesResponse()
+        guard let movies: Movies = JSONFactory.makeWrongDataResponse() else {
+            return
+        }
         XCTAssertNil(movies)
     }
 
