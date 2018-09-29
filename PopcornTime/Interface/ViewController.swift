@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         MoviesDataSource.getNowPlaying { result in
             switch result {
             case .success(let movies):
-                print(MoviesDataSource.movies!)
+                print(MoviesDataSource.nowPlayingMovies!)
                 print(movies)
             case .failure(let error):
                 print(error)

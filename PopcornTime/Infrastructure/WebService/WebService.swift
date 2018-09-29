@@ -17,7 +17,7 @@ struct WebService {
         case invalidUrl
         case invalidHttpBody
         case invalidDataResponse
-        case callFailed(data: Data, response: URLResponse?, error: Error?)
+        case callFailed(data: Data?, response: URLResponse?, error: Error?)
     }
     
     static func call(configuration: WebServiceConfiguration, completion: @escaping ((Result<Data>) -> Void)) {
@@ -27,15 +27,28 @@ struct WebService {
         }
     
         let dataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            guard let data = data else {
-                completion(Result.failure(error: WebServiceError.invalidDataResponse))
+            guard let httpResponse = response as? HTTPURLResponse else {
+                DispatchQueue.main.async {
+                    completion(Result.failure(error: WebServiceError.callFailed(data: data, response: response, error: error)))
+                }
                 return
             }
-            
-            if error == nil {
-                completion(Result.success(value: data))
-            } else {
-                completion(Result.failure(error: WebServiceError.callFailed(data: data, response: response, error: error)))
+
+            switch httpResponse.statusCode {
+            case 200...299:
+                if let data = data {
+                    DispatchQueue.main.async {
+                        completion(Result.success(value: data))
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(Result.failure(error: WebServiceError.invalidDataResponse))
+                    }
+                }
+            default:
+                DispatchQueue.main.async {
+                    completion(Result.failure(error: WebServiceError.callFailed(data: data, response: response, error: error)))
+                }
             }
         })
         

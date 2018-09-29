@@ -9,4 +9,6 @@
 protocol MoviesWebServiceProtocol {
     static func getNowPlaying(completion: @escaping ((Result<[Movie]>) -> Void))
     static func getNextNowPlaying(completion: @escaping ((Result<[Movie]>) -> Void))
+    static func getSearch(keyWords: String, completion: @escaping ((Result<[Movie]>) -> Void))
+    static func getNextSearch(completion: @escaping ((Result<[Movie]>) -> Void))
 }

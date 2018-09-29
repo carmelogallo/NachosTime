@@ -7,5 +7,6 @@
 //
 
 protocol MoviesDataSourceProtocol {
-    static var movies: Movies? { get }
+    static var nowPlayingMovies: Movies? { get }
+    static var searchMovies: Movies? { get }
 }

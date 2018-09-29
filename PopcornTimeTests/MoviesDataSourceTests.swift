@@ -31,4 +31,24 @@ class MoviesDataSourceTests: XCTestCase {
         XCTAssertTrue(result == .completed)
     }
 
+    func testGetSearch() {
+        let expectation = self.expectation(description: "\(#function)\(#line)")
+        MoviesDataSource.getSearch(keyWords: "Marvel") { result in
+            XCTAssertTrue(result.isSuccess)
+            expectation.fulfill()
+        }
+        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+        XCTAssertTrue(result == .completed)
+    }
+    
+    func testGetNextSearch() {
+        let expectation = self.expectation(description: "\(#function)\(#line)")
+        MoviesDataSource.getNextSearch { result in
+            XCTAssertTrue(result.isSuccess)
+            expectation.fulfill()
+        }
+        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
+        XCTAssertTrue(result == .completed)
+    }
+
 }
