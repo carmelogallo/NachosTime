@@ -27,10 +27,11 @@ class NowPlayingViewController: UIViewController {
 
     private let reuseIdentifier = "NowPlayingCollectionViewCell"
     private var movies = [Movie]()
-    
+    private var isLoadingNextPage = false
+
     // MARK: - Object Lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    required init() {
         super.init(nibName: nil, bundle: nil)
         setupLogic()
     }
@@ -44,10 +45,6 @@ class NowPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loadNowPlaying()
     }
     
@@ -70,7 +67,8 @@ class NowPlayingViewController: UIViewController {
     private func configureObjects() {
         // navigationController
         title = "Now Playing"
-        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = item
 
         // view
         view.backgroundColor = .black
@@ -110,8 +108,16 @@ class NowPlayingViewController: UIViewController {
 extension NowPlayingViewController: NowPlayingDisplayLogic {
     
     func displayMovies(_ movies: [Movie]) {
-        self.movies = movies
-        collectionView.reloadData()
+        collectionView.performBatchUpdates({
+            let currentLastIndex = self.movies.count
+            let newLastIndex = currentLastIndex + movies.count - 1
+            let indexes: [Int] = Array(currentLastIndex...newLastIndex)
+            let indexPaths = indexes.map { IndexPath(item: $0, section: 0) }
+            self.movies.append(contentsOf: movies)
+            collectionView.insertItems(at: indexPaths)
+        }, completion: { [weak self] success in
+            self?.isLoadingNextPage = false
+        })
     }
     
     func displayWebServiceErrorAlert() {
@@ -158,7 +164,9 @@ extension NowPlayingViewController: UICollectionViewDataSource {
 extension NowPlayingViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(movies[indexPath.row].originalTitle)
+        let movie = movies[indexPath.row]
+        let vc = MovieDetailsViewController(withMovie: movie)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -201,4 +209,19 @@ extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension NowPlayingViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
+        guard !isLoadingNextPage && distance < 200 else { return }
+        
+        isLoadingNextPage = true
+        loadNextNowPlaying()
+    }
 }

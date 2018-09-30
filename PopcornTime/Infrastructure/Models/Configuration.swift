@@ -48,13 +48,13 @@ struct Images: Decodable {
     let baseUrl: String
     let secureBaseUrl: String
 
-    enum BackdropSizes: String, Decodable {
+    enum BackdropSize: String, Decodable {
         case w300
         case w780
         case w1280
         case original
     }
-    let backdropSizes: [BackdropSizes]
+    let backdropSizesFromServer: [String]
     
     enum LogoSizes: String, Decodable {
         case w45
@@ -67,7 +67,7 @@ struct Images: Decodable {
     }
     let logoSizes: [LogoSizes]
     
-    enum PosterSizes: String, Decodable {
+    enum PosterSize: String, Decodable {
         case w92
         case w154
         case w185
@@ -78,21 +78,21 @@ struct Images: Decodable {
     }
     private let posterSizesFromServer: [String]
     
-    enum ProfilePizes: String, Decodable {
+    enum ProfilePize: String, Decodable {
         case w45
         case w185
         case h632
         case original
     }
-    let profilePizes: [ProfilePizes]
+    let profilePizes: [ProfilePize]
     
-    enum StillSizes: String, Decodable {
+    enum StillSize: String, Decodable {
         case w92
         case w185
         case w300
         case original
     }
-    let stillSizes: [StillSizes]
+    let stillSizes: [StillSize]
     
     // MARK: - Private Properties
     
@@ -112,21 +112,29 @@ struct Images: Decodable {
         let container = try decoder.container(keyedBy: ImagesKeyContainer.self)
         baseUrl = try container.decode(String.self, forKey: .baseUrl)
         secureBaseUrl = try container.decode(String.self, forKey: .secureBaseUrl)
-        backdropSizes = try container.decode([BackdropSizes].self, forKey: .backdropSizes)
+        backdropSizesFromServer = try container.decode([String].self, forKey: .backdropSizes)
         logoSizes = try container.decode([LogoSizes].self, forKey: .logoSizes)
         posterSizesFromServer = try container.decode([String].self, forKey: .posterSizes)
-        profilePizes = try container.decode([ProfilePizes].self, forKey: .profilePizes)
-        stillSizes = try container.decode([StillSizes].self, forKey: .stillSizes)
+        profilePizes = try container.decode([ProfilePize].self, forKey: .profilePizes)
+        stillSizes = try container.decode([StillSize].self, forKey: .stillSizes)
     }
 
     // MARK: Configuration Factory
 
-    func posterSize(_ posterSize: PosterSizes) -> PosterSizes? {
+    func posterSizeValue(_ posterSize: PosterSize) -> String {
         guard posterSizesFromServer.contains(posterSize.rawValue) else {
-            return nil
+            return ""
         }
         
-        return posterSize
+        return posterSize.rawValue
     }
 
+    func backdropSizeValue(_ backdropSize: BackdropSize) -> String {
+        guard backdropSizesFromServer.contains(backdropSize.rawValue) else {
+            return ""
+        }
+        
+        return backdropSize.rawValue
+    }
+    
 }

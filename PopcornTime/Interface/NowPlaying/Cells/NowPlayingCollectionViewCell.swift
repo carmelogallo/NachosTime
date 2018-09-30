@@ -41,6 +41,8 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
         
         // imageView
         imageView.backgroundColor = .clear
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         contentView.addSubview(imageView)
     }
     
@@ -58,18 +60,20 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
     // MARK: - Picture Downloading Methods
     
     func starDownloadTask() {
-        guard let movie = movie,
-            let posterPath = movie.posterPath,
-            let posterSize = SettingsDataSource.configutation.images.posterSize(.w342) else {
-                return
+        guard let movie = movie else {
+            return
         }
         
+        let posterPath = movie.posterPath ?? ""
+        let posterSize = SettingsDataSource.configutation.images.posterSizeValue(.w780)
         let baseUrl = SettingsDataSource.configutation.images.baseUrl
-        let path = baseUrl + posterSize.rawValue + posterPath
+        let path = baseUrl + posterSize + posterPath
         
         let imageTransition = ImageTransition.fade(0.5)
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: URL(string: path), options: [.transition(imageTransition)])
+        imageView.kf.setImage(with: URL(string: path),
+                              placeholder: UIImage(named: "poster_placeholder"),
+                              options: [.transition(imageTransition)])
     }
     
     func cancelDownloadTask() {

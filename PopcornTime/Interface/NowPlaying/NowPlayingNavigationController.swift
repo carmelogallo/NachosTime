@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainNavigationController: UINavigationController {
+class NowPlayingNavigationController: UINavigationController {
 
     // MARK: - View Lifecycle
 
@@ -24,6 +24,7 @@ class MainNavigationController: UINavigationController {
     // MARK: - Configure Methods
     
     private func configure() {
+        // navigationBar
         navigationBar.prefersLargeTitles = true
         navigationBar.isTranslucent = false
         navigationBar.barTintColor = .black

@@ -110,7 +110,7 @@ extension SplashScreenViewController: SplashScreenDisplayLogic {
 
     func displayNowPlaying() {
         let vc = NowPlayingViewController()
-        let nvc = MainNavigationController(rootViewController: vc)
+        let nvc = NowPlayingNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
     
