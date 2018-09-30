@@ -30,6 +30,7 @@ class MainNavigationController: UINavigationController {
         navigationBar.tintColor = .white
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.largeTitleTextAttributes = textAttributes
+        navigationBar.titleTextAttributes = textAttributes
     }
 
 }

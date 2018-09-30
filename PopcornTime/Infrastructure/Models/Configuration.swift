@@ -76,7 +76,7 @@ struct Images: Decodable {
         case w780
         case original
     }
-    let posterSizes: [PosterSizes]
+    private let posterSizesFromServer: [String]
     
     enum ProfilePizes: String, Decodable {
         case w45
@@ -114,9 +114,19 @@ struct Images: Decodable {
         secureBaseUrl = try container.decode(String.self, forKey: .secureBaseUrl)
         backdropSizes = try container.decode([BackdropSizes].self, forKey: .backdropSizes)
         logoSizes = try container.decode([LogoSizes].self, forKey: .logoSizes)
-        posterSizes = try container.decode([PosterSizes].self, forKey: .posterSizes)
+        posterSizesFromServer = try container.decode([String].self, forKey: .posterSizes)
         profilePizes = try container.decode([ProfilePizes].self, forKey: .profilePizes)
         stillSizes = try container.decode([StillSizes].self, forKey: .stillSizes)
+    }
+
+    // MARK: Configuration Factory
+
+    func posterSize(_ posterSize: PosterSizes) -> PosterSizes? {
+        guard posterSizesFromServer.contains(posterSize.rawValue) else {
+            return nil
+        }
+        
+        return posterSize
     }
 
 }

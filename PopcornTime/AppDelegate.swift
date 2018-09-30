@@ -16,10 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let vc = NowPlayingViewController()
-        let nvc = MainNavigationController(rootViewController: vc)
+        let vc = SplashScreenViewController()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = nvc
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
 
         return true

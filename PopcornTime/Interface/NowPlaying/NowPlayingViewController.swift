@@ -8,7 +8,16 @@
 
 import UIKit
 
+protocol NowPlayingDisplayLogic: class {
+    func displayMovies(_ movies: [Movie])
+    func displayWebServiceErrorAlert()
+}
+
 class NowPlayingViewController: UIViewController {
+
+    // Business Logic
+    
+    var interactor: NowPlayingInteractor?
 
     // MARK: - UI Objects
     
@@ -17,24 +26,50 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Business Logic Objects
 
     private let reuseIdentifier = "NowPlayingCollectionViewCell"
+    private var movies = [Movie]()
+    
+    // MARK: - Object Lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        setupLogic()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadNowPlaying()
+    }
+    
+    // MARK: - Setup Methods
+    
+    private func setupLogic() {
+        let viewController = self
+        let interactor = NowPlayingInteractor()
+        viewController.interactor = interactor
+        interactor.viewController = viewController
+    }
+
     // MARK: - Configure Methods
 
-    private func configure() {
-        configureUI()
+    private func configureViews() {
+        configureObjects()
         configureConstraints()
     }
 
-    private func configureUI() {
+    private func configureObjects() {
         // navigationController
-        title = "Movies"
+        title = "Now Playing"
         navigationController?.navigationItem.largeTitleDisplayMode = .never
 
         // view
@@ -57,6 +92,39 @@ class NowPlayingViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
+    
+    // MARK: - Private Methods
+    
+    private func loadNowPlaying() {
+        interactor?.doGetNowPlaying()
+    }
+    
+    private func loadNextNowPlaying() {
+        interactor?.doGetNextNowPlaying()
+    }
+
+}
+
+// MARK: - NowPlayingDisplayLogic
+
+extension NowPlayingViewController: NowPlayingDisplayLogic {
+    
+    func displayMovies(_ movies: [Movie]) {
+        self.movies = movies
+        collectionView.reloadData()
+    }
+    
+    func displayWebServiceErrorAlert() {
+        let alertController = UIAlertController(title: "Ops!",
+                                                message: "Samething went wrong.\nPlease try again later.",
+                                                preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Dismiss", style: .destructive, handler: { action in
+            exit(0)
+        })
+        alertController.addAction(dismiss)
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -69,14 +137,17 @@ extension NowPlayingViewController: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NowPlayingCollectionViewCell else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         }
-        cell.configure()
+        
+        let movie = movies[indexPath.item]
+        cell.configure(withMovie: movie)
+        
         return cell
     }
 
@@ -87,15 +158,23 @@ extension NowPlayingViewController: UICollectionViewDataSource {
 extension NowPlayingViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print(movies[indexPath.row].originalTitle)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? NowPlayingCollectionViewCell else {
+            return
+        }
         
+        cell.starDownloadTask()
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? NowPlayingCollectionViewCell else {
+            return
+        }
         
+        cell.cancelDownloadTask()
     }
 
 }
