@@ -159,7 +159,6 @@ class MovieDetailsViewController: UIViewController {
         let path = baseUrl + backdropSize + backdropPath
         
         let imageTransition = ImageTransition.fade(0.5)
-        imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: URL(string: path),
                               placeholder: UIImage(named: "backdrop_placeholder"),
                               options: [.transition(imageTransition)])

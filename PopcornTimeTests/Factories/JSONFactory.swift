@@ -35,6 +35,14 @@ class JSONFactory {
         return try? Configuration(data: data)
     }
     
+    static func makeCorrectConfigurationWithMissingDataResponse() -> Configuration? {
+        guard let data = dataFromFile(filename: "configuration_succeful_with_missing_data", type: "json") else {
+            return nil
+        }
+        
+        return try? Configuration(data: data)
+    }
+    
     static func makeCorrectGenresResponse() -> Genres? {
         guard let data = dataFromFile(filename: "genres_succeful", type: "json") else {
             return nil

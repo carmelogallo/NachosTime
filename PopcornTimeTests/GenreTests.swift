@@ -17,9 +17,7 @@ class GenreTests: XCTestCase {
     }
     
     func testParsingFailure() {
-        guard let genres: Genres = JSONFactory.makeWrongDataResponse() else {
-            return
-        }
+        let genres: Genres? = JSONFactory.makeWrongDataResponse()
         XCTAssertNil(genres)
     }
 

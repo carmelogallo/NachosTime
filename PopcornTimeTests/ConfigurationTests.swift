@@ -17,10 +17,30 @@ class ConfigurationTests: XCTestCase {
     }
     
     func testParsingFailure() {
-        guard let configuration: Configuration = JSONFactory.makeWrongDataResponse() else {
-            return
-        }
+        let configuration: Configuration? = JSONFactory.makeWrongDataResponse()
         XCTAssertNil(configuration)
     }
-
+    
+    func testPosterSizeValueSuccess() {
+        let configuration = JSONFactory.makeCorrectConfigurationResponse()
+        XCTAssertEqual(configuration?.images.posterSizeValue(Images.PosterSize.w154), "w154")
+    }
+    
+    
+    func testPosterSizeValueFailure() {
+        let configuration = JSONFactory.makeCorrectConfigurationWithMissingDataResponse()
+        XCTAssertTrue(configuration?.images.posterSizeValue(Images.PosterSize.w154).isEmpty ?? false)
+    }
+    
+    func testBackdropSizeValueSuccess() {
+        let configuration = JSONFactory.makeCorrectConfigurationResponse()
+        XCTAssertEqual(configuration?.images.backdropSizeValue(Images.BackdropSize.w300), "w300")
+    }
+    
+    
+    func testBackdropSizeValueFailure() {
+        let configuration = JSONFactory.makeCorrectConfigurationWithMissingDataResponse()
+        XCTAssertTrue(configuration?.images.backdropSizeValue(Images.BackdropSize.w300).isEmpty ?? false)
+    }
+    
 }

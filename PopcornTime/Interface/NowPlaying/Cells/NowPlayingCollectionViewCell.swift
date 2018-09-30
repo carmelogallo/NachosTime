@@ -70,7 +70,6 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
         let path = baseUrl + posterSize + posterPath
         
         let imageTransition = ImageTransition.fade(0.5)
-        imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: URL(string: path),
                               placeholder: UIImage(named: "poster_placeholder"),
                               options: [.transition(imageTransition)])
