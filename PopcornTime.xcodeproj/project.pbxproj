@@ -37,6 +37,9 @@
 		9591495A215E9781004C8FC7 /* MoviesDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95914959215E9781004C8FC7 /* MoviesDataSourceTests.swift */; };
 		95C2899E215F4DBF00F72528 /* ModelsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C2899D215F4DBF00F72528 /* ModelsProtocol.swift */; };
 		95C289A0215F730100F72528 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C2899F215F730100F72528 /* ResultTests.swift */; };
+		95C289A32160B2AB00F72528 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C289A22160B2AB00F72528 /* NowPlayingViewController.swift */; };
+		95C289A52160B42B00F72528 /* NowPlayingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C289A42160B42B00F72528 /* NowPlayingCollectionViewCell.swift */; };
+		95C289AC2160C18300F72528 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C289AB2160C18300F72528 /* MainNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		95914959215E9781004C8FC7 /* MoviesDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataSourceTests.swift; sourceTree = "<group>"; };
 		95C2899D215F4DBF00F72528 /* ModelsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsProtocol.swift; sourceTree = "<group>"; };
 		95C2899F215F730100F72528 /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
+		95C289A22160B2AB00F72528 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
+		95C289A42160B42B00F72528 /* NowPlayingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCollectionViewCell.swift; sourceTree = "<group>"; };
+		95C289AB2160C18300F72528 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		A2AB4DF87062050CE7BFC29B /* Pods-PopcornTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.release.xcconfig"; sourceTree = "<group>"; };
 		D76DE8B4B87444B4863E14E8 /* Pods-PopcornTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopcornTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,6 +228,8 @@
 		95914927215E0E1D004C8FC7 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				95C289AA2160C15B00F72528 /* Main */,
+				95C289A12160B29100F72528 /* NowPlaying */,
 				959148F9215E06C8004C8FC7 /* ViewController.swift */,
 			);
 			path = Interface;
@@ -285,6 +293,23 @@
 				9591493E215E3CA8004C8FC7 /* JSONFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		95C289A12160B29100F72528 /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				95C289A22160B2AB00F72528 /* NowPlayingViewController.swift */,
+				95C289A42160B42B00F72528 /* NowPlayingCollectionViewCell.swift */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		95C289AA2160C15B00F72528 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				95C289AB2160C18300F72528 /* MainNavigationController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,10 +452,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -462,7 +489,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95C289AC2160C18300F72528 /* MainNavigationController.swift in Sources */,
+				95C289A32160B2AB00F72528 /* NowPlayingViewController.swift in Sources */,
 				95C2899E215F4DBF00F72528 /* ModelsProtocol.swift in Sources */,
+				95C289A52160B42B00F72528 /* NowPlayingCollectionViewCell.swift in Sources */,
 				95914943215E3FF0004C8FC7 /* Genres.swift in Sources */,
 				9591494B215E7B7D004C8FC7 /* MoviesWebServiceProtocol.swift in Sources */,
 				9591494D215E7B94004C8FC7 /* SettingsDataSourceProtocol.swift in Sources */,
