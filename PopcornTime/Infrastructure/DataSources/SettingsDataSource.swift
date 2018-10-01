@@ -21,7 +21,7 @@ struct SettingsDataSource: SettingsDataSourceProtocol, SettingsWebSeviceProtocol
         let group = DispatchGroup()
         
         // configuration
-        var webServiceConfiguration = WebServiceConfiguration(method: .get,
+        var webServiceConfiguration = WebServiceRequest(method: .get,
                                                               url: "/configuration",
                                                               headers: [ "Content-Type" : "application/json" ],
                                                               params: nil,
@@ -38,7 +38,7 @@ struct SettingsDataSource: SettingsDataSourceProtocol, SettingsWebSeviceProtocol
         }
 
         // genres
-        webServiceConfiguration = WebServiceConfiguration(method: .get,
+        webServiceConfiguration = WebServiceRequest(method: .get,
                                                           url: "/genre/movie/list",
                                                           headers: [
                                                             "Content-Type" : "application/json"

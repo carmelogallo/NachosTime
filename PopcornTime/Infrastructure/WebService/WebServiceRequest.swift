@@ -1,12 +1,12 @@
 //
-//  WebServiceConfiguration.swift
+//  WebServiceRequest.swift
 //  PopcornTime
 //
 //  Created by Carmelo Gallo on 28/09/2018.
 //  Copyright © 2018 Carmelo Gallo. All rights reserved.
 //
 
-struct WebServiceConfiguration {
+struct WebServiceRequest {
     
     enum HTTPMethod: String {
         case get = "GET"

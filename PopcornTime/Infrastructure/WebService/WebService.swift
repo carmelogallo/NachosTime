@@ -20,7 +20,7 @@ struct WebService {
         case callFailed(data: Data?, response: URLResponse?, error: Error?)
     }
     
-    static func call(configuration: WebServiceConfiguration, completion: @escaping ((Result<Data>) -> Void)) {
+    static func call(configuration: WebServiceRequest, completion: @escaping ((Result<Data>) -> Void)) {
         guard let request = makeRequest(configuration: configuration, completion: completion) else {
             completion(Result.failure(error: WebServiceError.invalidUrl))
             return
@@ -60,7 +60,7 @@ struct WebService {
         return urlString.contains("?") ? urlString + "&\(apiKeyString)" : urlString + "?\(apiKeyString)"
     }
     
-    static private func makeRequest(configuration: WebServiceConfiguration, completion: ((Result<Data>) -> Void)) -> URLRequest? {
+    static private func makeRequest(configuration: WebServiceRequest, completion: ((Result<Data>) -> Void)) -> URLRequest? {
         let urlString = makeUrlString(fromUrlString: baseUrl + configuration.url)
         guard let url = URL(string: urlString) else {
             return nil

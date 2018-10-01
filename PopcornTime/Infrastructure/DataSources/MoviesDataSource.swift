@@ -30,7 +30,7 @@ struct MoviesDataSource: MoviesDataSourceProtocol, MoviesWebServiceProtocol {
         }
         
         // webServiceConfiguration
-        let webServiceConfiguration = WebServiceConfiguration(method: .get,
+        let webServiceConfiguration = WebServiceRequest(method: .get,
                                                               url: "/movie/now_playing?page=\(page)",
                                                               headers: [ "Content-Type" : "application/json" ],
                                                               params: nil,
@@ -72,7 +72,7 @@ struct MoviesDataSource: MoviesDataSourceProtocol, MoviesWebServiceProtocol {
         }
         
         // webServiceConfiguration
-        let webServiceConfiguration = WebServiceConfiguration(method: .get,
+        let webServiceConfiguration = WebServiceRequest(method: .get,
                                                               url: "/search/movie?page=\(page)&query=\(searchMoviesKeyWords)",
             headers: [ "Content-Type" : "application/json" ],
             params: nil,
