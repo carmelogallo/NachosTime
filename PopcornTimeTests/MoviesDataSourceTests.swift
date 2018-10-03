@@ -11,9 +11,9 @@ import XCTest
 
 class MoviesDataSourceTests: XCTestCase {
     
-    func testGetNowPlaying() {
+    func testGetFirstNowPlayingPage() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        MoviesDataSource.getNowPlaying { result in
+        Api.nowPlaying.get(at: 1) { result in
             XCTAssertTrue(result.isSuccess)
             expectation.fulfill()
         }
@@ -21,9 +21,9 @@ class MoviesDataSourceTests: XCTestCase {
         XCTAssertTrue(result == .completed)
     }
     
-    func testGetNextNowPlaying() {
+    func testGetNextNowPlayingPage() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        MoviesDataSource.getNextNowPlaying { result in
+        Api.nowPlaying.get(at: 2) { result in
             XCTAssertTrue(result.isSuccess)
             expectation.fulfill()
         }
@@ -31,9 +31,9 @@ class MoviesDataSourceTests: XCTestCase {
         XCTAssertTrue(result == .completed)
     }
 
-    func testGetSearch() {
+    func testGetFirstSearchPage() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        MoviesDataSource.getSearch(keyWords: "Marvel") { result in
+        Api.search.get(at: 1, keyWords: "Marvel") { result in
             XCTAssertTrue(result.isSuccess)
             expectation.fulfill()
         }
@@ -41,9 +41,9 @@ class MoviesDataSourceTests: XCTestCase {
         XCTAssertTrue(result == .completed)
     }
     
-    func testGetNextSearch() {
+    func testGetNextSearchPage() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        MoviesDataSource.getNextSearch { result in
+        Api.search.get(at: 2, keyWords: "Marvel") { result in
             XCTAssertTrue(result.isSuccess)
             expectation.fulfill()
         }

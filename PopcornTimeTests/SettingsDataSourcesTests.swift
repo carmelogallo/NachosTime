@@ -15,7 +15,7 @@ class SettingsDataSourcesTests: XCTestCase {
         super.setUp()
         
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        SettingsDataSource.getSettings { result in
+        Api.settings.getSettings { result in
             XCTAssertTrue(result.isSuccess)
             expectation.fulfill()
         }
@@ -24,11 +24,11 @@ class SettingsDataSourcesTests: XCTestCase {
     }
 
     func testConfiguration() {
-        XCTAssertNotNil(SettingsDataSource.configutation)
+        XCTAssertNotNil(DataSource.settings.configutation)
     }
 
     func testGenres() {
-        XCTAssertNotNil(SettingsDataSource.genres)
+        XCTAssertNotNil(DataSource.settings.genres)
     }
 
 }

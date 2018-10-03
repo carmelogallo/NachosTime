@@ -7,35 +7,46 @@
 //
 
 protocol NowPlayingBusinessLogic {
-    func doGetNowPlaying()
-    func doGetNextNowPlaying()
+    func doGetFirstPage()
+    func doGetNextPage()
 }
 
 class NowPlayingInteractor: NowPlayingBusinessLogic {
     
     weak var viewController: NowPlayingDisplayLogic?
 
+    // MARK: - Private Properties
+
+    private var page: Int {
+        var page = DataSource.nowPlaying.movies?.page ?? 0
+        page += 1
+        
+        return page
+    }
+    
     // MARK: - Business logic
-    func doGetNowPlaying() {
-        MoviesDataSource.getNowPlaying { [weak self] resut in
+    
+    func doGetFirstPage() {
+        doGet(at: 1)
+    }
+    
+    func doGetNextPage() {
+        doGet(at: page)
+    }
+
+    // MARK: - Private Methods
+
+    func doGet(at page: Int) {
+        Api.nowPlaying.get(at: page) { [weak self] resut in
             guard let movies = resut.value else {
                 self?.viewController?.displayWebServiceErrorAlert()
                 return
             }
             
-            self?.viewController?.displayMovies(movies)
-        }
-    }
-    
-    func doGetNextNowPlaying() {
-        MoviesDataSource.getNextNowPlaying { [weak self] resut in
-            guard let movies = resut.value else {
-                self?.viewController?.displayMovies([])
-                return
-            }
+            DataSource.nowPlaying.movies = movies
             
-            self?.viewController?.displayMovies(movies)
+            self?.viewController?.displayMovies(movies.movies)
         }
-    }
 
+    }
 }

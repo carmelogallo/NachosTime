@@ -17,11 +17,14 @@ class SplashScreenInteractor: SplashScreenBusinessLogic {
     // MARK: - Business logic
     
     func doGetSettings() {
-        SettingsDataSource.getSettings { [weak self] result in
-            guard let success = result.value, success else {
+        Api.settings.getSettings { [weak self] result in
+            guard let values = result.value else {
                 self?.viewController?.displayWebServiceErrorAlert()
                 return
             }
+            
+            DataSource.settings.configutation = values.configuration
+            DataSource.settings.genres = values.genres
             
             self?.viewController?.displayNowPlaying()
         }

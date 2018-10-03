@@ -94,11 +94,11 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Private Methods
     
     private func loadNowPlaying() {
-        interactor?.doGetNowPlaying()
+        interactor?.doGetFirstPage()
     }
     
     private func loadNextNowPlaying() {
-        interactor?.doGetNextNowPlaying()
+        interactor?.doGetNextPage()
     }
 
 }

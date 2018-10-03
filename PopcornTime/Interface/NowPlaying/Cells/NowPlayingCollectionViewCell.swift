@@ -64,9 +64,12 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
             return
         }
         
+        guard let baseUrl = DataSource.settings.configutation?.images.baseUrl,
+            let posterSize = DataSource.settings.configutation?.images.posterSizeValue(.w780) else {
+                return
+        }
+        
         let posterPath = movie.posterPath ?? ""
-        let posterSize = SettingsDataSource.configutation.images.posterSizeValue(.w780)
-        let baseUrl = SettingsDataSource.configutation.images.baseUrl
         let path = baseUrl + posterSize + posterPath
         
         let imageTransition = ImageTransition.fade(0.5)

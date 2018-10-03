@@ -153,9 +153,12 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Picture Downloading Methods
     
     private func loadBackdropImage() {
+        guard let baseUrl = DataSource.settings.configutation?.images.baseUrl,
+            let backdropSize = DataSource.settings.configutation?.images.backdropSizeValue(.w780) else {
+                return
+        }
+
         let backdropPath = movie.backdropPath ?? ""
-        let backdropSize = SettingsDataSource.configutation.images.backdropSizeValue(.w780)
-        let baseUrl = SettingsDataSource.configutation.images.baseUrl
         let path = baseUrl + backdropSize + backdropPath
         
         let imageTransition = ImageTransition.fade(0.5)

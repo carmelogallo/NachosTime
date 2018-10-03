@@ -54,8 +54,9 @@ struct Movies: ModelsProtocol {
 struct Movie: Decodable {
 
     // MARK: - Decodable Properties
-    var genres: String {
-        let filtered = SettingsDataSource.genres.filter { genreIds.contains($0.id) }
+    var genres: String? {
+        guard let genres = DataSource.settings.genres else { return nil }
+        let filtered = genres.filter { genreIds.contains($0.id) }
         let names = filtered.map { $0.name }
         return names.joined(separator: " • ")
     }

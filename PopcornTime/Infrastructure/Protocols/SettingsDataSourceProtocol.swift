@@ -7,6 +7,6 @@
 //
 
 protocol SettingsDataSourceProtocol {
-    static var configutation: Configuration! { get }
-    static var genres: [Genre]! { get }
+    var configutation: Configuration? { get set }
+    var genres: [Genre]? { get set }
 }

@@ -23,7 +23,7 @@ class MoviesTest: XCTestCase {
 
     func testGeners() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        SettingsDataSource.getSettings { result in
+        Api.settings.getSettings { result in
             switch result {
             case .success:
                 let movies = JSONFactory.makeCorrectMoviesResponse()
