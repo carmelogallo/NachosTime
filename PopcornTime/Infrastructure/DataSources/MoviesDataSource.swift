@@ -29,15 +29,15 @@ struct MoviesDataSource: MoviesDataSourceProtocol, MoviesWebServiceProtocol {
             page = currentPage + 1
         }
         
-        // webServiceConfiguration
-        let webServiceConfiguration = WebServiceRequest(method: .get,
-                                                              url: "/movie/now_playing?page=\(page)",
-                                                              headers: [ "Content-Type" : "application/json" ],
-                                                              params: nil,
-                                                              paramsEncoding: .json)
+        // webServiceRequest
+        let webServiceRequest = WebServiceRequest(method: .get,
+                                                  url: "/movie/now_playing?page=\(page)",
+                                                  headers: [ "Content-Type" : "application/json" ],
+                                                  params: nil,
+                                                  paramsEncoding: .json)
         
         // call
-        WebService.call(configuration: webServiceConfiguration) { result in
+        WebService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
                 guard let movies = try? Movies(data: data) else {
@@ -71,15 +71,15 @@ struct MoviesDataSource: MoviesDataSourceProtocol, MoviesWebServiceProtocol {
             page = currentPage + 1
         }
         
-        // webServiceConfiguration
-        let webServiceConfiguration = WebServiceRequest(method: .get,
-                                                              url: "/search/movie?page=\(page)&query=\(searchMoviesKeyWords)",
-            headers: [ "Content-Type" : "application/json" ],
-            params: nil,
-            paramsEncoding: .json)
+        // webServiceRequest
+        let webServiceRequest = WebServiceRequest(method: .get,
+                                                  url: "/search/movie?page=\(page)&query=\(searchMoviesKeyWords)",
+                                                  headers: [ "Content-Type" : "application/json" ],
+                                                  params: nil,
+                                                  paramsEncoding: .json)
 
         // call
-        WebService.call(configuration: webServiceConfiguration) { result in
+        WebService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
                 guard let movies = try? Movies(data: data) else {

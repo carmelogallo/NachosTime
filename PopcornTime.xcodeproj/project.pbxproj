@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24A43F9781EA61CCF6273930 /* Pods_PopcornTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543D0907DFD4786132886623 /* Pods_PopcornTime.framework */; };
+		950EB4C0216481AE005F8581 /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4BF216481AE005F8581 /* WebServiceProtocol.swift */; };
 		959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959148F7215E06C8004C8FC7 /* AppDelegate.swift */; };
 		959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959148FE215E06CA004C8FC7 /* Assets.xcassets */; };
 		95914902215E06CA004C8FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		543D0907DFD4786132886623 /* Pods_PopcornTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopcornTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		950EB4BF216481AE005F8581 /* WebServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceProtocol.swift; sourceTree = "<group>"; };
 		959148F4215E06C8004C8FC7 /* PopcornTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959148F7215E06C8004C8FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959148FE215E06CA004C8FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				9591494A215E7B7D004C8FC7 /* MoviesWebServiceProtocol.swift */,
 				9591494C215E7B94004C8FC7 /* SettingsDataSourceProtocol.swift */,
 				95914940215E3F21004C8FC7 /* SettingsWebSeviceProtocol.swift */,
+				950EB4BF216481AE005F8581 /* WebServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				95914949215E7B4B004C8FC7 /* MoviesDataSource.swift in Sources */,
 				95B18B09216126650031046E /* MovieDetailsViewController.swift in Sources */,
 				95914950215E7C1D004C8FC7 /* Movies.swift in Sources */,
+				950EB4C0216481AE005F8581 /* WebServiceProtocol.swift in Sources */,
 				9591492C215E1109004C8FC7 /* Configuration.swift in Sources */,
 				959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */,
 				9591492E215E1659004C8FC7 /* SettingsDataSource.swift in Sources */,

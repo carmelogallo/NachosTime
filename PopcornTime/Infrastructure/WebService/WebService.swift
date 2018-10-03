@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct WebService {
+struct WebService: WebServiceProtocol {
     
-    private static let baseUrl = "https://api.themoviedb.org/3"
+    // MARK: - WebServiceProtocol Properties
+    
+    static var baseUrl = "https://api.themoviedb.org/3"
+   
+    // MARK: - Private Properties
+
     private static let apiKey = "90a5acd11cdcfb676199c9476c07cbb9"
     
     enum WebServiceError: Error {
@@ -20,8 +25,10 @@ struct WebService {
         case callFailed(data: Data?, response: URLResponse?, error: Error?)
     }
     
-    static func call(configuration: WebServiceRequest, completion: @escaping ((Result<Data>) -> Void)) {
-        guard let request = makeRequest(configuration: configuration, completion: completion) else {
+    // MARK: - WebServiceProtocol Methods
+
+    static func call(webServiceRequest: WebServiceRequest, completion: @escaping ((Result<Data>) -> Void)) {
+        guard let request = makeRequest(webServiceRequest: webServiceRequest, completion: completion) else {
             completion(Result.failure(error: WebServiceError.invalidUrl))
             return
         }
@@ -55,13 +62,15 @@ struct WebService {
         dataTask.resume()
     }
     
+    // MARK: - Private Methods
+
     static private func makeUrlString(fromUrlString urlString: String) -> String {
         let apiKeyString = "api_key=\(apiKey)"
         return urlString.contains("?") ? urlString + "&\(apiKeyString)" : urlString + "?\(apiKeyString)"
     }
     
-    static private func makeRequest(configuration: WebServiceRequest, completion: ((Result<Data>) -> Void)) -> URLRequest? {
-        let urlString = makeUrlString(fromUrlString: baseUrl + configuration.url)
+    static private func makeRequest(webServiceRequest: WebServiceRequest, completion: ((Result<Data>) -> Void)) -> URLRequest? {
+        let urlString = makeUrlString(fromUrlString: baseUrl + webServiceRequest.url)
         guard let url = URL(string: urlString) else {
             return nil
         }
@@ -71,16 +80,16 @@ struct WebService {
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         #endif
         request.timeoutInterval = 10.0
-        request.httpMethod = configuration.method.rawValue
-        configuration.headers?.forEach { key, value in
+        request.httpMethod = webServiceRequest.method.rawValue
+        webServiceRequest.headers?.forEach { key, value in
             request.setValue(value, forHTTPHeaderField: key)
         }
         
-        guard let params = configuration.params, configuration.method == .put || configuration.method == .post || configuration.method == .patch else {
+        guard let params = webServiceRequest.params, webServiceRequest.method == .put || webServiceRequest.method == .post || webServiceRequest.method == .patch else {
             return request as URLRequest
         }
         
-        switch configuration.paramsEncoding {
+        switch webServiceRequest.paramsEncoding {
         case .urlEncoded:
             let body = makeUrlEncode(params: params)
             request.httpBody = body.data(using: String.Encoding.utf8)

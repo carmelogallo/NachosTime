@@ -20,14 +20,14 @@ struct SettingsDataSource: SettingsDataSourceProtocol, SettingsWebSeviceProtocol
     static func getSettings(completion: @escaping ((Result<Bool>) -> Void)) {
         let group = DispatchGroup()
         
-        // configuration
-        var webServiceConfiguration = WebServiceRequest(method: .get,
-                                                              url: "/configuration",
-                                                              headers: [ "Content-Type" : "application/json" ],
-                                                              params: nil,
-                                                              paramsEncoding: .json)
+        // webServiceRequest
+        var webServiceRequest = WebServiceRequest(method: .get,
+                                                  url: "/configuration",
+                                                  headers: [ "Content-Type" : "application/json" ],
+                                                  params: nil,
+                                                  paramsEncoding: .json)
         group.enter()
-        WebService.call(configuration: webServiceConfiguration) { result in
+        WebService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
                 configutation = try? Configuration(data: data)
@@ -38,15 +38,15 @@ struct SettingsDataSource: SettingsDataSourceProtocol, SettingsWebSeviceProtocol
         }
 
         // genres
-        webServiceConfiguration = WebServiceRequest(method: .get,
-                                                          url: "/genre/movie/list",
-                                                          headers: [
-                                                            "Content-Type" : "application/json"
+        webServiceRequest = WebServiceRequest(method: .get,
+                                              url: "/genre/movie/list",
+                                              headers: [
+                                                "Content-Type" : "application/json"
             ],
-                                                          params: nil,
-                                                          paramsEncoding: .json)
+                                              params: nil,
+                                              paramsEncoding: .json)
         group.enter()
-        WebService.call(configuration: webServiceConfiguration) { result in
+        WebService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
                 genres = try? Genres(data: data).genres
