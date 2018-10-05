@@ -7,7 +7,6 @@
 //
 
 protocol SettingsWebSeviceProtocol {
-    
     var webService: WebServiceProtocol { get }
     
     init(webService: WebServiceProtocol)

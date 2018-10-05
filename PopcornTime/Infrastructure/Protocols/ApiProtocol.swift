@@ -7,8 +7,6 @@
 //
 
 protocol ApiProtocol {
-    #warning("Check if this can be hidden!")
-    static var webService: WebServiceProtocol { get }
     static var settings: SettingsWebSeviceProtocol { get }
     static var nowPlaying: NowPlayingWebServiceProtocol { get }
     static var search: SearchWebServiceProtocol { get }

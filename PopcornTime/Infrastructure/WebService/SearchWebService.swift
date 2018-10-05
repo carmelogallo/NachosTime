@@ -42,8 +42,7 @@ class SearchWebService: SearchWebServiceProtocol {
         webService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
-                #warning("Create parser!")
-                guard let movies = try? Movies(data: data) else {
+                guard let movies = MoviesParser.parse(data: data) else {
                     completion(.success(value: [Movie]()))
                     return
                 }

@@ -8,10 +8,17 @@
 
 struct Api: ApiProtocol {
     
-    static private(set) var webService: WebServiceProtocol = URLSessionWebService()
+    // MARK: - Private Properties
+    
+    static private var webService: WebServiceProtocol = URLSessionWebService()
+    
+    // MARK: - ApiProtocol Properties
+
     static private(set) var settings: SettingsWebSeviceProtocol = SettingsWebService(webService: Api.webService)
     static private(set) var nowPlaying: NowPlayingWebServiceProtocol = NowPlayingWebService(webService: Api.webService)
     static private(set) var search: SearchWebServiceProtocol = SearchWebService(webService: Api.webService)
+
+    // MARK: - Object Lifecycle
 
     private init() { /* Required for a better protection */ }
 }

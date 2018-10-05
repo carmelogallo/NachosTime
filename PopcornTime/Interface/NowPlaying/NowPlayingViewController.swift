@@ -17,7 +17,7 @@ class NowPlayingViewController: UIViewController {
 
     // Business Logic
     
-    var interactor: NowPlayingInteractor?
+    var interactor: NowPlayingBusinessLogic?
 
     // MARK: - UI Objects
     
@@ -192,8 +192,11 @@ extension NowPlayingViewController: UICollectionViewDelegate {
 extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // height should be the half size of the collectionView's width
         let width: CGFloat = floor(collectionView.bounds.width / 2)
-        let height = width / 2 * 3
+        // height should be the 150% more than the width
+        let height = width * 1.5
+        
         return CGSize(width: width, height: height)
     }
 
@@ -219,7 +222,7 @@ extension NowPlayingViewController: UIScrollViewDelegate {
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
-        guard !isLoadingNextPage && distance < 200 else { return }
+        guard !isLoadingNextPage && distance < scrollView.bounds.height else { return }
         
         isLoadingNextPage = true
         loadNextNowPlaying()

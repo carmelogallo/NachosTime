@@ -12,7 +12,7 @@ protocol SplashScreenBusinessLogic {
 
 class SplashScreenInteractor: SplashScreenBusinessLogic {
     
-    weak var viewController: SplashScreenViewController?
+    weak var viewController: SplashScreenDisplayLogic?
 
     // MARK: - Business logic
     

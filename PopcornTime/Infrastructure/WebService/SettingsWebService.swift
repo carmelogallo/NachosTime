@@ -32,8 +32,7 @@ class SettingsWebService: SettingsWebSeviceProtocol {
         webService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
-                #warning("Create parser!")
-                configutation = try? Configuration(data: data)
+                configutation = ConfigurationParser.parse(data: data)
             case .failure(let error):
                 completion(.failure(error: error))
             }
@@ -52,8 +51,7 @@ class SettingsWebService: SettingsWebSeviceProtocol {
         webService.call(webServiceRequest: webServiceRequest) { result in
             switch result {
             case .success(let data):
-                #warning("Create parser!")
-                genres = try? Genres(data: data).genres
+                genres = GenresParser.parse(data: data)?.genres
             case .failure(let error):
                 completion(.failure(error: error))
             }

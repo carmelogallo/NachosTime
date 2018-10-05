@@ -19,6 +19,10 @@
 		950EB4D221655861005F8581 /* SearchWebServiceProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4D021655861005F8581 /* SearchWebServiceProtocol .swift */; };
 		950EB4D4216558B9005F8581 /* SearchWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4D3216558B9005F8581 /* SearchWebService.swift */; };
 		950EB4D621655924005F8581 /* SearchDataSource copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4D521655924005F8581 /* SearchDataSource copy.swift */; };
+		950EB4D92167CB2A005F8581 /* ParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4D82167CB2A005F8581 /* ParserProtocol.swift */; };
+		950EB4DB2167CB77005F8581 /* MoviesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4DA2167CB77005F8581 /* MoviesParser.swift */; };
+		950EB4E12167DD82005F8581 /* ConfigurationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4E02167DD82005F8581 /* ConfigurationParser.swift */; };
+		950EB4E32167DDEA005F8581 /* GenresParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4E22167DDEA005F8581 /* GenresParser.swift */; };
 		959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959148F7215E06C8004C8FC7 /* AppDelegate.swift */; };
 		959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959148FE215E06CA004C8FC7 /* Assets.xcassets */; };
 		95914902215E06CA004C8FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */; };
@@ -87,6 +91,10 @@
 		950EB4D021655861005F8581 /* SearchWebServiceProtocol .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchWebServiceProtocol .swift"; sourceTree = "<group>"; };
 		950EB4D3216558B9005F8581 /* SearchWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWebService.swift; sourceTree = "<group>"; };
 		950EB4D521655924005F8581 /* SearchDataSource copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchDataSource copy.swift"; sourceTree = "<group>"; };
+		950EB4D82167CB2A005F8581 /* ParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserProtocol.swift; sourceTree = "<group>"; };
+		950EB4DA2167CB77005F8581 /* MoviesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesParser.swift; sourceTree = "<group>"; };
+		950EB4E02167DD82005F8581 /* ConfigurationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationParser.swift; sourceTree = "<group>"; };
+		950EB4E22167DDEA005F8581 /* GenresParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresParser.swift; sourceTree = "<group>"; };
 		959148F4215E06C8004C8FC7 /* PopcornTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959148F7215E06C8004C8FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959148FE215E06CA004C8FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,6 +193,16 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		950EB4D72167CB18005F8581 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				950EB4E02167DD82005F8581 /* ConfigurationParser.swift */,
+				950EB4E22167DDEA005F8581 /* GenresParser.swift */,
+				950EB4DA2167CB77005F8581 /* MoviesParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
 		959148EB215E06C8004C8FC7 = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +264,7 @@
 		95914925215E0CAE004C8FC7 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				950EB4D72167CB18005F8581 /* Parsers */,
 				95914929215E0EB5004C8FC7 /* DataSources */,
 				950EB4CE216542E3005F8581 /* Managers */,
 				95914928215E0EAD004C8FC7 /* Models */,
@@ -305,6 +324,7 @@
 				95C2899D215F4DBF00F72528 /* ModelsProtocol.swift */,
 				95914951215E7C7E004C8FC7 /* NowPlayingDataSourceProtocol.swift */,
 				9591494A215E7B7D004C8FC7 /* NowPlayingWebServiceProtocol.swift */,
+				950EB4D82167CB2A005F8581 /* ParserProtocol.swift */,
 				950EB4CF21655861005F8581 /* SearchDataSourceProtocol.swift */,
 				950EB4D021655861005F8581 /* SearchWebServiceProtocol .swift */,
 				9591494C215E7B94004C8FC7 /* SettingsDataSourceProtocol.swift */,
@@ -564,6 +584,7 @@
 				95C289A32160B2AB00F72528 /* NowPlayingViewController.swift in Sources */,
 				950EB4D4216558B9005F8581 /* SearchWebService.swift in Sources */,
 				95C2899E215F4DBF00F72528 /* ModelsProtocol.swift in Sources */,
+				950EB4DB2167CB77005F8581 /* MoviesParser.swift in Sources */,
 				950EB4CD21654001005F8581 /* NowPlayingDataSource.swift in Sources */,
 				95C289A52160B42B00F72528 /* NowPlayingCollectionViewCell.swift in Sources */,
 				950EB4C2216537F6005F8581 /* Api.swift in Sources */,
@@ -572,6 +593,7 @@
 				9591494B215E7B7D004C8FC7 /* NowPlayingWebServiceProtocol.swift in Sources */,
 				95B18B052160E66B0031046E /* NowPlayingInteractor.swift in Sources */,
 				9591494D215E7B94004C8FC7 /* SettingsDataSourceProtocol.swift in Sources */,
+				950EB4E32167DDEA005F8581 /* GenresParser.swift in Sources */,
 				95914952215E7C7E004C8FC7 /* NowPlayingDataSourceProtocol.swift in Sources */,
 				950EB4D121655861005F8581 /* SearchDataSourceProtocol.swift in Sources */,
 				950EB4D221655861005F8581 /* SearchWebServiceProtocol .swift in Sources */,
@@ -584,6 +606,7 @@
 				950EB4C821653EDF005F8581 /* DataSourceProtocol.swift in Sources */,
 				95C289AF2160CE1400F72528 /* SplashScreenViewController.swift in Sources */,
 				95914935215E207D004C8FC7 /* WebServiceRequest.swift in Sources */,
+				950EB4E12167DD82005F8581 /* ConfigurationParser.swift in Sources */,
 				95914949215E7B4B004C8FC7 /* NowPlayingWebService.swift in Sources */,
 				95B18B09216126650031046E /* MovieDetailsViewController.swift in Sources */,
 				95914950215E7C1D004C8FC7 /* Movies.swift in Sources */,
@@ -591,6 +614,7 @@
 				9591492C215E1109004C8FC7 /* Configuration.swift in Sources */,
 				959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */,
 				9591492E215E1659004C8FC7 /* SettingsWebService.swift in Sources */,
+				950EB4D92167CB2A005F8581 /* ParserProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

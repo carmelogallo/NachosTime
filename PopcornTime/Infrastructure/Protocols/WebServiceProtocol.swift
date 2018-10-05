@@ -9,7 +9,6 @@
 import Foundation
 
 protocol WebServiceProtocol {
-    
     var baseUrl: String { get }
     
     func call(webServiceRequest: WebServiceRequest, completion: @escaping ((Result<Data>) -> Void))
