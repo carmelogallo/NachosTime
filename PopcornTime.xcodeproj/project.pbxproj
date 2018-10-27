@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0CE36E41177462D337C50E /* Pods_PopcornTimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1007204EBB6BAC17788174AB /* Pods_PopcornTimeUITests.framework */; };
 		24A43F9781EA61CCF6273930 /* Pods_PopcornTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543D0907DFD4786132886623 /* Pods_PopcornTime.framework */; };
 		5544A15CE7FE69D322563443 /* Pods_PopcornTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5430D5E68B8658DDEB9F58EE /* Pods_PopcornTimeTests.framework */; };
 		950EB4C0216481AE005F8581 /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4BF216481AE005F8581 /* WebServiceProtocol.swift */; };
@@ -24,6 +25,7 @@
 		950EB4DB2167CB77005F8581 /* MoviesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4DA2167CB77005F8581 /* MoviesParser.swift */; };
 		950EB4E12167DD82005F8581 /* ConfigurationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4E02167DD82005F8581 /* ConfigurationParser.swift */; };
 		950EB4E32167DDEA005F8581 /* GenresParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4E22167DDEA005F8581 /* GenresParser.swift */; };
+		9564073C218471B3004FCEB3 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EE286321845BFF003EAD62 /* XCTestCase+Extension.swift */; };
 		956F091221846F5300BFEBF1 /* PopcornTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F091121846F5300BFEBF1 /* PopcornTimeUITests.swift */; };
 		959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959148F7215E06C8004C8FC7 /* AppDelegate.swift */; };
 		959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959148FE215E06CA004C8FC7 /* Assets.xcassets */; };
@@ -157,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B0CE36E41177462D337C50E /* Pods_PopcornTimeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,9 +440,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 956F091621846F5300BFEBF1 /* Build configuration list for PBXNativeTarget "PopcornTimeUITests" */;
 			buildPhases = (
+				0131379FC8A2AA863F852349 /* [CP] Check Pods Manifest.lock */,
 				956F090B21846F5300BFEBF1 /* Sources */,
 				956F090C21846F5300BFEBF1 /* Frameworks */,
 				956F090D21846F5300BFEBF1 /* Resources */,
+				6B06F11B97477A2625734C3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -565,13 +570,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0131379FC8A2AA863F852349 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PopcornTimeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		08EC90C9D612A50FF85616F3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PopcornTimeTests/Pods-PopcornTimeTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PopcornTimeTests/Pods-PopcornTimeTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
 				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
 			);
@@ -582,7 +605,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornTimeTests/Pods-PopcornTimeTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopcornTimeTests/Pods-PopcornTimeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B06F11B97477A2625734C3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PopcornTimeUITests/Pods-PopcornTimeUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopcornTimeUITests/Pods-PopcornTimeUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D29B2BD6CBF5945B46CE669 /* [CP] Embed Pods Frameworks */ = {
@@ -591,7 +634,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PopcornTime/Pods-PopcornTime-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 			);
@@ -602,7 +645,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopcornTime/Pods-PopcornTime-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PopcornTime/Pods-PopcornTime-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		751B13028556DC079C813CD0 /* [CP] Check Pods Manifest.lock */ = {
@@ -648,6 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9564073C218471B3004FCEB3 /* XCTestCase+Extension.swift in Sources */,
 				956F091221846F5300BFEBF1 /* PopcornTimeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,6 +783,7 @@
 /* Begin XCBuildConfiguration section */
 		956F091721846F5300BFEBF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C08A8F5AB984215177549F2 /* Pods-PopcornTimeUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD4L8QF62A;
@@ -758,6 +803,7 @@
 		};
 		956F091821846F5300BFEBF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FFB783EA7F836A2C707B9F3 /* Pods-PopcornTimeUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD4L8QF62A;

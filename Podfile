@@ -11,3 +11,7 @@ end
 target 'PopcornTimeTests' do
     pod 'Mockingjay'
 end
+
+target 'PopcornTimeUITests' do
+    pod 'Mockingjay'
+end
