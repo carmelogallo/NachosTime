@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "95914912215E06CA004C8FC7"
+               BlueprintIdentifier = "956F090E21846F5300BFEBF1"
                BuildableName = "PopcornTimeUITests.xctest"
                BlueprintName = "PopcornTimeUITests"
                ReferencedContainer = "container:PopcornTime.xcodeproj">
@@ -54,6 +54,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <CodeCoverageTargets>
          <BuildableReference
@@ -79,7 +80,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "95914912215E06CA004C8FC7"
+               BlueprintIdentifier = "956F090E21846F5300BFEBF1"
                BuildableName = "PopcornTimeUITests.xctest"
                BlueprintName = "PopcornTimeUITests"
                ReferencedContainer = "container:PopcornTime.xcodeproj">

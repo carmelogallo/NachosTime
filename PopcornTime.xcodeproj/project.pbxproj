@@ -24,6 +24,7 @@
 		950EB4DB2167CB77005F8581 /* MoviesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4DA2167CB77005F8581 /* MoviesParser.swift */; };
 		950EB4E12167DD82005F8581 /* ConfigurationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4E02167DD82005F8581 /* ConfigurationParser.swift */; };
 		950EB4E32167DDEA005F8581 /* GenresParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4E22167DDEA005F8581 /* GenresParser.swift */; };
+		956F091221846F5300BFEBF1 /* PopcornTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F091121846F5300BFEBF1 /* PopcornTimeUITests.swift */; };
 		959148F8215E06C8004C8FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959148F7215E06C8004C8FC7 /* AppDelegate.swift */; };
 		959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959148FE215E06CA004C8FC7 /* Assets.xcassets */; };
 		95914902215E06CA004C8FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95914900215E06CA004C8FC7 /* LaunchScreen.storyboard */; };
@@ -63,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		956F091421846F5300BFEBF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 959148EC215E06C8004C8FC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 959148F3215E06C8004C8FC7;
+			remoteInfo = PopcornTime;
+		};
 		95914909215E06CA004C8FC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 959148EC215E06C8004C8FC7 /* Project object */;
@@ -94,6 +102,9 @@
 		950EB4DA2167CB77005F8581 /* MoviesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesParser.swift; sourceTree = "<group>"; };
 		950EB4E02167DD82005F8581 /* ConfigurationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationParser.swift; sourceTree = "<group>"; };
 		950EB4E22167DDEA005F8581 /* GenresParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresParser.swift; sourceTree = "<group>"; };
+		956F090F21846F5300BFEBF1 /* PopcornTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopcornTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		956F091121846F5300BFEBF1 /* PopcornTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornTimeUITests.swift; sourceTree = "<group>"; };
+		956F091321846F5300BFEBF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		957CB7C5218450F600C83877 /* Mockingjay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Mockingjay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		957CB7C7218450F600C83877 /* URITemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = URITemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		959148F4215E06C8004C8FC7 /* PopcornTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +153,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		956F090C21846F5300BFEBF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		959148F1215E06C8004C8FC7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,11 +231,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		956F091021846F5300BFEBF1 /* PopcornTimeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				956F091121846F5300BFEBF1 /* PopcornTimeUITests.swift */,
+				956F091321846F5300BFEBF1 /* Info.plist */,
+			);
+			path = PopcornTimeUITests;
+			sourceTree = "<group>";
+		};
 		959148EB215E06C8004C8FC7 = {
 			isa = PBXGroup;
 			children = (
 				959148F6215E06C8004C8FC7 /* PopcornTime */,
 				9591490B215E06CA004C8FC7 /* PopcornTimeTests */,
+				956F091021846F5300BFEBF1 /* PopcornTimeUITests */,
 				959148F5215E06C8004C8FC7 /* Products */,
 				4E132115B998A0D1BA97A636 /* Pods */,
 				09293CD95ACAF32080A1D446 /* Frameworks */,
@@ -229,6 +257,7 @@
 			children = (
 				959148F4215E06C8004C8FC7 /* PopcornTime.app */,
 				95914908215E06CA004C8FC7 /* PopcornTimeTests.xctest */,
+				956F090F21846F5300BFEBF1 /* PopcornTimeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,6 +433,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		956F090E21846F5300BFEBF1 /* PopcornTimeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 956F091621846F5300BFEBF1 /* Build configuration list for PBXNativeTarget "PopcornTimeUITests" */;
+			buildPhases = (
+				956F090B21846F5300BFEBF1 /* Sources */,
+				956F090C21846F5300BFEBF1 /* Frameworks */,
+				956F090D21846F5300BFEBF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				956F091521846F5300BFEBF1 /* PBXTargetDependency */,
+			);
+			name = PopcornTimeUITests;
+			productName = PopcornTimeUITests;
+			productReference = 956F090F21846F5300BFEBF1 /* PopcornTimeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		959148F3215E06C8004C8FC7 /* PopcornTime */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9591491C215E06CA004C8FC7 /* Build configuration list for PBXNativeTarget "PopcornTime" */;
@@ -453,6 +500,10 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Carmelo Gallo";
 				TargetAttributes = {
+					956F090E21846F5300BFEBF1 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 959148F3215E06C8004C8FC7;
+					};
 					959148F3215E06C8004C8FC7 = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -477,11 +528,19 @@
 			targets = (
 				959148F3215E06C8004C8FC7 /* PopcornTime */,
 				95914907215E06CA004C8FC7 /* PopcornTimeTests */,
+				956F090E21846F5300BFEBF1 /* PopcornTimeUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		956F090D21846F5300BFEBF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		959148F2215E06C8004C8FC7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -585,6 +644,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		956F090B21846F5300BFEBF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				956F091221846F5300BFEBF1 /* PopcornTimeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		959148F0215E06C8004C8FC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -646,6 +713,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		956F091521846F5300BFEBF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 959148F3215E06C8004C8FC7 /* PopcornTime */;
+			targetProxy = 956F091421846F5300BFEBF1 /* PBXContainerItemProxy */;
+		};
 		9591490A215E06CA004C8FC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 959148F3215E06C8004C8FC7 /* PopcornTime */;
@@ -665,6 +737,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		956F091721846F5300BFEBF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RD4L8QF62A;
+				INFOPLIST_FILE = PopcornTimeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.carmelogallo.PopcornTimeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PopcornTime;
+			};
+			name = Debug;
+		};
+		956F091821846F5300BFEBF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RD4L8QF62A;
+				INFOPLIST_FILE = PopcornTimeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.carmelogallo.PopcornTimeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PopcornTime;
+			};
+			name = Release;
+		};
 		9591491A215E06CA004C8FC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -864,6 +974,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		956F091621846F5300BFEBF1 /* Build configuration list for PBXNativeTarget "PopcornTimeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				956F091721846F5300BFEBF1 /* Debug */,
+				956F091821846F5300BFEBF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		959148EF215E06C8004C8FC7 /* Build configuration list for PBXProject "PopcornTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
