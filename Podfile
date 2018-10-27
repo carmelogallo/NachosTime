@@ -9,11 +9,5 @@ target 'PopcornTime' do
 end
 
 target 'PopcornTimeTests' do
-    inherit! :search_paths
-    pod 'Mockingjay'
-end
-
-target 'PopcornTimeUITests' do
-    inherit! :search_paths
     pod 'Mockingjay'
 end
