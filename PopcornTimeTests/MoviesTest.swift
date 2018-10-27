@@ -24,14 +24,20 @@ class MoviesTest: XCTestCase {
     func testGeners() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
         Api.settings.getSettings { result in
-            switch result {
-            case .success:
-                let movies = JSONFactory.makeCorrectMoviesResponse()
-                XCTAssertNotNil(movies?.movies[0].genres)
-                expectation.fulfill()
-            case .failure:
-                XCTFail("Web Service Failed!")
+            XCTAssertTrue(result.isSuccess)
+            
+            guard let values = result.value else {
+                XCTFail()
+                return
             }
+            
+            DataSource.settings.configutation = values.configuration
+            DataSource.settings.genres = values.genres
+
+            let movies = JSONFactory.makeCorrectMoviesResponse()
+            XCTAssertNotNil(movies?.movies[0].genres)
+            
+            expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed)

@@ -1,20 +1,33 @@
 PODS:
   - Kingfisher (4.10.0)
+  - Mockingjay (2.0.1):
+    - Mockingjay/Core (= 2.0.1)
+    - Mockingjay/XCTest (= 2.0.1)
+  - Mockingjay/Core (2.0.1):
+    - URITemplate (~> 2.0)
+  - Mockingjay/XCTest (2.0.1):
+    - Mockingjay/Core
   - Reveal-SDK (18)
+  - URITemplate (2.0.3)
 
 DEPENDENCIES:
   - Kingfisher
+  - Mockingjay
   - Reveal-SDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Kingfisher
+    - Mockingjay
     - Reveal-SDK
+    - URITemplate
 
 SPEC CHECKSUMS:
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
+  URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 33a1fbdc41a87d29324f1adbe18a214c9a679180
+PODFILE CHECKSUM: 3ed4bcc0e2a70a79aa7e05887a39e959400b4c44
 
 COCOAPODS: 1.5.3

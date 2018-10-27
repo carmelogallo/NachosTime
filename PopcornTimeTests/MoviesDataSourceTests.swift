@@ -15,6 +15,7 @@ class MoviesDataSourceTests: XCTestCase {
         let expectation = self.expectation(description: "\(#function)\(#line)")
         Api.nowPlaying.get(at: 1) { result in
             XCTAssertTrue(result.isSuccess)
+            XCTAssertNotNil(result.value)
             expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
@@ -25,26 +26,29 @@ class MoviesDataSourceTests: XCTestCase {
         let expectation = self.expectation(description: "\(#function)\(#line)")
         Api.nowPlaying.get(at: 2) { result in
             XCTAssertTrue(result.isSuccess)
+            XCTAssertNotNil(result.value)
             expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed)
     }
 
-    func testGetFirstSearchPage() {
+    func testGetFirstSearchPage() {        
         let expectation = self.expectation(description: "\(#function)\(#line)")
         Api.search.get(at: 1, keyWords: "Marvel") { result in
             XCTAssertTrue(result.isSuccess)
+            XCTAssertNotNil(result.value)
             expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed)
     }
     
-    func testGetNextSearchPage() {
+    func testGetNextSearchPage() {        
         let expectation = self.expectation(description: "\(#function)\(#line)")
         Api.search.get(at: 2, keyWords: "Marvel") { result in
             XCTAssertTrue(result.isSuccess)
+            XCTAssertNotNil(result.value)
             expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)

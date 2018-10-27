@@ -7,3 +7,13 @@ target 'PopcornTime' do
     pod 'Reveal-SDK', :configurations => ['Debug']
     pod 'Kingfisher'
 end
+
+target 'PopcornTimeTests' do
+    inherit! :search_paths
+    pod 'Mockingjay'
+end
+
+target 'PopcornTimeUITests' do
+    inherit! :search_paths
+    pod 'Mockingjay'
+end

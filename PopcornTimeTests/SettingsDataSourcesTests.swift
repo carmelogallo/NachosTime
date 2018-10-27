@@ -17,6 +17,15 @@ class SettingsDataSourcesTests: XCTestCase {
         let expectation = self.expectation(description: "\(#function)\(#line)")
         Api.settings.getSettings { result in
             XCTAssertTrue(result.isSuccess)
+            
+            guard let values = result.value else {
+                XCTFail()
+                return
+            }
+            
+            DataSource.settings.configutation = values.configuration
+            DataSource.settings.genres = values.genres
+
             expectation.fulfill()
         }
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
