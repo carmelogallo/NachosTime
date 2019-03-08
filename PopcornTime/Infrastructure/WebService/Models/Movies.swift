@@ -50,9 +50,9 @@ struct Movie: Decodable {
     // MARK: - Decodable Properties
     var genres: String? {
         guard let genres = Manager.dataSource.settings.genres else { return nil }
-        let filtered = genres.filter { genreIds.contains($0.id) }
-        let names = filtered.map { $0.name }
-        return names.joined(separator: " • ")
+        return genres.filter { genreIds.contains($0.id) }
+                .map { $0.name }
+                .joined(separator: " • ")
     }
 
     // MARK: - Decodable Properties

@@ -60,11 +60,11 @@ class NowPlayingViewController: UIViewController {
     // MARK: - Configure Methods
 
     private func configureViews() {
-        configureObjects()
+        configureUI()
         configureConstraints()
     }
 
-    private func configureObjects() {
+    private func configureUI() {
         // navigationController
         title = "Now Playing"
         let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

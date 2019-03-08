@@ -63,11 +63,11 @@ class SplashScreenViewController: UIViewController {
     // MARK: - Configure Methods
     
     private func configureViews() {
-        configureObjects()
+        configureUI()
         configureConstraints()
     }
     
-    private func configureObjects() {
+    private func configureUI() {
         // view
         view.backgroundColor = .black
         
@@ -81,19 +81,19 @@ class SplashScreenViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        // logoImageView
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        
-        // activityIndicatorView
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+
+        let constraints: [NSLayoutConstraint] = [
+            // logoImageView
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            // activityIndicatorView
             activityIndicatorView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        ]
+
+        NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: - Private Methods

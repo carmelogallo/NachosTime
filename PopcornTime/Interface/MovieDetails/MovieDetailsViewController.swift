@@ -46,11 +46,11 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Configure Methods
     
     private func configureViews() {
-        configureObjects()
+        configureUI()
         configureConstraints()
     }
     
-    private func configureObjects() {
+    private func configureUI() {
         // navigationController
         title = "Movie Details"
         navigationItem.largeTitleDisplayMode = .never
@@ -95,59 +95,46 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        // scrollView
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        genresLabel.translatesAutoresizingMaskIntoConstraints = false
+        overviewLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let constraints: [NSLayoutConstraint] = [
+            // scrollView
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-
-        // contentView
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // contentView
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-            ])
-        
-        // imageView
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        let imageViewHeight = view.bounds.width / 16 * 9
-        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // imageView
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
-            ])
-        
-        // titleLabel
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: view.bounds.width / 16 * 9),
+            // titleLabel
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
-            ])
-        
-        // genresLabel
-        genresLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            // genresLabel
             genresLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             genresLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            genresLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
-            ])
-        
-        // overviewLabel
-        overviewLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            genresLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            // overviewLabel
             overviewLabel.topAnchor.constraint(equalTo: genresLabel.bottomAnchor, constant: 8),
             overviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             overviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
-            ])
+        ]
+
+        NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: - Picture Downloading Methods
