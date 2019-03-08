@@ -31,7 +31,7 @@ class SearchWebService: SearchWebServiceProtocol {
 
         let request = WebServiceRequest(
                 method: .get,
-                path: (url: Manager.config.apiURL + "/search/movie",
+                path: (url: Manager.config.apiUrl + "/search/movie",
                        query: ["api_key" : Manager.config.apiKey, "page" : "\(page)", "query" : "\(query)"]),
                 headers: ["Content-Type" : "application/json"]
         )

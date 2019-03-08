@@ -4,6 +4,6 @@
 //
 
 struct ConfigurationManager {
-    var apiURL = "https://api.themoviedb.org/3"
+    var apiUrl = "https://api.themoviedb.org/3"
     var apiKey = "90a5acd11cdcfb676199c9476c07cbb9"
 }

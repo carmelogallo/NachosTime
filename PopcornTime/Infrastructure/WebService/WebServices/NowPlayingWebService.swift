@@ -23,7 +23,7 @@ class NowPlayingWebService: NowPlayingWebServiceProtocol {
     func get(at page: Int, completion: @escaping ((Result<Movies>) -> Void)) {
         let request = WebServiceRequest(
                 method: .get,
-                path: (url: Manager.config.apiURL + "/movie/now_playing",
+                path: (url: Manager.config.apiUrl + "/movie/now_playing",
                        query: ["api_key" : Manager.config.apiKey, "page" : "\(page)"]),
                 headers: ["Content-Type" : "application/json"]
         )

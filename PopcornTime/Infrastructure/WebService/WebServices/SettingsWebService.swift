@@ -29,7 +29,7 @@ class SettingsWebService: SettingsWebServiceProtocol {
         // webServiceRequest
         var request = WebServiceRequest(
                 method: .get,
-                path: (url: Manager.config.apiURL + "/configuration", query: ["api_key" : Manager.config.apiKey]),
+                path: (url: Manager.config.apiUrl + "/configuration", query: ["api_key" : Manager.config.apiKey]),
                 headers: ["Content-Type" : "application/json"]
         )
         group.enter()
@@ -46,7 +46,7 @@ class SettingsWebService: SettingsWebServiceProtocol {
         // genres
         request = WebServiceRequest(
                 method: .get,
-                path: (url: Manager.config.apiURL + "/genre/movie/list", query: ["api_key" : Manager.config.apiKey]),
+                path: (url: Manager.config.apiUrl + "/genre/movie/list", query: ["api_key" : Manager.config.apiKey]),
                 headers: ["Content-Type" : "application/json"]
         )
         group.enter()

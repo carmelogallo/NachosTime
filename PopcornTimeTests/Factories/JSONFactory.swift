@@ -28,7 +28,7 @@ class JSONFactory {
     }
 
     static func makeCorrectConfigurationResponse() -> Configuration? {
-        guard let data = dataFromFile(filename: "configuration_succeful", type: "json") else {
+        guard let data = dataFromFile(filename: "configuration_successful", type: "json") else {
             return nil
         }
         
@@ -36,7 +36,7 @@ class JSONFactory {
     }
     
     static func makeCorrectConfigurationWithMissingDataResponse() -> Configuration? {
-        guard let data = dataFromFile(filename: "configuration_succeful_with_missing_data", type: "json") else {
+        guard let data = dataFromFile(filename: "configuration_successful_with_missing_data", type: "json") else {
             return nil
         }
 
@@ -44,7 +44,7 @@ class JSONFactory {
     }
     
     static func makeCorrectGenresResponse() -> Genres? {
-        guard let data = dataFromFile(filename: "genres_succeful", type: "json") else {
+        guard let data = dataFromFile(filename: "genres_successful", type: "json") else {
             return nil
         }
         
@@ -52,7 +52,7 @@ class JSONFactory {
     }
     
     static func makeCorrectMoviesResponse() -> Movies? {
-        guard let data = dataFromFile(filename: "movies_succeful", type: "json") else {
+        guard let data = dataFromFile(filename: "movies_successful", type: "json") else {
             return nil
         }
         
