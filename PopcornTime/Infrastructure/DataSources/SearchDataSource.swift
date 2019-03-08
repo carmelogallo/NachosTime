@@ -6,6 +6,6 @@
 //  Copyright © 2018 Carmelo Gallo. All rights reserved.
 //
 
-struct SearchDataSource: SearchDataSourceProtocol {
+struct SearchDataSource {
     var movies: Movies?
 }

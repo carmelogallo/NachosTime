@@ -18,10 +18,14 @@ class NowPlayingWebService: NowPlayingWebServiceProtocol {
 
     private(set) var webService: WebServiceProtocol
     
+    // MARK: - Object lifecycle
+    
     required init(webService: WebServiceProtocol) {
         self.webService = webService
     }
 
+    // MARK: - Protocol methods
+    
     func get(at page: Int, completion: @escaping ((Result<Movies>) -> Void)) {
         // webServiceRequest
         let webServiceRequest = WebServiceRequest(method: .get,

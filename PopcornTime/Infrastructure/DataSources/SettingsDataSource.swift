@@ -6,7 +6,7 @@
 //  Copyright © 2018 Carmelo Gallo. All rights reserved.
 //
 
-struct SettingsDataSource: SettingsDataSourceProtocol {
+struct SettingsDataSource {
     var configutation: Configuration?
     var genres: [Genre]?
 }

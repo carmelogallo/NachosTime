@@ -13,7 +13,7 @@ class MoviesDataSourceTests: XCTestCase {
     
     func testGetFirstNowPlayingPage() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Api.nowPlaying.get(at: 1) { result in
+        Manager.webService.nowPlaying.get(at: 1) { result in
             XCTAssertTrue(result.isSuccess)
             XCTAssertNotNil(result.value)
             expectation.fulfill()
@@ -24,7 +24,7 @@ class MoviesDataSourceTests: XCTestCase {
     
     func testGetNextNowPlayingPage() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Api.nowPlaying.get(at: 2) { result in
+        Manager.webService.nowPlaying.get(at: 2) { result in
             XCTAssertTrue(result.isSuccess)
             XCTAssertNotNil(result.value)
             expectation.fulfill()
@@ -35,7 +35,7 @@ class MoviesDataSourceTests: XCTestCase {
 
     func testGetFirstSearchPage() {        
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Api.search.get(at: 1, keyWords: "Marvel") { result in
+        Manager.webService.search.get(at: 1, keyWords: "Marvel") { result in
             XCTAssertTrue(result.isSuccess)
             XCTAssertNotNil(result.value)
             expectation.fulfill()
@@ -46,7 +46,7 @@ class MoviesDataSourceTests: XCTestCase {
     
     func testGetNextSearchPage() {        
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Api.search.get(at: 2, keyWords: "Marvel") { result in
+        Manager.webService.search.get(at: 2, keyWords: "Marvel") { result in
             XCTAssertTrue(result.isSuccess)
             XCTAssertNotNil(result.value)
             expectation.fulfill()

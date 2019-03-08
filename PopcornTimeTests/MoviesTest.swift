@@ -23,7 +23,7 @@ class MoviesTest: XCTestCase {
 
     func testGeners() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Api.settings.getSettings { result in
+        Manager.webService.settings.getSettings { result in
             XCTAssertTrue(result.isSuccess)
             
             guard let values = result.value else {
@@ -31,8 +31,8 @@ class MoviesTest: XCTestCase {
                 return
             }
             
-            DataSource.settings.configutation = values.configuration
-            DataSource.settings.genres = values.genres
+            Manager.dataSource.settings.configutation = values.configuration
+            Manager.dataSource.settings.genres = values.genres
 
             let movies = JSONFactory.makeCorrectMoviesResponse()
             XCTAssertNotNil(movies?.movies[0].genres)

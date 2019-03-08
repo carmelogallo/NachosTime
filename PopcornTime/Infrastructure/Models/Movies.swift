@@ -55,7 +55,7 @@ struct Movie: Decodable {
 
     // MARK: - Decodable Properties
     var genres: String? {
-        guard let genres = DataSource.settings.genres else { return nil }
+        guard let genres = Manager.dataSource.settings.genres else { return nil }
         let filtered = genres.filter { genreIds.contains($0.id) }
         let names = filtered.map { $0.name }
         return names.joined(separator: " • ")
@@ -122,25 +122,6 @@ struct Movie: Decodable {
 // MARK: - Genres
 
 struct Dates: Decodable {
-    
-    // MARK: - Decodable Properties
-    
     let minimum: String
     let maximum: String
-
-    // MARK: - Private Properties
-    
-    private enum DatesKeyContainer: String, CodingKey {
-        case minimum
-        case maximum
-    }
-    
-    // MARK: - Decodable Lifecycle
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: DatesKeyContainer.self)
-        minimum = try container.decode(String.self, forKey: .minimum)
-        maximum = try container.decode(String.self, forKey: .maximum)
-    }
-    
 }

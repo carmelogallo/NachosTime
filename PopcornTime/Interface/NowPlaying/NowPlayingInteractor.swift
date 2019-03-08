@@ -18,7 +18,7 @@ class NowPlayingInteractor: NowPlayingBusinessLogic {
     // MARK: - Private Properties
 
     private var page: Int {
-        var page = DataSource.nowPlaying.movies?.page ?? 0
+        var page = Manager.dataSource.nowPlaying.movies?.page ?? 0
         page += 1
         
         return page
@@ -37,13 +37,13 @@ class NowPlayingInteractor: NowPlayingBusinessLogic {
     // MARK: - Private Methods
 
     func doGet(at page: Int) {
-        Api.nowPlaying.get(at: page) { [weak self] resut in
+        Manager.webService.nowPlaying.get(at: page) { [weak self] resut in
             guard let movies = resut.value else {
                 self?.viewController?.displayWebServiceErrorAlert()
                 return
             }
             
-            DataSource.nowPlaying.movies = movies
+            Manager.dataSource.nowPlaying.movies = movies
             
             self?.viewController?.displayMovies(movies.movies)
         }

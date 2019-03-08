@@ -6,6 +6,6 @@
 //  Copyright © 2018 Carmelo Gallo. All rights reserved.
 //
 
-struct NowPlayingDataSource: NowPlayingDataSourceProtocol {
+struct NowPlayingDataSource {
     var movies: Movies?
 }
