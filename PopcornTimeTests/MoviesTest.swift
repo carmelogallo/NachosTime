@@ -23,7 +23,7 @@ class MoviesTest: XCTestCase {
 
     func testGeners() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Manager.webService.settings.getSettings { result in
+        Manager.webService.settings.get { result in
             XCTAssertTrue(result.isSuccess)
             
             guard let values = result.value else {
@@ -31,7 +31,7 @@ class MoviesTest: XCTestCase {
                 return
             }
             
-            Manager.dataSource.settings.configutation = values.configuration
+            Manager.dataSource.settings.configuration = values.configuration
             Manager.dataSource.settings.genres = values.genres
 
             let movies = JSONFactory.makeCorrectMoviesResponse()

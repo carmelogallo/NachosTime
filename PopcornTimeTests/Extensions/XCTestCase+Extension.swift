@@ -13,7 +13,7 @@ extension XCTestCase {
     
     struct API {
         static let baseUrl = "https://api.themoviedb.org/3"
-        static let apiKey = "api_key=90a5acd11cdcfb676199c9476c07cbb9"
+        static let apiKey = "90a5acd11cdcfb676199c9476c07cbb9"
     }
 
     open override func setUp() {

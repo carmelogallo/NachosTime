@@ -7,6 +7,6 @@
 //
 
 struct SettingsDataSource {
-    var configutation: Configuration?
+    var configuration: Configuration?
     var genres: [Genre]?
 }

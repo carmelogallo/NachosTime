@@ -14,7 +14,7 @@ struct WebServicesManager {
 
     // MARK: - Internal properties
 
-    private(set) var settings: SettingsWebSeviceProtocol
+    private(set) var settings: SettingsWebServiceProtocol
     private(set) var nowPlaying: NowPlayingWebServiceProtocol
     private(set) var search: SearchWebServiceProtocol
 

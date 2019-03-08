@@ -7,8 +7,5 @@
 //
 
 protocol SearchWebServiceProtocol {
-    var webService: WebServiceProtocol { get }
-    
-    init(webService: WebServiceProtocol)
     func get(at page:Int, keyWords: String, completion: @escaping ((Result<[Movie]>) -> Void))
 }

@@ -15,7 +15,7 @@ class SettingsDataSourcesTests: XCTestCase {
         super.setUp()
         
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Manager.webService.settings.getSettings { result in
+        Manager.webService.settings.get { result in
             XCTAssertTrue(result.isSuccess)
             
             guard let values = result.value else {
@@ -23,7 +23,7 @@ class SettingsDataSourcesTests: XCTestCase {
                 return
             }
             
-            Manager.dataSource.settings.configutation = values.configuration
+            Manager.dataSource.settings.configuration = values.configuration
             Manager.dataSource.settings.genres = values.genres
 
             expectation.fulfill()
@@ -33,7 +33,7 @@ class SettingsDataSourcesTests: XCTestCase {
     }
 
     func testConfiguration() {
-        XCTAssertNotNil(Manager.dataSource.settings.configutation)
+        XCTAssertNotNil(Manager.dataSource.settings.configuration)
     }
 
     func testGenres() {

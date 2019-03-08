@@ -64,8 +64,8 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        guard let baseUrl = Manager.dataSource.settings.configutation?.images.baseUrl,
-            let posterSize = Manager.dataSource.settings.configutation?.images.posterSizeValue(.w780) else {
+        guard let baseUrl = Manager.dataSource.settings.configuration?.images.baseUrl,
+            let posterSize = Manager.dataSource.settings.configuration?.images.posterSizeValue(.w780) else {
                 return
         }
         

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Movies
 
-struct Movies: ModelsProtocol {
+struct Movies: Decodable {
     
     // MARK: - Decodable Properties
     
@@ -29,13 +29,7 @@ struct Movies: ModelsProtocol {
         case totalMovies = "total_results"
         case dates
     }
-    
-    // MARK: - Decodable Lifecycle
-    
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Movies.self, from: data)
-    }
-    
+
     // MARK: - Decodable Lifecycle
     
     init(from decoder: Decoder) throws {

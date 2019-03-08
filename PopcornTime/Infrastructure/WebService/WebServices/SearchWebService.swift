@@ -7,18 +7,17 @@
 //
 
 class SearchWebService: SearchWebServiceProtocol {
-    
+
     // MARK: - Private Properties
 
     private enum SearchWebServiceError: Error {
         case addingPercentEncodingFailed
     }
-    private(set) var query: String?
-    
-    // MARK: - NowPlayingWebServiceProtocol
 
-    private(set) var webService: WebServiceProtocol
-    
+    private let webService: WebServiceProtocol
+
+    // MARK: - Object lifecycle
+
     required init(webService: WebServiceProtocol) {
         self.webService = webService
     }
@@ -29,28 +28,21 @@ class SearchWebService: SearchWebServiceProtocol {
             completion(.failure(error: SearchWebServiceError.addingPercentEncodingFailed))
             return
         }
-        self.query = query
-        
-        // webServiceRequest
-        let webServiceRequest = WebServiceRequest(method: .get,
-                                                  url: "/search/movie?page=\(page)&query=\(query)",
-                                                  headers: [ "Content-Type" : "application/json" ],
-                                                  params: nil,
-                                                  paramsEncoding: .json)
-        
-        // call
-        webService.call(webServiceRequest: webServiceRequest) { result in
-            switch result {
-            case .success(let data):
-                guard let movies = MoviesParser.parse(data: data) else {
-                    completion(.success(value: [Movie]()))
-                    return
-                }
 
+        let request = WebServiceRequest(
+                method: .get,
+                path: (url: Manager.config.apiURL + "/search/movie",
+                       query: ["api_key" : Manager.config.apiKey, "page" : "\(page)", "query" : "\(query)"]),
+                headers: ["Content-Type" : "application/json"]
+        )
+        webService.send(request: request, parser: MoviesParser.parse) { result in
+            switch result {
+            case .success(let movies):
                 completion(.success(value: movies.movies))
             case .failure(let error):
                 completion(.failure(error: error))
             }
         }
+
     }
 }

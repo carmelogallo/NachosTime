@@ -8,11 +8,10 @@
 
 import Foundation
 
-struct GenresParser: ParserProtocol {
+struct GenresParser {
     
-    typealias T = Genres
-    
-    static func parse(data: Data) -> T? {
-        return try? T(data: data)
+    static var parse: Parser<Genres> = { data in
+        return try JSONDecoder().decode(Genres.self, from: data)
     }
+
 }

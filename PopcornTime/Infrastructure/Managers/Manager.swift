@@ -4,6 +4,7 @@
 //
 
 enum Manager {
+    static let config = ConfigurationManager()
     static let webService = WebServicesManager()
     static var dataSource = DataSourceManager()
 }

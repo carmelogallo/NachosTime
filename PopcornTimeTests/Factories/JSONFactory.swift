@@ -19,12 +19,12 @@ class JSONFactory {
         return try? Data(contentsOf: URL(fileURLWithPath: path))
     }
     
-    static func makeWrongDataResponse<T>() -> T? where T: ModelsProtocol {
+    static func makeWrongDataResponse<T>() -> T? where T: Decodable {
         guard let data = dataFromFile(filename: "wrong_response", type: "json") else {
             return nil
         }
         
-        return try? T(data: data)
+        return try? JSONDecoder().decode(T.self, from: data)
     }
 
     static func makeCorrectConfigurationResponse() -> Configuration? {
@@ -32,15 +32,15 @@ class JSONFactory {
             return nil
         }
         
-        return try? Configuration(data: data)
+        return try? JSONDecoder().decode(Configuration.self, from: data)
     }
     
     static func makeCorrectConfigurationWithMissingDataResponse() -> Configuration? {
         guard let data = dataFromFile(filename: "configuration_succeful_with_missing_data", type: "json") else {
             return nil
         }
-        
-        return try? Configuration(data: data)
+
+        return try? JSONDecoder().decode(Configuration.self, from: data)
     }
     
     static func makeCorrectGenresResponse() -> Genres? {
@@ -48,7 +48,7 @@ class JSONFactory {
             return nil
         }
         
-        return try? Genres(data: data)
+        return try? JSONDecoder().decode(Genres.self, from: data)
     }
     
     static func makeCorrectMoviesResponse() -> Movies? {
@@ -56,7 +56,7 @@ class JSONFactory {
             return nil
         }
         
-        return try? Movies(data: data)
+        return try? JSONDecoder().decode(Movies.self, from: data)
     }
         
 }

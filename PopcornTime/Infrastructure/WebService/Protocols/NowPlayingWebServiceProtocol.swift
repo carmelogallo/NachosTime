@@ -7,8 +7,5 @@
 //
 
 protocol NowPlayingWebServiceProtocol {
-    var webService: WebServiceProtocol { get }
-    
-    init(webService: WebServiceProtocol)
     func get(at page: Int, completion: @escaping ((Result<Movies>) -> Void))
 }

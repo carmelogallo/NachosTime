@@ -8,12 +8,10 @@
 
 import Foundation
 
-struct MoviesParser: ParserProtocol {
-    
-    typealias T = Movies
-    
-    static func parse(data: Data) -> T? {
-        return try? T(data: data)
+struct MoviesParser {
+
+    static var parse: Parser<Movies> = { data in
+        return try JSONDecoder().decode(Movies.self, from: data)
     }
 
 }

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Configuration
 
-struct Configuration: ModelsProtocol {
+struct Configuration: Decodable {
     
     // MARK: - Decodable Properties
     
@@ -24,12 +24,6 @@ struct Configuration: ModelsProtocol {
         case changeKeys = "change_keys"
     }
 
-    // MARK: - Object Lifecycle
-
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(Configuration.self, from: data)
-    }
-    
     // MARK: - Decodable Lifecycle
     
     init(from decoder: Decoder) throws {
@@ -78,13 +72,13 @@ struct Images: Decodable {
     }
     private let posterSizesFromServer: [String]
     
-    enum ProfilePize: String, Decodable {
+    enum ProfileSize: String, Decodable {
         case w45
         case w185
         case h632
         case original
     }
-    let profilePizes: [ProfilePize]
+    let profileSizes: [ProfileSize]
     
     enum StillSize: String, Decodable {
         case w92
@@ -102,7 +96,7 @@ struct Images: Decodable {
         case backdropSizes = "backdrop_sizes"
         case logoSizes = "logo_sizes"
         case posterSizes = "poster_sizes"
-        case profilePizes = "profile_sizes"
+        case profileSizes = "profile_sizes"
         case stillSizes = "still_sizes"
     }
 
@@ -115,7 +109,7 @@ struct Images: Decodable {
         backdropSizesFromServer = try container.decode([String].self, forKey: .backdropSizes)
         logoSizes = try container.decode([LogoSizes].self, forKey: .logoSizes)
         posterSizesFromServer = try container.decode([String].self, forKey: .posterSizes)
-        profilePizes = try container.decode([ProfilePize].self, forKey: .profilePizes)
+        profileSizes = try container.decode([ProfileSize].self, forKey: .profileSizes)
         stillSizes = try container.decode([StillSize].self, forKey: .stillSizes)
     }
 

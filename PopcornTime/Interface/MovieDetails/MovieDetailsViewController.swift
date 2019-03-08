@@ -153,8 +153,8 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Picture Downloading Methods
     
     private func loadBackdropImage() {
-        guard let baseUrl = Manager.dataSource.settings.configutation?.images.baseUrl,
-            let backdropSize = Manager.dataSource.settings.configutation?.images.backdropSizeValue(.w780) else {
+        guard let baseUrl = Manager.dataSource.settings.configuration?.images.baseUrl,
+            let backdropSize = Manager.dataSource.settings.configuration?.images.backdropSizeValue(.w780) else {
                 return
         }
 
