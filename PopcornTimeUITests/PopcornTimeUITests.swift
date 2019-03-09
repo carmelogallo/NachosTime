@@ -11,8 +11,12 @@ import XCTest
 class PopcornTimeUITests: XCTestCase {
 
     override func setUp() {
+        super.setUp()
         continueAfterFailure = false
-        XCUIApplication().launch()
+        
+        let app = XCUIApplication()
+        app.launchArguments = [LaunchArguments.StubNetworkResponses.rawValue]
+        app.launch()
     }
     
     func testIfNowPlayingViewIsDisplayed() {

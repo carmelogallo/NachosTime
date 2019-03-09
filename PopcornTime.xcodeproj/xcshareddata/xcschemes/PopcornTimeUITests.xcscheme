@@ -7,11 +7,14 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
+            buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForTesting = "YES">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "956F090E21846F5300BFEBF1"
+               BlueprintIdentifier = "95D1227D2233B40B00D177E9"
                BuildableName = "PopcornTimeUITests.xctest"
                BlueprintName = "PopcornTimeUITests"
                ReferencedContainer = "container:PopcornTime.xcodeproj">
@@ -30,13 +33,22 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "956F090E21846F5300BFEBF1"
+               BlueprintIdentifier = "95D1227D2233B40B00D177E9"
                BuildableName = "PopcornTimeUITests.xctest"
                BlueprintName = "PopcornTimeUITests"
                ReferencedContainer = "container:PopcornTime.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "95D1227D2233B40B00D177E9"
+            BuildableName = "PopcornTimeUITests.xctest"
+            BlueprintName = "PopcornTimeUITests"
+            ReferencedContainer = "container:PopcornTime.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -50,6 +62,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "95D1227D2233B40B00D177E9"
+            BuildableName = "PopcornTimeUITests.xctest"
+            BlueprintName = "PopcornTimeUITests"
+            ReferencedContainer = "container:PopcornTime.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -59,6 +80,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "95D1227D2233B40B00D177E9"
+            BuildableName = "PopcornTimeUITests.xctest"
+            BlueprintName = "PopcornTimeUITests"
+            ReferencedContainer = "container:PopcornTime.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

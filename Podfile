@@ -4,14 +4,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'PopcornTime' do
-    pod 'Reveal-SDK', :configurations => ['Debug']
-    pod 'Kingfisher'
-end
-
-target 'PopcornTimeTests' do
-    pod 'Mockingjay'
-end
-
-target 'PopcornTimeUITests' do
-    pod 'Mockingjay'
+  # pod 'Reveal-SDK', :configurations => ['Debug']
+  pod 'Kingfisher'
+  pod 'Mockingjay/Core'
 end
