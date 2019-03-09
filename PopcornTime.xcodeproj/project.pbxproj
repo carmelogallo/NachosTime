@@ -94,10 +94,12 @@
 		2108869A90F094E04341530E /* SearchWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWebService.swift; sourceTree = "<group>"; };
 		210887C5906E2E967122A1E6 /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		210887EB06F49DBE23D17C00 /* MoviesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesParser.swift; sourceTree = "<group>"; };
+		210887F33F0FEDB59A83BE78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		210888497CFE1B4E5F8C0CE0 /* SettingsWebSeviceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWebSeviceProtocol.swift; sourceTree = "<group>"; };
 		210888603ECAF0EC9A2F0638 /* SettingsWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWebService.swift; sourceTree = "<group>"; };
 		210888D31363EEDB86CDCC4C /* GenresParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresParser.swift; sourceTree = "<group>"; };
 		210889D6EA4EFC7BC73FD5CE /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		21088A3F0FE7441409FF5EAD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		21088A895F834EBD54CFF9F0 /* ConfigurationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationParser.swift; sourceTree = "<group>"; };
 		21088B087531013A90FF2E78 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		21088D0611F9338E404F773E /* NowPlayingWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingWebService.swift; sourceTree = "<group>"; };
@@ -269,6 +271,8 @@
 				959148F5215E06C8004C8FC7 /* Products */,
 				4E132115B998A0D1BA97A636 /* Pods */,
 				09293CD95ACAF32080A1D446 /* Frameworks */,
+				210887F33F0FEDB59A83BE78 /* README.md */,
+				21088A3F0FE7441409FF5EAD /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
