@@ -15,8 +15,10 @@ class MovieDetailsViewController: UIViewController {
     
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView(frame: .zero)
-    private let imageView = UIImageView(frame: .zero)
+    private let backdropImageView = UIImageView(frame: .zero)
     private let titleLabel = UILabel(frame: .zero)
+    private let voteLabel = UILabel(frame: .zero)
+    private let starImageView = UIImageView(image: UIImage(named: "star"))
     private let genresLabel = UILabel(frame: .zero)
     private let overviewLabel = UILabel(frame: .zero)
 
@@ -67,10 +69,10 @@ class MovieDetailsViewController: UIViewController {
         scrollView.addSubview(contentView)
         
         // imageView
-        imageView.backgroundColor = .clear
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        contentView.addSubview(imageView)
+        backdropImageView.backgroundColor = .clear
+        backdropImageView.contentMode = .scaleAspectFill
+        backdropImageView.clipsToBounds = true
+        contentView.addSubview(backdropImageView)
         
         // titleLabel
         titleLabel.accessibilityIdentifier = "MovieDetails.Movie.Title"
@@ -79,7 +81,18 @@ class MovieDetailsViewController: UIViewController {
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 0
         contentView.addSubview(titleLabel)
-        
+
+        // voteLabel
+        voteLabel.accessibilityIdentifier = "MovieDetails.Movie.Vote"
+        voteLabel.text = String(movie.voteAverage)
+        voteLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        voteLabel.textColor = .white
+        contentView.addSubview(voteLabel)
+
+        // starImageView
+        starImageView.backgroundColor = .clear
+        contentView.addSubview(starImageView)
+
         // genresLabel
         genresLabel.accessibilityIdentifier = "MovieDetails.Movie.Genres"
         genresLabel.text = movie.genres
@@ -100,8 +113,10 @@ class MovieDetailsViewController: UIViewController {
     private func configureConstraints() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        backdropImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        voteLabel.translatesAutoresizingMaskIntoConstraints = false
+        starImageView.translatesAutoresizingMaskIntoConstraints = false
         genresLabel.translatesAutoresizingMaskIntoConstraints = false
         overviewLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -118,14 +133,20 @@ class MovieDetailsViewController: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // imageView
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: view.bounds.width / 16 * 9),
+            backdropImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            backdropImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            backdropImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            backdropImageView.heightAnchor.constraint(equalToConstant: view.bounds.width / 16 * 9),
             // titleLabel
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            titleLabel.topAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            // starImageView
+            starImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            starImageView.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
+            // voteLabel
+            voteLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            voteLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor, constant: 3),
+            voteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             // genresLabel
             genresLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
             genresLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
@@ -152,7 +173,7 @@ class MovieDetailsViewController: UIViewController {
         let path = baseUrl + backdropSize + backdropPath
         
         let imageTransition = ImageTransition.fade(0.5)
-        imageView.kf.setImage(with: URL(string: path),
+        backdropImageView.kf.setImage(with: URL(string: path),
                               placeholder: UIImage(named: "backdrop_placeholder"),
                               options: [.transition(imageTransition)])
     }
