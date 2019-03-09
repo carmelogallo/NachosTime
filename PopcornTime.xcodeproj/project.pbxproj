@@ -844,6 +844,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmelogallo.PopcornTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -863,6 +864,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmelogallo.PopcornTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";

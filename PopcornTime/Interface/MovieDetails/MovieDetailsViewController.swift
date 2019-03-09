@@ -85,7 +85,7 @@ class MovieDetailsViewController: UIViewController {
         // voteLabel
         voteLabel.accessibilityIdentifier = "MovieDetails.Movie.Vote"
         voteLabel.text = String(movie.voteAverage)
-        voteLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        voteLabel.font = UIFont.systemFont(ofSize: 16)
         voteLabel.textColor = .white
         contentView.addSubview(voteLabel)
 
