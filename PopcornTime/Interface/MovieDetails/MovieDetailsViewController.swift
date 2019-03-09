@@ -82,16 +82,16 @@ class MovieDetailsViewController: UIViewController {
         titleLabel.numberOfLines = 0
         contentView.addSubview(titleLabel)
 
+        // starImageView
+        starImageView.backgroundColor = .clear
+        contentView.addSubview(starImageView)
+
         // voteLabel
         voteLabel.accessibilityIdentifier = "MovieDetails.Movie.Vote"
         voteLabel.text = String(movie.voteAverage)
         voteLabel.font = UIFont.systemFont(ofSize: 16)
         voteLabel.textColor = .white
         contentView.addSubview(voteLabel)
-
-        // starImageView
-        starImageView.backgroundColor = .clear
-        contentView.addSubview(starImageView)
 
         // genresLabel
         genresLabel.accessibilityIdentifier = "MovieDetails.Movie.Genres"
@@ -111,12 +111,17 @@ class MovieDetailsViewController: UIViewController {
     }
     
     private func configureConstraints() {
+        starImageView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        starImageView.setContentHuggingPriority(.required, for: .horizontal)
+        voteLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        voteLabel.setContentHuggingPriority(.required, for: .horizontal)
+
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         backdropImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        voteLabel.translatesAutoresizingMaskIntoConstraints = false
         starImageView.translatesAutoresizingMaskIntoConstraints = false
+        voteLabel.translatesAutoresizingMaskIntoConstraints = false
         genresLabel.translatesAutoresizingMaskIntoConstraints = false
         overviewLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -141,10 +146,10 @@ class MovieDetailsViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             // starImageView
-            starImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            starImageView.topAnchor.constraint(equalTo: backdropImageView.bottomAnchor, constant: 8),
             starImageView.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
             // voteLabel
-            voteLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            voteLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
             voteLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor, constant: 3),
             voteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             // genresLabel
