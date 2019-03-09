@@ -73,6 +73,7 @@ class MovieDetailsViewController: UIViewController {
         contentView.addSubview(imageView)
         
         // titleLabel
+        titleLabel.accessibilityIdentifier = "MovieDetails.Movie.Title"
         titleLabel.text = movie.title
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         titleLabel.textColor = .white
@@ -80,6 +81,7 @@ class MovieDetailsViewController: UIViewController {
         contentView.addSubview(titleLabel)
         
         // genresLabel
+        genresLabel.accessibilityIdentifier = "MovieDetails.Movie.Genres"
         genresLabel.text = movie.genres
         genresLabel.font = UIFont.boldSystemFont(ofSize: 12)
         genresLabel.textColor = .white
@@ -87,6 +89,7 @@ class MovieDetailsViewController: UIViewController {
         contentView.addSubview(genresLabel)
         
         // overviewLabel
+        overviewLabel.accessibilityIdentifier = "MovieDetails.Movie.Overview"
         overviewLabel.text = movie.overview
         overviewLabel.font = UIFont.systemFont(ofSize: 16)
         overviewLabel.textColor = .white

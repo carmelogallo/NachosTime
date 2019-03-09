@@ -8,29 +8,31 @@
 
 import XCTest
 
-class PopcornTimeUITests: XCTestCase {
+class PopcornTimeUITests: UIXCTestCase {
 
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        
-        let app = XCUIApplication()
-        app.launchArguments = [LaunchArguments.StubNetworkResponses.rawValue]
-        app.launch()
-    }
-    
     func testIfNowPlayingViewIsDisplayed() {
-        XCTAssertTrue(XCUIApplication().navigationBars["Now Playing"].otherElements["Now Playing"].exists)
+        XCTAssertTrue(app.navigationBars["Now Playing"].exists)
     }
-    
-    func testCollectionViewItemCount() {
-        XCTAssertTrue(XCUIApplication().collectionViews.cells.count >= 0)
-    }
-    
+
     func testIfDetailsViewIsDisplayed() {
-        let app = XCUIApplication()
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
-        XCTAssertTrue(app.navigationBars["Movie Details"].exists)
+        let item = app.collectionViews.children(matching: .cell).element(boundBy: 0)
+        XCTAssertTrue(item.exists)
+        item.tap()
+
+        let navigationBarTitle = app.navigationBars["Movie Details"]
+        XCTAssertTrue(navigationBarTitle.exists)
+
+        let title = app.staticTexts["MovieDetails.Movie.Title"]
+        XCTAssertTrue(title.exists)
+        XCTAssertEqual(title.label, "The Nun")
+
+        let genres = app.staticTexts["MovieDetails.Movie.Genres"]
+        XCTAssertTrue(genres.exists)
+        XCTAssertEqual(genres.label, "Horror • Mystery • Thriller")
+
+        let overview = app.staticTexts["MovieDetails.Movie.Overview"]
+        XCTAssertTrue(overview.exists)
+        XCTAssertEqual(overview.label, "When a young nun at a cloistered abbey in Romania takes her own life, a priest with a haunted past and a novitiate on the threshold of her final vows are sent by the Vatican to investigate. Together they uncover the order’s unholy secret. Risking not only their lives but their faith and their very souls, they confront a malevolent force in the form of the same demonic nun that first terrorized audiences in “The Conjuring 2,” as the abbey becomes a horrific battleground between the living and the damned.")
     }
 
 }

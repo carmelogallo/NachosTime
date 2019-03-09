@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210882095D4C77759F873DDD /* UIXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088285B783BFC935BFEBE9 /* UIXCTestCase.swift */; };
 		21088312ED2055A777948CE7 /* SettingsWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210888603ECAF0EC9A2F0638 /* SettingsWebService.swift */; };
 		210883E480DF75E8CC12012F /* ConfigurationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088A895F834EBD54CFF9F0 /* ConfigurationParser.swift */; };
 		2108844ECF7B4DA2BEFA023D /* WebServiceMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088070AA088DFE0D686E17 /* WebServiceMedia.swift */; };
@@ -86,6 +87,7 @@
 		21088070AA088DFE0D686E17 /* WebServiceMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceMedia.swift; sourceTree = "<group>"; };
 		210880AD2E7467358E5BFD4A /* URLSessionWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionWebService.swift; sourceTree = "<group>"; };
 		2108812E343FB7AEA57BA378 /* SearchWebServiceProtocol .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchWebServiceProtocol .swift"; sourceTree = "<group>"; };
+		21088285B783BFC935BFEBE9 /* UIXCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIXCTestCase.swift; sourceTree = "<group>"; };
 		210882D3212ED3CDB04F5C1B /* WebServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceRequest.swift; sourceTree = "<group>"; };
 		210882EBD72709C95A8F1EE3 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		210885A50B855DAAF45CD5FB /* Movies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				95D122802233B40B00D177E9 /* PopcornTimeUITests.swift */,
 				95D122822233B40B00D177E9 /* Info.plist */,
 				95C3D0912233BF1900B67CC6 /* LaunchArguments.swift */,
+				21088285B783BFC935BFEBE9 /* UIXCTestCase.swift */,
 			);
 			path = PopcornTimeUITests;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 			files = (
 				95D122812233B40B00D177E9 /* PopcornTimeUITests.swift in Sources */,
 				95C3D0922233BF1900B67CC6 /* LaunchArguments.swift in Sources */,
+				210882095D4C77759F873DDD /* UIXCTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
