@@ -17,6 +17,7 @@ struct WebServicesManager {
     private(set) var settings: SettingsWebServiceProtocol
     private(set) var nowPlaying: NowPlayingWebServiceProtocol
     private(set) var credits: CreditsWebServiceProtocol
+    private(set) var similar: SimilarWebServiceProtocol
     private(set) var search: SearchWebServiceProtocol
 
     // MARK: - Object lifecycle
@@ -25,6 +26,7 @@ struct WebServicesManager {
         settings = SettingsWebService(webService: webService)
         nowPlaying = NowPlayingWebService(webService: webService)
         credits = CreditsWebService(webService: webService)
+        similar = SimilarWebService(webService: webService)
         search = SearchWebService(webService: webService)
     }
 

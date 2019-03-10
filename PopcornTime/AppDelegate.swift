@@ -60,6 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+// MARK: - Stubbing
+
 private extension AppDelegate {
     
     func isRunningUnitTests() -> Bool {
@@ -71,6 +73,7 @@ private extension AppDelegate {
         stubGenres()
         stubMovies()
         stubCredits()
+        stubSimilar()
         stubSearch()
     }
     
@@ -98,6 +101,13 @@ private extension AppDelegate {
     func stubCredits() {
         let uri = "/3/movie/439079/credits"
         let fixture = Bundle(for: type(of: self)).url(forResource: "credits_successful", withExtension: "json")!
+        let data = try! Data(contentsOf: fixture)
+        MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
+    }
+
+    func stubSimilar() {
+        let uri = "/3/movie/439079/similar"
+        let fixture = Bundle(for: type(of: self)).url(forResource: "similar_successful", withExtension: "json")!
         let data = try! Data(contentsOf: fixture)
         MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
     }
