@@ -37,8 +37,8 @@ class NowPlayingInteractor: NowPlayingBusinessLogic {
     // MARK: - Private Methods
 
     func doGet(at page: Int) {
-        Manager.webService.nowPlaying.get(at: page) { [weak self] resut in
-            guard let movies = resut.value else {
+        Manager.webService.nowPlaying.get(at: page) { [weak self] result in
+            guard let movies = result.value else {
                 self?.viewController?.displayWebServiceErrorAlert()
                 return
             }

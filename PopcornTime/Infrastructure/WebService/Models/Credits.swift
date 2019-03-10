@@ -13,7 +13,11 @@ struct Credits: Decodable {
     let crew: [Crew]
 }
 
-struct Cast: Decodable {
+struct Cast: Decodable, Hashable {
+
+    // MARK: - Hashable
+
+    var hashValue: Int { return id.hashValue }
 
     // MARK: - Decodable Properties
 
@@ -53,9 +57,19 @@ struct Cast: Decodable {
         profilePath = try container.decode(String?.self, forKey: .profilePath)
     }
 
+    // MARK: - Hashable Lifecycle
+
+    static func ==(left: Cast, right: Cast) -> Bool {
+        return left.id == right.id
+    }
+
 }
 
-struct Crew: Decodable {
+struct Crew: Decodable, Hashable {
+
+    // MARK: - Hashable
+
+    var hashValue: Int { return id.hashValue }
 
     // MARK: - Decodable Properties
 
@@ -91,6 +105,12 @@ struct Crew: Decodable {
         name = try container.decode(String.self, forKey: .name)
         job = try container.decode(String.self, forKey: .job)
         profilePath = try container.decode(String?.self, forKey: .profilePath)
+    }
+
+    // MARK: - Hashable Lifecycle
+
+    static func ==(left: Crew, right: Crew) -> Bool {
+        return left.id == right.id
     }
 
 }

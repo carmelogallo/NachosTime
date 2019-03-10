@@ -51,7 +51,7 @@ class SplashScreenViewController: UIViewController {
         loadSettings()
     }
     
-    // MARK: - Setup Methods
+    // MARK: - Configure methods
     
     private func setupLogic() {
         let viewController = self

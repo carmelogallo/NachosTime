@@ -15,9 +15,9 @@ protocol NowPlayingDisplayLogic: class {
 
 class NowPlayingViewController: UIViewController {
 
-    // Business Logic
-    
-    var interactor: NowPlayingBusinessLogic?
+    // MARK: - Business Logic
+
+    private var interactor: NowPlayingBusinessLogic?
 
     // MARK: - UI Objects
     
@@ -33,7 +33,7 @@ class NowPlayingViewController: UIViewController {
     
     required init() {
         super.init(nibName: nil, bundle: nil)
-        setupLogic()
+        configureLogic()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,9 +48,9 @@ class NowPlayingViewController: UIViewController {
         loadNowPlaying()
     }
     
-    // MARK: - Setup Methods
+    // MARK: - Configure methods
     
-    private func setupLogic() {
+    private func configureLogic() {
         let viewController = self
         let interactor = NowPlayingInteractor()
         viewController.interactor = interactor
@@ -81,14 +81,16 @@ class NowPlayingViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        // collectionView
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+
+        let constraints: [NSLayoutConstraint] = [
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+        ]
+
+        NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: - Private Methods
@@ -148,7 +150,8 @@ extension NowPlayingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NowPlayingCollectionViewCell else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+            assertionFailure("This shouldn't have happened!")
+            return UICollectionViewCell()
         }
         
         let movie = movies[indexPath.item]
@@ -192,7 +195,7 @@ extension NowPlayingViewController: UICollectionViewDelegate {
 extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // height should be the half size of the collectionView's width
+        // width should be the half size of the collectionView's width
         let width: CGFloat = floor(collectionView.bounds.width / 2)
         // height should be the 150% more than the width
         let height = width * 1.5
@@ -205,7 +208,7 @@ extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

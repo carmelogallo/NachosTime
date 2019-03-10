@@ -18,14 +18,14 @@
 - [x] Movie details
 - [ ] Video
 - [ ] Reviews
-- [ ] Credits
+- [X] Credits
 - [ ] Similar movies
 - [ ] Recommendations
 
 ## Tech
 - The Movie DB [**API**](https://developers.themoviedb.org)
 - Dependency manager with [**CocoaPods**](https://cocoapods.org)
-- Network layer with [**NSURLSession**](https://developer.apple.com/documentation/foundation/nsurlsession) 
+- Network layer with pure [**NSURLSession**](https://developer.apple.com/documentation/foundation/nsurlsession) 
 
 ## Credits
 - [**Reveal**](https://revealapp.com)

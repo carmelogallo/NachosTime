@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 import Mockingjay
 
 @UIApplicationMain
@@ -18,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         #if DEBUG
+        // Kingfisher remove cache.
+        let cache = ImageCache.default
+        cache.clearMemoryCache()
+        cache.clearDiskCache { print("Kingfisher cache removed") }
+
         // Checks if is running a ui test using launch arguments
         let processInfoArguments: [String] = ProcessInfo.processInfo.arguments
         if processInfoArguments.contains(LaunchArguments.StubNetworkResponses.rawValue) {

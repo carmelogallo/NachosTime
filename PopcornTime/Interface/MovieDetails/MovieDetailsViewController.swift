@@ -9,71 +9,117 @@
 import UIKit
 import Kingfisher
 
+protocol MovieDetailsDisplayLogic: class {
+    func displayImageSection(_ section: MovieImageSection)
+}
+
 class MovieDetailsViewController: UIViewController {
 
-    // MARK: - UI Objects
+    // MARK: - UI objects
     
     private let scrollView = UIScrollView(frame: .zero)
     private let contentView = UIView(frame: .zero)
-    private let backdropImageView = UIImageView(frame: .zero)
+    private var backdropImageView = UIImageView(frame: .zero)
     private let titleLabel = UILabel(frame: .zero)
     private let voteLabel = UILabel(frame: .zero)
     private let starImageView = UIImageView(image: UIImage(named: "star"))
     private let genresLabel = UILabel(frame: .zero)
     private let overviewLabel = UILabel(frame: .zero)
+    private let sectionsStackView = UIStackView(frame: .zero)
 
-    // MARK: - Business Logic Objects
-    
+    // MARK: - Business logic
+
+    private var interactor: MovieDetailsBusinessLogic?
     private let movie: Movie
     
-    // MARK: - Object Lifecycle
+    // MARK: - Object lifecycle
     
     required init(withMovie movie: Movie) {
         self.movie = movie
         super.init(nibName: nil, bundle: nil)
+        configureLogic()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - View Lifecycle
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViews()
-        loadBackdropImage()
-    }
-    
-    // MARK: - Configure Methods
-    
-    private func configureViews() {
+        // configure
         configureUI()
         configureConstraints()
+        // backdropImageView
+        loadBackdropImage()
+        // interactor
+        interactor?.getSections(of: movie.id)
     }
     
-    private func configureUI() {
+    // MARK: - Private methods
+    
+    private func loadBackdropImage() {
+        guard let baseUrl = Manager.dataSource.settings.configuration?.images.baseUrl,
+              let backdropSize = Manager.dataSource.settings.configuration?.images.backdropSizeValue(.w780),
+              let backdropPath = movie.backdropPath else {
+            return
+        }
+
+        let path = baseUrl + backdropSize + backdropPath
+
+        let imageTransition = ImageTransition.fade(0.5)
+        backdropImageView.kf.indicatorType = .activity
+        (backdropImageView.kf.indicator?.view as? UIActivityIndicatorView)?.color = .white
+        backdropImageView.kf.setImage(with: URL(string: path), options: [.transition(imageTransition)])
+    }
+
+}
+
+// MARK: - MovieDetailsDisplayLogic
+
+extension MovieDetailsViewController: MovieDetailsDisplayLogic {
+
+    func displayImageSection(_ section: MovieImageSection) {
+        let sectionView = MovieImageSectionView(section: section)
+        sectionsStackView.addArrangedSubview(sectionView)
+    }
+
+}
+
+// MARK: - Configure
+
+private extension MovieDetailsViewController {
+
+    func configureLogic() {
+        let viewController = self
+        let interactor = MovieDetailsInteractor()
+        viewController.interactor = interactor
+        interactor.viewController = viewController
+    }
+
+    func configureUI() {
         // navigationController
         title = "Movie Details"
         navigationItem.largeTitleDisplayMode = .never
 
         // view
         view.backgroundColor = .black
-        
+
         // scrollView
         scrollView.backgroundColor = .clear
         view.addSubview(scrollView)
-        
+
         // contentView
         contentView.backgroundColor = .clear
         scrollView.addSubview(contentView)
-        
+
         // imageView
-        backdropImageView.backgroundColor = .clear
+        backdropImageView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         backdropImageView.contentMode = .scaleAspectFill
         backdropImageView.clipsToBounds = true
         contentView.addSubview(backdropImageView)
-        
+
         // titleLabel
         titleLabel.accessibilityIdentifier = "MovieDetails.Movie.Title"
         titleLabel.text = movie.title
@@ -100,7 +146,7 @@ class MovieDetailsViewController: UIViewController {
         genresLabel.textColor = .white
         genresLabel.numberOfLines = 0
         contentView.addSubview(genresLabel)
-        
+
         // overviewLabel
         overviewLabel.accessibilityIdentifier = "MovieDetails.Movie.Overview"
         overviewLabel.text = movie.overview
@@ -108,9 +154,14 @@ class MovieDetailsViewController: UIViewController {
         overviewLabel.textColor = .white
         overviewLabel.numberOfLines = 0
         contentView.addSubview(overviewLabel)
+
+        // sectionsStackView
+        sectionsStackView.axis = .vertical
+        sectionsStackView.spacing = 16
+        contentView.addSubview(sectionsStackView)
     }
-    
-    private func configureConstraints() {
+
+    func configureConstraints() {
         starImageView.setContentCompressionResistancePriority(.required, for: .horizontal)
         starImageView.setContentHuggingPriority(.required, for: .horizontal)
         voteLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -124,6 +175,7 @@ class MovieDetailsViewController: UIViewController {
         voteLabel.translatesAutoresizingMaskIntoConstraints = false
         genresLabel.translatesAutoresizingMaskIntoConstraints = false
         overviewLabel.translatesAutoresizingMaskIntoConstraints = false
+        sectionsStackView.translatesAutoresizingMaskIntoConstraints = false
 
         let constraints: [NSLayoutConstraint] = [
             // scrollView
@@ -158,29 +210,16 @@ class MovieDetailsViewController: UIViewController {
             genresLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             // overviewLabel
             overviewLabel.topAnchor.constraint(equalTo: genresLabel.bottomAnchor, constant: 8),
-            overviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             overviewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+            overviewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            // sectionsStackView
+            sectionsStackView.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor, constant: 16),
+            sectionsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            sectionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            sectionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
         ]
 
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: - Picture Downloading Methods
-    
-    private func loadBackdropImage() {
-        guard let baseUrl = Manager.dataSource.settings.configuration?.images.baseUrl,
-            let backdropSize = Manager.dataSource.settings.configuration?.images.backdropSizeValue(.w780) else {
-                return
-        }
-
-        let backdropPath = movie.backdropPath ?? ""
-        let path = baseUrl + backdropSize + backdropPath
-        
-        let imageTransition = ImageTransition.fade(0.5)
-        backdropImageView.kf.setImage(with: URL(string: path),
-                              placeholder: UIImage(named: "backdrop_placeholder"),
-                              options: [.transition(imageTransition)])
     }
 
 }
