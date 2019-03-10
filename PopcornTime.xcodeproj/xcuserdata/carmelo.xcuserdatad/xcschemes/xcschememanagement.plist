@@ -4,6 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MoviesDataSourceTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>NowPlayingWebServiceTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>PopcornTime.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -19,13 +33,6 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>SettingsDataSourcesTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
 		<key>SettingsDataSourcesTests.testSettings.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -33,19 +40,12 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>MoviesDataSourceTests.xcscheme</key>
+		<key>SettingsDataSourcesTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>NowPlayingWebServiceTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>3</integer>
 		</dict>
 		<key>SettingsWebServiceTests.xcscheme</key>
 		<dict>

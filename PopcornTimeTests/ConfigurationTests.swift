@@ -29,7 +29,7 @@ class ConfigurationTests: XCTestCase {
     
     func testPosterSizeValueFailure() {
         let configuration = JSONFactory.makeCorrectConfigurationWithMissingDataResponse()
-        XCTAssertTrue(configuration?.images.posterSizeValue(Images.PosterSize.w154).isEmpty ?? false)
+        XCTAssertNil(configuration?.images.posterSizeValue(Images.PosterSize.w154))
     }
     
     func testBackdropSizeValueSuccess() {
@@ -40,7 +40,7 @@ class ConfigurationTests: XCTestCase {
     
     func testBackdropSizeValueFailure() {
         let configuration = JSONFactory.makeCorrectConfigurationWithMissingDataResponse()
-        XCTAssertTrue(configuration?.images.backdropSizeValue(Images.BackdropSize.w300).isEmpty ?? false)
+        XCTAssertNil(configuration?.images.backdropSizeValue(Images.BackdropSize.w300))
     }
     
 }

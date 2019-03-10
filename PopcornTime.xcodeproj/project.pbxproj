@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210880AFBB85C7BB6A3F0604 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088843699578A349578EF5 /* Credits.swift */; };
 		210882095D4C77759F873DDD /* UIXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088285B783BFC935BFEBE9 /* UIXCTestCase.swift */; };
 		21088312ED2055A777948CE7 /* SettingsWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210888603ECAF0EC9A2F0638 /* SettingsWebService.swift */; };
 		210883E480DF75E8CC12012F /* ConfigurationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088A895F834EBD54CFF9F0 /* ConfigurationParser.swift */; };
@@ -14,17 +15,23 @@
 		2108845C08016ED0482AC999 /* NowPlayingWebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088EC8D07594B5C0610CF8 /* NowPlayingWebServiceProtocol.swift */; };
 		2108855B55DAE67CE6B75D47 /* URLSessionWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210880AD2E7467358E5BFD4A /* URLSessionWebService.swift */; };
 		2108859A60DC63A13584362E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210889D6EA4EFC7BC73FD5CE /* Manager.swift */; };
+		210885ECFE91421C097E3616 /* CreditsWebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210886807D1BE71DE8D82112 /* CreditsWebServiceProtocol.swift */; };
+		2108869BC2ABF6B0B32060D7 /* CreditsWebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210883551AF87FB87538EAC2 /* CreditsWebServiceTests.swift */; };
 		210886FF16CB90120747098F /* NowPlayingWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088D0611F9338E404F773E /* NowPlayingWebService.swift */; };
 		210887A1CBA146776A18EDD1 /* SearchWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108869A90F094E04341530E /* SearchWebService.swift */; };
 		210887A23536C9E7996BEEF2 /* SearchWebServiceProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108812E343FB7AEA57BA378 /* SearchWebServiceProtocol .swift */; };
 		210887CD224E7742F07B494A /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210887C5906E2E967122A1E6 /* Genres.swift */; };
 		2108890F0E1E576C159F48E5 /* SettingsWebSeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210888497CFE1B4E5F8C0CE0 /* SettingsWebSeviceProtocol.swift */; };
+		2108895DFD702276E8DDEA1D /* CreditsWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088FC9E47CB47089DC836B /* CreditsWebService.swift */; };
+		210889C0D74E659073A3AE96 /* credits_successful.json in Resources */ = {isa = PBXBuildFile; fileRef = 21088BC6BE1515111BFEBFE9 /* credits_successful.json */; };
 		210889EF2E3AF3281E1F7C76 /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088DEBB76EFBE96AC5A8F6 /* WebServiceProtocol.swift */; };
 		21088C08C4B2427FA020C51D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088B087531013A90FF2E78 /* Configuration.swift */; };
+		21088C99D788DF45BFA17733 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21088DAF25ABA3A3F69AB999 /* Gender.swift */; };
 		21088D54F0002D1425BE935D /* WebServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210882D3212ED3CDB04F5C1B /* WebServiceRequest.swift */; };
 		21088ED0767A99DC47506CFB /* GenresParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210888D31363EEDB86CDCC4C /* GenresParser.swift */; };
 		21088EDB59D2F808B5232B6C /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210882EBD72709C95A8F1EE3 /* ConfigurationManager.swift */; };
 		21088F369C7CFF0B6A920C50 /* MoviesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210887EB06F49DBE23D17C00 /* MoviesParser.swift */; };
+		21088F50348393BEE993C0A4 /* CreditsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210888909EB64DFC54CD45B8 /* CreditsParser.swift */; };
 		21088FC5600BC4E778BBF51A /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210885A50B855DAAF45CD5FB /* Movies.swift */; };
 		24A43F9781EA61CCF6273930 /* Pods_PopcornTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543D0907DFD4786132886623 /* Pods_PopcornTime.framework */; };
 		950EB4C2216537F6005F8581 /* WebServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950EB4C1216537F6005F8581 /* WebServicesManager.swift */; };
@@ -90,21 +97,28 @@
 		21088285B783BFC935BFEBE9 /* UIXCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIXCTestCase.swift; sourceTree = "<group>"; };
 		210882D3212ED3CDB04F5C1B /* WebServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceRequest.swift; sourceTree = "<group>"; };
 		210882EBD72709C95A8F1EE3 /* ConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		210883551AF87FB87538EAC2 /* CreditsWebServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsWebServiceTests.swift; sourceTree = "<group>"; };
 		210885A50B855DAAF45CD5FB /* Movies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
+		210886807D1BE71DE8D82112 /* CreditsWebServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsWebServiceProtocol.swift; sourceTree = "<group>"; };
 		2108869A90F094E04341530E /* SearchWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWebService.swift; sourceTree = "<group>"; };
 		210887C5906E2E967122A1E6 /* Genres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		210887EB06F49DBE23D17C00 /* MoviesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesParser.swift; sourceTree = "<group>"; };
 		210887F33F0FEDB59A83BE78 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		21088843699578A349578EF5 /* Credits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		210888497CFE1B4E5F8C0CE0 /* SettingsWebSeviceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWebSeviceProtocol.swift; sourceTree = "<group>"; };
 		210888603ECAF0EC9A2F0638 /* SettingsWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWebService.swift; sourceTree = "<group>"; };
+		210888909EB64DFC54CD45B8 /* CreditsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsParser.swift; sourceTree = "<group>"; };
 		210888D31363EEDB86CDCC4C /* GenresParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresParser.swift; sourceTree = "<group>"; };
 		210889D6EA4EFC7BC73FD5CE /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		21088A3F0FE7441409FF5EAD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		21088A895F834EBD54CFF9F0 /* ConfigurationParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationParser.swift; sourceTree = "<group>"; };
 		21088B087531013A90FF2E78 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		21088BC6BE1515111BFEBFE9 /* credits_successful.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credits_successful.json; sourceTree = "<group>"; };
 		21088D0611F9338E404F773E /* NowPlayingWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingWebService.swift; sourceTree = "<group>"; };
+		21088DAF25ABA3A3F69AB999 /* Gender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		21088DEBB76EFBE96AC5A8F6 /* WebServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceProtocol.swift; sourceTree = "<group>"; };
 		21088EC8D07594B5C0610CF8 /* NowPlayingWebServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingWebServiceProtocol.swift; sourceTree = "<group>"; };
+		21088FC9E47CB47089DC836B /* CreditsWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsWebService.swift; sourceTree = "<group>"; };
 		5430D5E68B8658DDEB9F58EE /* Pods_PopcornTimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopcornTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		543D0907DFD4786132886623 /* Pods_PopcornTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopcornTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		950EB4C1216537F6005F8581 /* WebServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServicesManager.swift; sourceTree = "<group>"; };
@@ -197,6 +211,8 @@
 				210887C5906E2E967122A1E6 /* Genres.swift */,
 				21088B087531013A90FF2E78 /* Configuration.swift */,
 				210885A50B855DAAF45CD5FB /* Movies.swift */,
+				21088843699578A349578EF5 /* Credits.swift */,
+				21088DAF25ABA3A3F69AB999 /* Gender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +223,7 @@
 				21088D0611F9338E404F773E /* NowPlayingWebService.swift */,
 				2108869A90F094E04341530E /* SearchWebService.swift */,
 				210888603ECAF0EC9A2F0638 /* SettingsWebService.swift */,
+				21088FC9E47CB47089DC836B /* CreditsWebService.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -217,6 +234,7 @@
 				21088A895F834EBD54CFF9F0 /* ConfigurationParser.swift */,
 				210888D31363EEDB86CDCC4C /* GenresParser.swift */,
 				210887EB06F49DBE23D17C00 /* MoviesParser.swift */,
+				210888909EB64DFC54CD45B8 /* CreditsParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -227,6 +245,7 @@
 				21088EC8D07594B5C0610CF8 /* NowPlayingWebServiceProtocol.swift */,
 				2108812E343FB7AEA57BA378 /* SearchWebServiceProtocol .swift */,
 				210888497CFE1B4E5F8C0CE0 /* SettingsWebSeviceProtocol.swift */,
+				210886807D1BE71DE8D82112 /* CreditsWebServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -309,6 +328,7 @@
 				95C2899F215F730100F72528 /* ResultTests.swift */,
 				95914957215E95DE004C8FC7 /* SettingsWebServiceTests.swift */,
 				9591493D215E3C94004C8FC7 /* Factories */,
+				210883551AF87FB87538EAC2 /* CreditsWebServiceTests.swift */,
 			);
 			path = PopcornTimeTests;
 			sourceTree = "<group>";
@@ -434,6 +454,7 @@
 				95914944215E407A004C8FC7 /* genres_successful.json */,
 				95914953215E8716004C8FC7 /* movies_successful.json */,
 				9591493B215E3C41004C8FC7 /* wrong_response.json */,
+				21088BC6BE1515111BFEBFE9 /* credits_successful.json */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -562,6 +583,7 @@
 				95C3D08C2233BD5100B67CC6 /* configuration_successful_with_missing_data.json in Resources */,
 				95C3D08F2233BD5100B67CC6 /* movies_successful.json in Resources */,
 				959148FF215E06CA004C8FC7 /* Assets.xcassets in Resources */,
+				210889C0D74E659073A3AE96 /* credits_successful.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +689,11 @@
 				21088C08C4B2427FA020C51D /* Configuration.swift in Sources */,
 				21088FC5600BC4E778BBF51A /* Movies.swift in Sources */,
 				95C3D0932233BF2C00B67CC6 /* LaunchArguments.swift in Sources */,
+				210880AFBB85C7BB6A3F0604 /* Credits.swift in Sources */,
+				21088C99D788DF45BFA17733 /* Gender.swift in Sources */,
+				210885ECFE91421C097E3616 /* CreditsWebServiceProtocol.swift in Sources */,
+				2108895DFD702276E8DDEA1D /* CreditsWebService.swift in Sources */,
+				21088F50348393BEE993C0A4 /* CreditsParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +708,7 @@
 				95914956215E872A004C8FC7 /* MoviesTest.swift in Sources */,
 				9591493A215E39FE004C8FC7 /* ConfigurationTests.swift in Sources */,
 				95C289A0215F730100F72528 /* ResultTests.swift in Sources */,
+				2108869BC2ABF6B0B32060D7 /* CreditsWebServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

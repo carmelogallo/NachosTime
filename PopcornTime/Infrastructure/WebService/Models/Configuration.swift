@@ -19,7 +19,7 @@ struct Configuration: Decodable {
 
     // MARK: - Private Properties
     
-    private enum ConfigurationKeyContainer: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case images
         case changeKeys = "change_keys"
     }
@@ -27,7 +27,7 @@ struct Configuration: Decodable {
     // MARK: - Decodable Lifecycle
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: ConfigurationKeyContainer.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         images = try container.decode(Images.self, forKey: .images)
         changeKeys = try container.decode([String].self, forKey: .changeKeys)
     }
@@ -90,7 +90,7 @@ struct Images: Decodable {
     
     // MARK: - Private Properties
     
-    private enum ImagesKeyContainer: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case baseUrl = "base_url"
         case secureBaseUrl = "secure_base_url"
         case backdropSizes = "backdrop_sizes"
@@ -103,7 +103,7 @@ struct Images: Decodable {
     // MARK: - Decodable Lifecycle
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: ImagesKeyContainer.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         baseUrl = try container.decode(String.self, forKey: .baseUrl)
         secureBaseUrl = try container.decode(String.self, forKey: .secureBaseUrl)
         backdropSizesFromServer = try container.decode([String].self, forKey: .backdropSizes)
@@ -115,17 +115,17 @@ struct Images: Decodable {
 
     // MARK: Configuration Factory
 
-    func posterSizeValue(_ posterSize: PosterSize) -> String {
+    func posterSizeValue(_ posterSize: PosterSize) -> String? {
         guard posterSizesFromServer.contains(posterSize.rawValue) else {
-            return ""
+            return nil
         }
         
         return posterSize.rawValue
     }
 
-    func backdropSizeValue(_ backdropSize: BackdropSize) -> String {
+    func backdropSizeValue(_ backdropSize: BackdropSize) -> String? {
         guard backdropSizesFromServer.contains(backdropSize.rawValue) else {
-            return ""
+            return nil
         }
         
         return backdropSize.rawValue

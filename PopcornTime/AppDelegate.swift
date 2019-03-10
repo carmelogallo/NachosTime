@@ -64,6 +64,7 @@ private extension AppDelegate {
         stubConfiguration()
         stubGenres()
         stubMovies()
+        stubCredits()
         stubSearch()
     }
     
@@ -80,14 +81,21 @@ private extension AppDelegate {
         let data = try! Data(contentsOf: fixture)
         MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
     }
-    
+
     func stubMovies() {
         let uri = "/3/movie/now_playing"
         let fixture = Bundle(for: type(of: self)).url(forResource: "movies_successful", withExtension: "json")!
         let data = try! Data(contentsOf: fixture)
         MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
     }
-    
+
+    func stubCredits() {
+        let uri = "/3/movie/439079/credits"
+        let fixture = Bundle(for: type(of: self)).url(forResource: "credits_successful", withExtension: "json")!
+        let data = try! Data(contentsOf: fixture)
+        MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
+    }
+
     func stubSearch() {
         let uri = "/3/search/movie"
         let fixture = Bundle(for: type(of: self)).url(forResource: "movies_successful", withExtension: "json")!
