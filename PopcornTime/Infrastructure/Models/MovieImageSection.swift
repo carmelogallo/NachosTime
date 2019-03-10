@@ -10,6 +10,12 @@ struct MovieImageSection {
         let id: Int
         let imagePath: String?
         let text: String?
+
+        init(id: Int, imagePath: String?, text: String? = nil) {
+            self.id = id
+            self.imagePath = imagePath
+            self.text = text
+        }
     }
 
     let title: String

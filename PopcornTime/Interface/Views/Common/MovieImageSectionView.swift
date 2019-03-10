@@ -68,7 +68,7 @@ class MovieImageSectionView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 16 * 9),
+            collectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4 * 3),
         ]
 
         NSLayoutConstraint.activate(constraints)
@@ -138,7 +138,7 @@ extension MovieImageSectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // we display the cell with a 16/9 aspect ratio in base of the height
         let height = collectionView.bounds.height
-        let width: CGFloat = floor(height * 9 / 16)
+        let width: CGFloat = floor(height * 3 / 4)
         return CGSize(width: width, height: height)
     }
 
