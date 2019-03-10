@@ -6,6 +6,12 @@
 import Foundation
 
 struct MovieImageSection {
+    enum Context {
+        case cast
+        case crew
+        case similar
+    }
+
     struct Info {
         let id: Int
         let imagePath: String?
@@ -18,6 +24,7 @@ struct MovieImageSection {
         }
     }
 
+    let context: Context
     let title: String
     let info: [Info]
 }

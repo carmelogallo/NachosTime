@@ -10,7 +10,8 @@ import UIKit
 import Kingfisher
 
 protocol MovieDetailsDisplayLogic: class {
-    func displayImageSection(_ section: MovieImageSection)
+    func displayCreditsSections(_ credit: Credits)
+    func displaySimilarSection()
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -80,14 +81,29 @@ class MovieDetailsViewController: UIViewController {
 
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 
-    func displayImageSection(_ section: MovieImageSection) {
-        let sectionView = MovieImageSectionView(section: section)
-        sectionsStackView.addArrangedSubview(sectionView)
+    func displayCreditsSections(_ credits: Credits) {
+        // crew
+        let crewSectionViewController = MovieImageSectionViewController(context: .crew, movieId: movie.id, credits: credits)
+        addChild(crewSectionViewController)
+        sectionsStackView.addArrangedSubview(crewSectionViewController.view)
+        crewSectionViewController.didMove(toParent: self)
+        crewSectionViewController.show()
 
-        // nice fade in animation
-        UIView.animate(withDuration: 0.5) {
-            sectionView.alpha = 1.0
-        }
+        // cast
+        let castSectionViewController = MovieImageSectionViewController(context: .cast, movieId: movie.id, credits: credits)
+        addChild(castSectionViewController)
+        sectionsStackView.addArrangedSubview(castSectionViewController.view)
+        castSectionViewController.didMove(toParent: self)
+        castSectionViewController.show()
+    }
+
+    func displaySimilarSection() {
+        // crew
+        let sectionViewController = MovieImageSectionViewController(context: .similar, movieId: movie.id)
+        addChild(sectionViewController)
+        sectionsStackView.addArrangedSubview(sectionViewController.view)
+        sectionViewController.didMove(toParent: self)
+        sectionViewController.show()
     }
 
 }
@@ -221,7 +237,7 @@ private extension MovieDetailsViewController {
             sectionsStackView.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor, constant: 16),
             sectionsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             sectionsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            sectionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            sectionsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ]
 
         NSLayoutConstraint.activate(constraints)

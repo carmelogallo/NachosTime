@@ -44,7 +44,8 @@ class NowPlayingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViews()
+        configureUI()
+        configureConstraints()
         loadNowPlaying()
     }
     
@@ -58,11 +59,6 @@ class NowPlayingViewController: UIViewController {
     }
 
     // MARK: - Configure Methods
-
-    private func configureViews() {
-        configureUI()
-        configureConstraints()
-    }
 
     private func configureUI() {
         // navigationController
