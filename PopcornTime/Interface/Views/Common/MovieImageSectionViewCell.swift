@@ -55,11 +55,12 @@ class MovieImageSectionViewCell: UICollectionViewCell {
     func configure(sectionInfo: MovieImageSection.Info) {
         self.sectionInfo = sectionInfo
         nameLabel.text = sectionInfo.text
+        gradientLayer.opacity = sectionInfo.text == nil ? 0.0 : 1.0
     }
 
     private func configureUI() {
         // imageView
-        imageView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         contentView.addSubview(imageView)

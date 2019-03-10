@@ -54,7 +54,7 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .clear
         
         // imageView
-        imageView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         contentView.addSubview(imageView)

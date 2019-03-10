@@ -36,6 +36,8 @@ class MovieImageSectionView: UIView {
     }
 
     func configureUI() {
+        // self
+        alpha = 0.0
         // titleLabel
         titleLabel.accessibilityIdentifier = "CreditsView.Title"
         titleLabel.text = imageSection.title
@@ -45,6 +47,7 @@ class MovieImageSectionView: UIView {
         addSubview(titleLabel)
 
         // collectionView
+        collectionView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MovieImageSectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)

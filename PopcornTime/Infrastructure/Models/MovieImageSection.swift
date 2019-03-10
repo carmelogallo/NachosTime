@@ -9,7 +9,7 @@ struct MovieImageSection {
     struct Info {
         let id: Int
         let imagePath: String?
-        let text: String
+        let text: String?
     }
 
     let title: String

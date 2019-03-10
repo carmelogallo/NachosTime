@@ -83,6 +83,11 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     func displayImageSection(_ section: MovieImageSection) {
         let sectionView = MovieImageSectionView(section: section)
         sectionsStackView.addArrangedSubview(sectionView)
+
+        // nice fade in animation
+        UIView.animate(withDuration: 0.5) {
+            sectionView.alpha = 1.0
+        }
     }
 
 }

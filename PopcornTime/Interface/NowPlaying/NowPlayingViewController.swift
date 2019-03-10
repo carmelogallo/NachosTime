@@ -74,6 +74,7 @@ class NowPlayingViewController: UIViewController {
         view.backgroundColor = .black
         
         // collectionView
+        collectionView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(NowPlayingCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
