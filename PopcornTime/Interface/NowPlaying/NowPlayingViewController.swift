@@ -165,8 +165,9 @@ extension NowPlayingViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
-        let vc = MovieDetailsViewController(withMovie: movie)
-        navigationController?.pushViewController(vc, animated: true)
+        let viewModel = MovieDetailsViewModel(movie: movie)
+        let viewController = MovieDetailsViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

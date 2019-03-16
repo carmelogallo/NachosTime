@@ -9,13 +9,11 @@
 import UIKit
 import Kingfisher
 
-protocol MovieDetailsSectionsDisplayLogic: class {
-    func removeSection(section: MovieImageSectionViewController)
-}
-
 protocol MovieDetailsDisplayLogic: class {
-    func displayCreditsSections(_ credit: Credits)
-    func displaySimilarSection()
+    func displayCastSections(viewModel: MovieImageSectionViewModel)
+    func displayCrewSections(viewModel: MovieImageSectionViewModel)
+    func displaySimilarSection(viewModel: MovieImageSectionViewModel)
+    func removeSection(section: MovieImageSectionViewController)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -34,15 +32,14 @@ class MovieDetailsViewController: UIViewController {
 
     // MARK: - Business logic
 
-    private var interactor: MovieDetailsBusinessLogic?
-    private let movie: Movie
-    
+    private var viewModel: MovieDetailsBusinessLogic
+
     // MARK: - Object lifecycle
     
-    required init(withMovie movie: Movie) {
-        self.movie = movie
+    required init(viewModel: MovieDetailsBusinessLogic) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        configureLogic()
+        self.viewModel.viewController = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,19 +56,15 @@ class MovieDetailsViewController: UIViewController {
         // backdropImageView
         loadBackdropImage()
         // interactor
-        interactor?.getSections(of: movie.id)
+        viewModel.getSections()
     }
     
     // MARK: - Private methods
     
     private func loadBackdropImage() {
-        guard let baseUrl = Manager.dataSource.settings.configuration?.images.baseUrl,
-              let backdropSize = Manager.dataSource.settings.configuration?.images.backdropSizeValue(.w780),
-              let backdropPath = movie.backdropPath else {
+        guard let path = viewModel.backdropPath else {
             return
         }
-
-        let path = baseUrl + backdropSize + backdropPath
 
         let imageTransition = ImageTransition.fade(0.5)
         backdropImageView.kf.indicatorType = .activity
@@ -81,7 +74,30 @@ class MovieDetailsViewController: UIViewController {
 
 }
 
-extension MovieDetailsViewController: MovieDetailsSectionsDisplayLogic {
+// MARK: - MovieDetailsDisplayLogic
+
+extension MovieDetailsViewController: MovieDetailsDisplayLogic {
+
+    func displayCastSections(viewModel: MovieImageSectionViewModel) {
+        let castSectionViewController = MovieImageSectionViewController(viewModel: viewModel)
+        addChild(castSectionViewController)
+        sectionsStackView.addArrangedSubview(castSectionViewController.view)
+        castSectionViewController.didMove(toParent: self)
+    }
+
+    func displayCrewSections(viewModel: MovieImageSectionViewModel) {
+        let crewSectionViewController = MovieImageSectionViewController(viewModel: viewModel)
+        addChild(crewSectionViewController)
+        sectionsStackView.addArrangedSubview(crewSectionViewController.view)
+        crewSectionViewController.didMove(toParent: self)
+    }
+
+    func displaySimilarSection(viewModel: MovieImageSectionViewModel) {
+        let sectionViewController = MovieImageSectionViewController(viewModel: viewModel)
+        addChild(sectionViewController)
+        sectionsStackView.addArrangedSubview(sectionViewController.view)
+        sectionViewController.didMove(toParent: self)
+    }
 
     func removeSection(section: MovieImageSectionViewController) {
         section.willMove(toParent: nil)
@@ -91,49 +107,9 @@ extension MovieDetailsViewController: MovieDetailsSectionsDisplayLogic {
 
 }
 
-// MARK: - MovieDetailsDisplayLogic
-
-extension MovieDetailsViewController: MovieDetailsDisplayLogic {
-
-    func displayCreditsSections(_ credits: Credits) {
-        // cast
-        let castSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .cast, movieId: movie.id, credits: credits)
-        let castSectionViewController = MovieImageSectionViewController(viewModel: castSectionViewModel)
-
-        addChild(castSectionViewController)
-        sectionsStackView.addArrangedSubview(castSectionViewController.view)
-        castSectionViewController.didMove(toParent: self)
-
-        // crew
-        let crewSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .crew, movieId: movie.id, credits: credits)
-        let crewSectionViewController = MovieImageSectionViewController(viewModel: crewSectionViewModel)
-
-        addChild(crewSectionViewController)
-        sectionsStackView.addArrangedSubview(crewSectionViewController.view)
-        crewSectionViewController.didMove(toParent: self)
-    }
-
-    func displaySimilarSection() {
-        let viewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .similar, movieId: movie.id)
-        let sectionViewController = MovieImageSectionViewController(viewModel: viewModel)
-
-        addChild(sectionViewController)
-        sectionsStackView.addArrangedSubview(sectionViewController.view)
-        sectionViewController.didMove(toParent: self)
-    }
-
-}
-
 // MARK: - Configure
 
 private extension MovieDetailsViewController {
-
-    func configureLogic() {
-        let viewController = self
-        let interactor = MovieDetailsInteractor()
-        viewController.interactor = interactor
-        interactor.viewController = viewController
-    }
 
     func configureUI() {
         // navigationController
@@ -159,7 +135,7 @@ private extension MovieDetailsViewController {
 
         // titleLabel
         titleLabel.accessibilityIdentifier = "MovieDetails.Movie.Title"
-        titleLabel.text = movie.title
+        titleLabel.text = viewModel.title
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 0
@@ -171,14 +147,14 @@ private extension MovieDetailsViewController {
 
         // voteLabel
         voteLabel.accessibilityIdentifier = "MovieDetails.Movie.Vote"
-        voteLabel.text = String(movie.voteAverage)
+        voteLabel.text = String(viewModel.voteAverage)
         voteLabel.font = UIFont.systemFont(ofSize: 16)
         voteLabel.textColor = .white
         contentView.addSubview(voteLabel)
 
         // genresLabel
         genresLabel.accessibilityIdentifier = "MovieDetails.Movie.Genres"
-        genresLabel.text = movie.genres
+        genresLabel.text = viewModel.genres
         genresLabel.font = UIFont.boldSystemFont(ofSize: 12)
         genresLabel.textColor = .white
         genresLabel.numberOfLines = 0
@@ -186,7 +162,7 @@ private extension MovieDetailsViewController {
 
         // overviewLabel
         overviewLabel.accessibilityIdentifier = "MovieDetails.Movie.Overview"
-        overviewLabel.text = movie.overview
+        overviewLabel.text = viewModel.overview
         overviewLabel.font = UIFont.systemFont(ofSize: 16)
         overviewLabel.textColor = .white
         overviewLabel.numberOfLines = 0

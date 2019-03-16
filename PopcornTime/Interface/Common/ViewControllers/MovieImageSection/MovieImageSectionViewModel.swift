@@ -6,7 +6,7 @@
 import UIKit
 
 protocol MovieImageSectionBusinessLogic {
-    var presentingViewController: MovieDetailsSectionsDisplayLogic? { get set }
+    var presentingViewController: MovieDetailsDisplayLogic? { get set }
     var viewController: MovieImageSectionDisplayLogic? { get set }
     var title: String? { get }
     var numberOfSections: Int { get }
@@ -29,7 +29,7 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
 
     // MARK: - Business logic properties
 
-    weak var presentingViewController: MovieDetailsSectionsDisplayLogic?
+    weak var presentingViewController: MovieDetailsDisplayLogic?
     weak var viewController: MovieImageSectionDisplayLogic?
 
     var title: String? {
@@ -68,7 +68,7 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
 
     // MARK: - Object lifecycle
 
-    init(presentingViewController: MovieDetailsViewController, flow: MovieImageSection.Flow, movieId: Int, credits: Credits? = nil) {
+    init(presentingViewController: MovieDetailsDisplayLogic, flow: MovieImageSection.Flow, movieId: Int, credits: Credits? = nil) {
         self.presentingViewController = presentingViewController
         self.flow = flow
         self.movieId = movieId
