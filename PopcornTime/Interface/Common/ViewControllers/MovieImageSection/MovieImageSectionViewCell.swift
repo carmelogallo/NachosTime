@@ -74,7 +74,7 @@ class MovieImageSectionViewCell: UICollectionViewCell {
 
         // nameLabel
         nameLabel.accessibilityIdentifier = "InfoImageViewCell.Name"
-        nameLabel.font = UIFont.systemFont(ofSize: 16)
+        nameLabel.font = UIFont.systemFont(ofSize: 14)
         nameLabel.textColor = .white
         nameLabel.numberOfLines = 0
         contentView.addSubview(nameLabel)

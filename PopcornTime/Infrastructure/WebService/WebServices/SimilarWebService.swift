@@ -17,10 +17,11 @@ class SimilarWebService: SimilarWebServiceProtocol {
 
     // MARK: - Protocol methods
 
-    func get(of movieId: Int, completion: @escaping ((Result<Movies>) -> Void)) {
+    func get(of movieId: Int, at page: Int, completion: @escaping ((Result<Movies>) -> Void)) {
         let request = WebServiceRequest(
                 method: .get,
-                path: (url: Manager.config.apiUrl + "/movie/\(movieId)/similar", query: ["api_key" : Manager.config.apiKey]),
+                path: (url: Manager.config.apiUrl + "/movie/\(movieId)/similar", 
+                       query: ["api_key" : Manager.config.apiKey, "page" : "\(page)"]),
                 headers: ["Content-Type" : "application/json"]
         )
         webService.send(request: request, parser: MoviesParser.parse) { result in

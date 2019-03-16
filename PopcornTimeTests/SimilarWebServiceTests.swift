@@ -13,7 +13,7 @@ class SimilarWebServiceTests: XCTestCase {
 
     func testGetSimilar() {
         let expectation = self.expectation(description: "\(#function)\(#line)")
-        Manager.webService.similar.get(of: 439079) { result in
+        Manager.webService.similar.get(of: 439079, at: 1) { result in
             XCTAssertTrue(result.isSuccess)
             XCTAssertNotNil(result.value)
             expectation.fulfill()

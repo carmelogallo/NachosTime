@@ -4,5 +4,5 @@
 //
 
 protocol SimilarWebServiceProtocol {
-    func get(of movieId: Int, completion: @escaping ((Result<Movies>) -> Void))
+    func get(of movieId: Int, at page: Int, completion: @escaping ((Result<Movies>) -> Void))
 }

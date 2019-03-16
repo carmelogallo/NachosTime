@@ -26,5 +26,5 @@ struct MovieImageSection {
 
     let flow: Flow
     let title: String
-    let info: [Info]
+    var info: [Info]
 }

@@ -6,7 +6,8 @@
 import UIKit
 
 protocol MovieImageSectionDisplayLogic: class {
-    func displayImageSection()
+    func displaySection()
+    func insertNewItems(at indexPaths: [IndexPath], completion: @escaping (() -> Void))
 }
 
 class MovieImageSectionViewController: UIViewController {
@@ -91,7 +92,7 @@ class MovieImageSectionViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: view.bounds.width / 4 * 3 * 0.7)
+            collectionView.heightAnchor.constraint(equalToConstant: viewModel.collectionViewHeightDelta(in: view))
         ]
 
         NSLayoutConstraint.activate(constraints)
@@ -103,12 +104,21 @@ class MovieImageSectionViewController: UIViewController {
 
 extension MovieImageSectionViewController: MovieImageSectionDisplayLogic {
 
-    func displayImageSection() {
+    func displaySection() {
         // titleLabel
         titleLabel.text = viewModel.title
 
         // collectionView
         collectionView.reloadData()
+    }
+
+    func insertNewItems(at indexPaths: [IndexPath], completion: @escaping (() -> Void)) {
+        collectionView.performBatchUpdates({
+            collectionView.insertItems(at: indexPaths)
+        }, completion: { success in
+            completion()
+        })
+
     }
 
 }

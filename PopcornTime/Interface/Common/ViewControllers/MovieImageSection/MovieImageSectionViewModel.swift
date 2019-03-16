@@ -16,6 +16,7 @@ protocol MovieImageSectionBusinessLogic {
     var minimumInteritemSpacingForSection: CGFloat { get }
 
     func loadSection()
+    func collectionViewHeightDelta(in view: UIView) -> CGFloat
     func registerCell(in collectionView: UICollectionView)
     func cell(at indexPath: IndexPath, in collectionView: UICollectionView) -> MovieImageSectionViewCell
     func sizeForItem(at indexPath: IndexPath, in collectionView: UICollectionView) -> CGSize
@@ -62,6 +63,8 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
     private let movieId: Int
     private let credits: Credits?
     private var imageSection: MovieImageSection?
+    private var similarPage = 1
+    private var isLoadingNextSimilarPage = false
 
     // MARK: - Object lifecycle
 
@@ -91,6 +94,17 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
         case .similar:
             getSimilar(of: movieId)
         }
+    }
+
+    func collectionViewHeightDelta(in view: UIView) -> CGFloat {
+        let delta: CGFloat
+        switch flow {
+        case .crew, .cast:
+            delta = 0.5
+        case .similar:
+            delta = 0.7
+        }
+        return view.bounds.width / 4 * 3 * delta
     }
 
     func registerCell(in collectionView: UICollectionView) {
@@ -139,8 +153,17 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
     }
 
     func loadNextItemsIfNeeded(in scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard case .similar = flow else {
+            return
+        }
+
         let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
-        guard distance < scrollView.bounds.width else { return }
+        guard !isLoadingNextSimilarPage && distance < scrollView.bounds.width else {
+            return
+        }
+
+        isLoadingNextSimilarPage = true
+        getSimilar(of: movieId)
     }
 
 }
@@ -171,13 +194,17 @@ private extension MovieImageSectionViewModel {
     // MARK: Similar
 
     func getSimilar(of movieId: Int) {
-        Manager.webService.similar.get(of: movieId) { [weak self] result in
+        Manager.webService.similar.get(of: movieId, at: similarPage) { [weak self] result in
+            guard let self = self else { return }
+
             switch result {
             case .success(let movies):
-                self?.displaySimilarSection(movies)
+                self.displaySimilarSection(movies)
             case .failure:
                 return
             }
+
+            self.similarPage += 1
         }
     }
 
@@ -191,15 +218,30 @@ private extension MovieImageSectionViewModel {
     // MARK: Displaying logic
 
     func displayImageSectionIfNeeded(_ imageSection: MovieImageSection) {
-        if imageSection.info.isEmpty {
+        let currentImageSectionInfoCount = self.imageSection?.info.count ?? 0
+        let nextImageSectionInfoCount = imageSection.info.count
+
+        if currentImageSectionInfoCount == 0 && nextImageSectionInfoCount == 0 {
             guard let section = viewController as? MovieImageSectionViewController else {
-                assertionFailure("viewController is nil!")
+                assertionFailure("viewController is nil not a MovieImageSectionViewController!")
                 return
             }
             presentingViewController?.removeSection(section: section)
         } else {
-            self.imageSection = imageSection
-            viewController?.displayImageSection()
+
+            if self.imageSection == nil {
+                self.imageSection = imageSection
+                viewController?.displaySection()
+            } else {
+                let currentLastIndex = currentImageSectionInfoCount
+                let newLastIndex = currentLastIndex + nextImageSectionInfoCount - 1
+                let indexes: [Int] = Array(currentLastIndex...newLastIndex)
+                let indexPaths = indexes.map { IndexPath(item: $0, section: 0) }
+                self.imageSection?.info.append(contentsOf: imageSection.info)
+                viewController?.insertNewItems(at: indexPaths) {
+                    self.isLoadingNextSimilarPage = false
+                }
+            }
         }
-    }
+     }
 }

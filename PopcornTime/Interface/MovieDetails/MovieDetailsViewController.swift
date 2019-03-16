@@ -96,14 +96,6 @@ extension MovieDetailsViewController: MovieDetailsSectionsDisplayLogic {
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 
     func displayCreditsSections(_ credits: Credits) {
-        // crew
-        let crewSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .crew, movieId: movie.id, credits: credits)
-        let crewSectionViewController = MovieImageSectionViewController(viewModel: crewSectionViewModel)
-
-        addChild(crewSectionViewController)
-        sectionsStackView.addArrangedSubview(crewSectionViewController.view)
-        crewSectionViewController.didMove(toParent: self)
-
         // cast
         let castSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .cast, movieId: movie.id, credits: credits)
         let castSectionViewController = MovieImageSectionViewController(viewModel: castSectionViewModel)
@@ -111,6 +103,14 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         addChild(castSectionViewController)
         sectionsStackView.addArrangedSubview(castSectionViewController.view)
         castSectionViewController.didMove(toParent: self)
+
+        // crew
+        let crewSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .crew, movieId: movie.id, credits: credits)
+        let crewSectionViewController = MovieImageSectionViewController(viewModel: crewSectionViewModel)
+
+        addChild(crewSectionViewController)
+        sectionsStackView.addArrangedSubview(crewSectionViewController.view)
+        crewSectionViewController.didMove(toParent: self)
     }
 
     func displaySimilarSection() {
