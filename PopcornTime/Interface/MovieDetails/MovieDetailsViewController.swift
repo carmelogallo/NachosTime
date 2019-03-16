@@ -83,27 +83,29 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 
     func displayCreditsSections(_ credits: Credits) {
         // crew
-        let crewSectionViewController = MovieImageSectionViewController(context: .crew, movieId: movie.id, credits: credits)
+        let crewSectionViewModel = MovieImageSectionViewModel(flow: .crew, movieId: movie.id, credits: credits)
+        let crewSectionViewController = MovieImageSectionViewController(viewModel: crewSectionViewModel)
+
         addChild(crewSectionViewController)
         sectionsStackView.addArrangedSubview(crewSectionViewController.view)
         crewSectionViewController.didMove(toParent: self)
-        crewSectionViewController.show()
 
         // cast
-        let castSectionViewController = MovieImageSectionViewController(context: .cast, movieId: movie.id, credits: credits)
+        let castSectionViewModel = MovieImageSectionViewModel(flow: .cast, movieId: movie.id, credits: credits)
+        let castSectionViewController = MovieImageSectionViewController(viewModel: castSectionViewModel)
+
         addChild(castSectionViewController)
         sectionsStackView.addArrangedSubview(castSectionViewController.view)
         castSectionViewController.didMove(toParent: self)
-        castSectionViewController.show()
     }
 
     func displaySimilarSection() {
-        // crew
-        let sectionViewController = MovieImageSectionViewController(context: .similar, movieId: movie.id)
+        let viewModel = MovieImageSectionViewModel(flow: .similar, movieId: movie.id)
+        let sectionViewController = MovieImageSectionViewController(viewModel: viewModel)
+
         addChild(sectionViewController)
         sectionsStackView.addArrangedSubview(sectionViewController.view)
         sectionViewController.didMove(toParent: self)
-        sectionViewController.show()
     }
 
 }

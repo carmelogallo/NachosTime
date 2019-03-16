@@ -6,7 +6,7 @@
 import UIKit
 
 protocol MovieImageSectionDisplayLogic: class {
-    func displayImageSection(_ imageSection: MovieImageSection)
+    func displayImageSection()
 }
 
 class MovieImageSectionViewController: UIViewController {
@@ -23,22 +23,14 @@ class MovieImageSectionViewController: UIViewController {
 
     // MARK: - Business logic
 
-    private var interactor: MovieImageSectionBusinessLogic?
-    private let reuseIdentifier = "MovieInfoViewCell"
-    private let context: MovieImageSection.Context
-    private let movieId: Int
-    private let credits: Credits?
-    private var imageSection: MovieImageSection?
+    private var viewModel: MovieImageSectionBusinessLogic
 
     // MARK: - Object lifecycle
 
-    // todo: do a better initialization
-    required init(context: MovieImageSection.Context, movieId: Int, credits: Credits? = nil) {
-        self.context = context
-        self.movieId = movieId
-        self.credits = credits
+    required init(viewModel: MovieImageSectionBusinessLogic) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        configureLogic()
+        self.viewModel.viewController = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -52,26 +44,19 @@ class MovieImageSectionViewController: UIViewController {
         // configure
         configureUI()
         configureConstraints()
-        // interactor
-        // todo: remove force unwrap
-        switch context {
-        case .crew:
-            interactor?.getCrewSection(credits!)
-        case .cast:
-            interactor?.getCastSection(credits!)
-        case .similar:
-            interactor?.getSimilar(of: movieId)
+        // load section
+        viewModel.loadSection()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: 0.3) {
+            self.view.alpha = 1.0
         }
     }
 
     // MARK: - Configure methods
-
-    private func configureLogic() {
-        let viewController = self
-        let interactor = MovieImageSectionInteractor()
-        viewController.interactor = interactor
-        interactor.viewController = viewController
-    }
 
     private func configureUI() {
         // view
@@ -88,7 +73,7 @@ class MovieImageSectionViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(MovieImageSectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        viewModel.registerCell(in: collectionView)
         view.addSubview(collectionView)
     }
 
@@ -112,22 +97,17 @@ class MovieImageSectionViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
 
-    // MARK: - Internal methods
-
-    func show() {
-        UIView.animate(withDuration: 0.3) {
-            self.view.alpha = 1.0
-        }
-    }
 }
 
 // MARK: - MovieImageSectionDisplayLogic
 
 extension MovieImageSectionViewController: MovieImageSectionDisplayLogic {
 
-    func displayImageSection(_ imageSection: MovieImageSection) {
-        self.imageSection = imageSection
-        titleLabel.text = imageSection.title
+    func displayImageSection() {
+        // titleLabel
+        titleLabel.text = viewModel.title
+
+        // collectionView
         collectionView.reloadData()
     }
 
@@ -138,25 +118,16 @@ extension MovieImageSectionViewController: MovieImageSectionDisplayLogic {
 extension MovieImageSectionViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return viewModel.numberOfSections
     }
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageSection?.info.count ?? 0
+        return viewModel.numberOfItemsInSection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? MovieImageSectionViewCell else {
-            assertionFailure("This shouldn't have happened!")
-            return UICollectionViewCell()
-        }
-
-        if let sectionInfo = imageSection?.info[indexPath.item] {
-            cell.configure(sectionInfo: sectionInfo)
-        }
-
-        return cell
+        return viewModel.cell(at: indexPath, in: collectionView)
     }
 
 }
@@ -170,19 +141,11 @@ extension MovieImageSectionViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? MovieImageSectionViewCell else {
-            return
-        }
-
-        cell.starDownloadTask()
+        viewModel.starDownloadTask(in: cell)
     }
 
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? MovieImageSectionViewCell else {
-            return
-        }
-
-        cell.cancelDownloadTask()
+        viewModel.cancelDownloadTask(in: cell)
     }
 
 }
@@ -192,22 +155,19 @@ extension MovieImageSectionViewController: UICollectionViewDelegate {
 extension MovieImageSectionViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // we display the cell with a 16/9 aspect ratio in base of the height
-        let height = collectionView.bounds.height
-        let width: CGFloat = floor(height * 3 / 4)
-        return CGSize(width: width, height: height)
+        return viewModel.sizeForItem(at: indexPath, in: collectionView)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+        return viewModel.insetForSection
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return viewModel.minimumLineSpacingForSection
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return viewModel.minimumInteritemSpacingForSection
     }
 
 }

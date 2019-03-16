@@ -6,7 +6,7 @@
 import Foundation
 
 struct MovieImageSection {
-    enum Context {
+    enum Flow {
         case cast
         case crew
         case similar
@@ -24,7 +24,7 @@ struct MovieImageSection {
         }
     }
 
-    let context: Context
+    let flow: Flow
     let title: String
     let info: [Info]
 }
