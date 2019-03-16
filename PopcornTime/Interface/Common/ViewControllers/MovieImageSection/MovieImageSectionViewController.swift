@@ -118,7 +118,6 @@ extension MovieImageSectionViewController: MovieImageSectionDisplayLogic {
         }, completion: { success in
             completion()
         })
-
     }
 
 }
@@ -130,7 +129,6 @@ extension MovieImageSectionViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections
     }
-
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItemsInSection

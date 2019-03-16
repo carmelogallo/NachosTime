@@ -45,7 +45,7 @@ class NowPlayingCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Configure Methods
     
-    func configure(withMovie movie: Movie) {
+    func configure(movie: Movie) {
         self.movie = movie
     }
     

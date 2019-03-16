@@ -54,20 +54,6 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>SimilarWebServiceTests.testGetCredits.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>13</integer>
-		</dict>
-		<key>SimilarWebServiceTests.testGetSimilar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>14</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>

@@ -9,31 +9,26 @@
 import UIKit
 
 protocol NowPlayingDisplayLogic: class {
-    func displayMovies(_ movies: [Movie])
-    func displayWebServiceErrorAlert()
+    func displayNowPlaying()
+    func insertNewItems(at indexPaths: [IndexPath], completion: @escaping (() -> Void))
+    func displayWebServiceErrorAlert(_ alertController: UIAlertController)
 }
 
 class NowPlayingViewController: UIViewController {
 
     // MARK: - Business Logic
 
-    private var interactor: NowPlayingBusinessLogic?
+    private var viewModel: NowPlayingBusinessLogic = NowPlayingViewModel()
 
     // MARK: - UI Objects
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-    // MARK: - Business Logic Objects
-
-    private let reuseIdentifier = "NowPlayingCollectionViewCell"
-    private var movies = [Movie]()
-    private var isLoadingNextPage = false
-
     // MARK: - Object Lifecycle
     
     required init() {
         super.init(nibName: nil, bundle: nil)
-        configureLogic()
+        viewModel.viewController = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,23 +41,14 @@ class NowPlayingViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureConstraints()
-        loadNowPlaying()
-    }
-    
-    // MARK: - Configure methods
-    
-    private func configureLogic() {
-        let viewController = self
-        let interactor = NowPlayingInteractor()
-        viewController.interactor = interactor
-        interactor.viewController = viewController
+        viewModel.loadNowPlaying()
     }
 
     // MARK: - Configure Methods
 
     private func configureUI() {
         // navigationController
-        title = "Now Playing"
+        title = viewModel.title
         let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = item
 
@@ -73,7 +59,7 @@ class NowPlayingViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(NowPlayingCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        viewModel.registerCell(in: collectionView)
         view.addSubview(collectionView)
     }
     
@@ -90,43 +76,25 @@ class NowPlayingViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    // MARK: - Private Methods
-    
-    private func loadNowPlaying() {
-        interactor?.doGetFirstPage()
-    }
-    
-    private func loadNextNowPlaying() {
-        interactor?.doGetNextPage()
-    }
-
-}
+ }
 
 // MARK: - NowPlayingDisplayLogic
 
 extension NowPlayingViewController: NowPlayingDisplayLogic {
-    
-    func displayMovies(_ movies: [Movie]) {
+
+    func displayNowPlaying() {
+        collectionView.reloadData()
+    }
+
+    func insertNewItems(at indexPaths: [IndexPath], completion: @escaping (() -> Void)) {
         collectionView.performBatchUpdates({
-            let currentLastIndex = self.movies.count
-            let newLastIndex = currentLastIndex + movies.count - 1
-            let indexes: [Int] = Array(currentLastIndex...newLastIndex)
-            let indexPaths = indexes.map { IndexPath(item: $0, section: 0) }
-            self.movies.append(contentsOf: movies)
             collectionView.insertItems(at: indexPaths)
-        }, completion: { [weak self] success in
-            self?.isLoadingNextPage = false
+        }, completion: { success in
+            completion()
         })
     }
-    
-    func displayWebServiceErrorAlert() {
-        let alertController = UIAlertController(title: "Ops!",
-                                                message: "Samething went wrong.\nPlease try again later.",
-                                                preferredStyle: .alert)
-        let dismiss = UIAlertAction(title: "Dismiss", style: .destructive, handler: { action in
-            exit(0)
-        })
-        alertController.addAction(dismiss)
+
+    func displayWebServiceErrorAlert(_ alertController: UIAlertController) {
         present(alertController, animated: true, completion: nil)
     }
     
@@ -135,26 +103,17 @@ extension NowPlayingViewController: NowPlayingDisplayLogic {
 // MARK: - UICollectionViewDataSource
 
 extension NowPlayingViewController: UICollectionViewDataSource {
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return viewModel.numberOfSections
     }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return viewModel.numberOfItemsInSection
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NowPlayingCollectionViewCell else {
-            assertionFailure("This shouldn't have happened!")
-            return UICollectionViewCell()
-        }
-        
-        let movie = movies[indexPath.item]
-        cell.configure(withMovie: movie)
-        
-        return cell
+        return viewModel.cell(at: indexPath, in: collectionView)
     }
 
 }
@@ -164,26 +123,20 @@ extension NowPlayingViewController: UICollectionViewDataSource {
 extension NowPlayingViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = movies[indexPath.row]
-        let viewModel = MovieDetailsViewModel(movie: movie)
-        let viewController = MovieDetailsViewController(viewModel: viewModel)
+        guard let movieDetailsViewModel = viewModel.movieDetailsViewModel(at: indexPath) else {
+            return
+        }
+
+        let viewController = MovieDetailsViewController(viewModel: movieDetailsViewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? NowPlayingCollectionViewCell else {
-            return
-        }
-        
-        cell.starDownloadTask()
+        viewModel.starDownloadTask(in: cell)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? NowPlayingCollectionViewCell else {
-            return
-        }
-        
-        cell.cancelDownloadTask()
+        viewModel.cancelDownloadTask(in: cell)
     }
 
 }
@@ -193,24 +146,19 @@ extension NowPlayingViewController: UICollectionViewDelegate {
 extension NowPlayingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // width should be the half size of the collectionView's width
-        let width: CGFloat = floor(collectionView.bounds.width / 2)
-        // height should be the 150% more than the width
-        let height = width * 1.5
-        
-        return CGSize(width: width, height: height)
+        return viewModel.sizeForItem(at: indexPath, in: collectionView)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+        return viewModel.insetForSection
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return viewModel.minimumLineSpacingForSection
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return viewModel.minimumInteritemSpacingForSection
     }
 
 }
@@ -222,10 +170,6 @@ extension NowPlayingViewController: UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let distance = scrollView.contentSize.height - (targetContentOffset.pointee.y + scrollView.bounds.height)
-        guard !isLoadingNextPage && distance < scrollView.bounds.height else { return }
-        
-        isLoadingNextPage = true
-        loadNextNowPlaying()
+        viewModel.loadNextItemsIfNeeded(in: scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
 }

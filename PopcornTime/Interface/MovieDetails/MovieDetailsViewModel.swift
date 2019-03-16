@@ -8,6 +8,7 @@ protocol MovieDetailsBusinessLogic {
     var viewController: MovieDetailsDisplayLogic? { get set }
     var backdropPath: String? { get }
     var title: String { get }
+    var movieTitle: String { get }
     var voteAverage: Float { get }
     var genres: String? { get }
     var overview: String { get }
@@ -32,6 +33,10 @@ class MovieDetailsViewModel: MovieDetailsBusinessLogic {
     }
 
     var title: String {
+        return movie.title
+    }
+
+    var movieTitle: String {
         return movie.title
     }
 

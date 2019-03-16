@@ -19,12 +19,8 @@ class PopcornTimeUITests: UIXCTestCase {
         XCTAssertTrue(item.exists)
         item.tap()
 
-        let navigationBarTitle = app.navigationBars["Movie Details"]
+        let navigationBarTitle = app.navigationBars["The Nun"]
         XCTAssertTrue(navigationBarTitle.exists)
-
-        let title = app.staticTexts["MovieDetails.Movie.Title"]
-        XCTAssertTrue(title.exists)
-        XCTAssertEqual(title.label, "The Nun")
 
         let genres = app.staticTexts["MovieDetails.Movie.Genres"]
         XCTAssertTrue(genres.exists)

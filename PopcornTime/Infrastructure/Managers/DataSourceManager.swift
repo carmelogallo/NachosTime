@@ -8,6 +8,5 @@
 
 struct DataSourceManager {
     var settings = SettingsDataSource()
-    var nowPlaying = NowPlayingDataSource()
     var search = SearchDataSource()
 }

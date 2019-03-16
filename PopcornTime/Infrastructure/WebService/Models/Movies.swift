@@ -14,7 +14,7 @@ struct Movies: Decodable {
     
     // MARK: - Decodable Properties
     
-    let movies: [Movie]
+    var movies: [Movie]
     let page: Int
     let totalPages: Int
     let totalMovies: Int

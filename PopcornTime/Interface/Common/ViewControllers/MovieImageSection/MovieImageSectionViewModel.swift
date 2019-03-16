@@ -229,7 +229,7 @@ private extension MovieImageSectionViewModel {
             presentingViewController?.removeSection(section: section)
         } else {
 
-            if self.imageSection == nil {
+            if self.imageSection == nil || currentImageSectionInfoCount == 0{
                 self.imageSection = imageSection
                 viewController?.displaySection()
             } else {
