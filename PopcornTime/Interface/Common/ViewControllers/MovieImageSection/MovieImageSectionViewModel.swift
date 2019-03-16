@@ -6,6 +6,7 @@
 import UIKit
 
 protocol MovieImageSectionBusinessLogic {
+    var presentingViewController: MovieDetailsSectionsDisplayLogic? { get set }
     var viewController: MovieImageSectionDisplayLogic? { get set }
     var title: String? { get }
     var numberOfSections: Int { get }
@@ -20,12 +21,14 @@ protocol MovieImageSectionBusinessLogic {
     func sizeForItem(at indexPath: IndexPath, in collectionView: UICollectionView) -> CGSize
     func starDownloadTask(in cell: UICollectionViewCell)
     func cancelDownloadTask(in cell: UICollectionViewCell)
+    func loadNextItemsIfNeeded(in scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
 }
 
 class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
 
     // MARK: - Business logic properties
 
+    weak var presentingViewController: MovieDetailsSectionsDisplayLogic?
     weak var viewController: MovieImageSectionDisplayLogic?
 
     var title: String? {
@@ -62,7 +65,8 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
 
     // MARK: - Object lifecycle
 
-    init(flow: MovieImageSection.Flow, movieId: Int, credits: Credits? = nil) {
+    init(presentingViewController: MovieDetailsViewController, flow: MovieImageSection.Flow, movieId: Int, credits: Credits? = nil) {
+        self.presentingViewController = presentingViewController
         self.flow = flow
         self.movieId = movieId
         self.credits = credits
@@ -134,6 +138,11 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
         cell.cancelDownloadTask()
     }
 
+    func loadNextItemsIfNeeded(in scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
+        guard distance < scrollView.bounds.width else { return }
+    }
+
 }
 
 
@@ -146,8 +155,8 @@ private extension MovieImageSectionViewModel {
     func displayCastSection(_ credits: Credits) {
         let title = "Cast"
         let sectionInfo = credits.cast.unique.map { MovieImageSection.Info(id: $0.id, imagePath: $0.profilePath, text: $0.name) }
-        imageSection = MovieImageSection(flow: .cast, title: title, info: sectionInfo)
-        viewController?.displayImageSection()
+        let imageSection = MovieImageSection(flow: .cast, title: title, info: sectionInfo)
+        displayImageSectionIfNeeded(imageSection)
     }
 
     // MARK: Crew
@@ -155,8 +164,8 @@ private extension MovieImageSectionViewModel {
     func displayCrewSection(_ credits: Credits) {
         let title = "Crew"
         let sectionInfo = credits.crew.unique.map { MovieImageSection.Info(id: $0.id, imagePath: $0.profilePath, text: $0.name) }
-        imageSection = MovieImageSection(flow: .crew, title: title, info: sectionInfo)
-        viewController?.displayImageSection()
+        let imageSection = MovieImageSection(flow: .crew, title: title, info: sectionInfo)
+        displayImageSectionIfNeeded(imageSection)
     }
 
     // MARK: Similar
@@ -175,8 +184,22 @@ private extension MovieImageSectionViewModel {
     func displaySimilarSection(_ movies: Movies) {
         let title = "Similar"
         let sectionInfo = movies.movies.map { MovieImageSection.Info(id: $0.id, imagePath: $0.posterPath) }
-        imageSection = MovieImageSection(flow: .similar, title: title, info: sectionInfo)
-        viewController?.displayImageSection()
+        let imageSection = MovieImageSection(flow: .similar, title: title, info: sectionInfo)
+        displayImageSectionIfNeeded(imageSection)
     }
 
+    // MARK: Displaying logic
+
+    func displayImageSectionIfNeeded(_ imageSection: MovieImageSection) {
+        if imageSection.info.isEmpty {
+            guard let section = viewController as? MovieImageSectionViewController else {
+                assertionFailure("viewController is nil!")
+                return
+            }
+            presentingViewController?.removeSection(section: section)
+        } else {
+            self.imageSection = imageSection
+            viewController?.displayImageSection()
+        }
+    }
 }

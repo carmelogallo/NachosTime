@@ -9,6 +9,10 @@
 import UIKit
 import Kingfisher
 
+protocol MovieDetailsSectionsDisplayLogic: class {
+    func removeSection(section: MovieImageSectionViewController)
+}
+
 protocol MovieDetailsDisplayLogic: class {
     func displayCreditsSections(_ credit: Credits)
     func displaySimilarSection()
@@ -77,13 +81,23 @@ class MovieDetailsViewController: UIViewController {
 
 }
 
+extension MovieDetailsViewController: MovieDetailsSectionsDisplayLogic {
+
+    func removeSection(section: MovieImageSectionViewController) {
+        section.willMove(toParent: nil)
+        sectionsStackView.removeArrangedSubview(section.view)
+        section.removeFromParent()
+    }
+
+}
+
 // MARK: - MovieDetailsDisplayLogic
 
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 
     func displayCreditsSections(_ credits: Credits) {
         // crew
-        let crewSectionViewModel = MovieImageSectionViewModel(flow: .crew, movieId: movie.id, credits: credits)
+        let crewSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .crew, movieId: movie.id, credits: credits)
         let crewSectionViewController = MovieImageSectionViewController(viewModel: crewSectionViewModel)
 
         addChild(crewSectionViewController)
@@ -91,7 +105,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         crewSectionViewController.didMove(toParent: self)
 
         // cast
-        let castSectionViewModel = MovieImageSectionViewModel(flow: .cast, movieId: movie.id, credits: credits)
+        let castSectionViewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .cast, movieId: movie.id, credits: credits)
         let castSectionViewController = MovieImageSectionViewController(viewModel: castSectionViewModel)
 
         addChild(castSectionViewController)
@@ -100,7 +114,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     }
 
     func displaySimilarSection() {
-        let viewModel = MovieImageSectionViewModel(flow: .similar, movieId: movie.id)
+        let viewModel = MovieImageSectionViewModel(presentingViewController: self, flow: .similar, movieId: movie.id)
         let sectionViewController = MovieImageSectionViewController(viewModel: viewModel)
 
         addChild(sectionViewController)

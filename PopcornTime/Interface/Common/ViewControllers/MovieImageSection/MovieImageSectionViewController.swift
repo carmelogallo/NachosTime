@@ -176,11 +176,7 @@ extension MovieImageSectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension MovieImageSectionViewController: UIScrollViewDelegate {
 
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                   withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
-        guard distance < scrollView.bounds.width else { return }
-
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        viewModel.loadNextItemsIfNeeded(in: scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
 }
