@@ -3,7 +3,7 @@ platform :ios, '10'
 inhibit_all_warnings!
 use_frameworks!
 
-target 'PopcornTime' do
+target 'NachosTime' do
   pod 'Reveal-SDK', '20', :configurations => ['Debug']
   pod 'Kingfisher'
   pod 'Mockingjay/Core'

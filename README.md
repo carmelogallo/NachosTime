@@ -1,10 +1,10 @@
-# PopcornTime
+# NachosTime
 > Simple project about how to use **The Movie DB API** and how to display movies details after fetching them.
 
 [![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg)](https://swift.org)
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
-**PopcornTime** is here for you! *WIP....*
+**NachosTime** is here for you! *WIP....*
 
 ## Feature
 ##### Main
@@ -19,7 +19,7 @@
 - [ ] Video
 - [ ] Reviews
 - [X] Credits
-- [ ] Similar movies
+- [X] Similar movies
 - [ ] Recommendations
 
 ## Tech
@@ -36,4 +36,4 @@
 
 Carmelo Gallo - [**@cikpis**](https://twitter.com/cikpis) - [**E-mail**](mailto:work@carmelogallo.com) - [**Website**](https://carmelogallo.com) - [**LinkedIn**](https://www.linkedin.com/in/carmelo-gallo-50a2332a/)
 
-Distributed under the **MIT** license. See [LICENSE](https://github.com/cikpis/PopcornTime/blob/master/LICENSE.md) for more info.
+Distributed under the **MIT** license. See [LICENSE](https://github.com/cikpis/NachosTime/blob/master/LICENSE.md) for more info.
