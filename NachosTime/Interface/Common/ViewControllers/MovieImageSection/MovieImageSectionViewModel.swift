@@ -64,6 +64,7 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
     private let credits: Credits?
     private var imageSection: MovieImageSection?
     private var page = 1
+    private var totalPages = 1
     private var isLoadingNextPage = false
 
     // MARK: - Object lifecycle
@@ -159,6 +160,10 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
             return
         }
 
+        guard page < totalPages else {
+            return
+        }
+
         let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
         guard !isLoadingNextPage && distance < scrollView.bounds.width else {
             return
@@ -202,31 +207,24 @@ private extension MovieImageSectionViewModel {
 
     func loadSimilar() {
         Manager.webService.similar.get(of: movieId, at: page) { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case .success(let movies):
-                self.displaySectionIfNeeded(from: movies, title: "Similar", flow: .similar)
-            case .failure:
-                return
-            }
-
-            self.page += 1
+            self?.processMoviesResult(result, title: "Similar", flow: .similar)
         }
     }
 
     func loadRecommendations() {
         Manager.webService.recommendations.get(of: movieId, at: page) { [weak self] result in
-            guard let self = self else { return }
+            self?.processMoviesResult(result, title: "Recommendations", flow: .recommendations)
+        }
+    }
 
-            switch result {
-            case .success(let movies):
-                self.displaySectionIfNeeded(from: movies, title: "Recommendations", flow: .recommendations)
-            case .failure:
-                return
-            }
-
-            self.page += 1
+    func processMoviesResult(_ result: Result<Movies>, title: String, flow: MovieImageSection.Flow) {
+        switch result {
+        case .success(let movies):
+            totalPages = movies.totalPages
+            page = movies.page
+            displaySectionIfNeeded(from: movies, title: title, flow: flow)
+        case .failure:
+            return
         }
     }
 

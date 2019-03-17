@@ -64,6 +64,10 @@ class NowPlayingViewModel: NowPlayingBusinessLogic {
         let page = movies?.page ?? 0
         return page + 1
     }
+    private var totalPages: Int {
+        let totalPages = movies?.totalPages ?? 0
+        return totalPages
+    }
     private var movies: Movies?
     private var isLoadingNextPage = false
 
@@ -121,6 +125,10 @@ class NowPlayingViewModel: NowPlayingBusinessLogic {
     }
 
     func loadNextItemsIfNeeded(in scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard page < totalPages else {
+            return
+        }
+
         let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
         guard !isLoadingNextPage && distance < scrollView.bounds.width else {
             return
