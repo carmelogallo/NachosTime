@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="CLz-mM-nbb">
-                                <rect key="frame" x="150" y="368.66666666666669" width="75" height="75"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VDY-zC-L1D">
+                                <rect key="frame" x="129.66666666666666" y="358" width="116" height="96"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CLz-mM-nbb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kFZ-8e-LiE"/>
-                            <constraint firstItem="CLz-mM-nbb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lW0-83-Klp"/>
+                            <constraint firstItem="VDY-zC-L1D" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4PE-6M-lvl"/>
+                            <constraint firstItem="VDY-zC-L1D" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="g82-Pp-0k0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
@@ -35,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="75.666664123535156" height="75.666664123535156"/>
+        <image name="logo" width="116" height="96"/>
     </resources>
 </document>
