@@ -10,6 +10,7 @@ struct MovieImageSection {
         case cast
         case crew
         case similar
+        case recommendations
     }
 
     struct Info {

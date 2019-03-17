@@ -13,7 +13,7 @@ protocol MovieDetailsBusinessLogic {
     var genres: String? { get }
     var overview: String { get }
 
-    func getSections()
+    func loadSections()
 }
 
 class MovieDetailsViewModel: MovieDetailsBusinessLogic {
@@ -64,15 +64,23 @@ class MovieDetailsViewModel: MovieDetailsBusinessLogic {
 
     // MARK: - Business logic methods
 
-    func getSections() {
-        getCredits()
+    func loadSections() {
+        loadCredits() { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            // load sections that doesn't need a backend call
+            self.displaySimilarSection()
+            self.displayRecommendationsSection()
+        }
     }
 
 }
 
 private extension MovieDetailsViewModel {
 
-    func getCredits() {
+    func loadCredits(completion: @escaping (() -> Void)) {
         Manager.webService.credits.get(of: movie.id) { [weak self] result in
             guard let self = self, let viewController = self.viewController else {
                 return
@@ -81,15 +89,15 @@ private extension MovieDetailsViewModel {
             switch result {
             case .success(let credits):
                 let castSectionViewModel = MovieImageSectionViewModel(presentingViewController: viewController, flow: .cast, movieId: self.movie.id, credits: credits)
-                viewController.displayCastSections(viewModel: castSectionViewModel)
+                viewController.displaySection(viewModel: castSectionViewModel)
 
                 let crewSectionViewModel = MovieImageSectionViewModel(presentingViewController: viewController, flow: .crew, movieId: self.movie.id, credits: credits)
-                viewController.displayCastSections(viewModel: crewSectionViewModel)
+                viewController.displaySection(viewModel: crewSectionViewModel)
             case .failure:
                 break
             }
 
-            self.displaySimilarSection()
+            completion()
         }
     }
 
@@ -99,7 +107,16 @@ private extension MovieDetailsViewModel {
         }
 
         let viewModel = MovieImageSectionViewModel(presentingViewController: viewController, flow: .similar, movieId: movie.id)
-        viewController.displaySimilarSection(viewModel: viewModel)
+        viewController.displaySection(viewModel: viewModel)
+    }
+
+    func displayRecommendationsSection() {
+        guard let viewController = viewController else {
+            return
+        }
+
+        let viewModel = MovieImageSectionViewModel(presentingViewController: viewController, flow: .recommendations, movieId: movie.id)
+        viewController.displaySection(viewModel: viewModel)
     }
 
 }

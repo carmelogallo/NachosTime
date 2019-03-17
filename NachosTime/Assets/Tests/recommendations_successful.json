@@ -1,0 +1,410 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/5K0fgMaJSdEvqSsS8e3Ez4TpvXR.jpg",
+      "genre_ids": [
+        9648,
+        53,
+        27
+      ],
+      "id": 439015,
+      "original_language": "en",
+      "original_title": "Slender Man",
+      "overview": "In a small town in Massachusetts, four high school girls perform a ritual in an attempt to debunk the lore of Slender Man. When one of the girls goes mysteriously missing, they begin to suspect that she is, in fact, his latest victim.",
+      "poster_path": "/huSncs4RyvQDBmHjBBYHSBYJbSJ.jpg",
+      "release_date": "2018-08-10",
+      "title": "Slender Man",
+      "video": false,
+      "vote_average": 4.0,
+      "vote_count": 601,
+      "popularity": 15.667
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jLLsaKktHOUp0goIFu3R9x6knJ3.jpg",
+      "genre_ids": [
+        53,
+        27
+      ],
+      "id": 424139,
+      "original_language": "en",
+      "original_title": "Halloween",
+      "overview": "Laurie Strode comes to her final confrontation with Michael Myers, the masked figure who has haunted her since she narrowly escaped his killing spree on Halloween night four decades ago.",
+      "poster_path": "/lNkDYKmrVem1J0aAfCnQlJOCKnT.jpg",
+      "release_date": "2018-10-18",
+      "title": "Halloween",
+      "video": false,
+      "vote_average": 6.4,
+      "vote_count": 1749,
+      "popularity": 30.372
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/yVWiOMpzf7gullGvug83r7gMdha.jpg",
+      "genre_ids": [
+        27,
+        9648,
+        53
+      ],
+      "id": 493922,
+      "original_language": "en",
+      "original_title": "Hereditary",
+      "overview": "When Ellen, the matriarch of the Graham family, passes away, her daughter’s family begins to unravel cryptic and increasingly terrifying secrets about their ancestry.",
+      "poster_path": "/p9fmuz2Oj3HtEJEqbIwkFGUhVXD.jpg",
+      "release_date": "2018-06-04",
+      "title": "Hereditary",
+      "video": false,
+      "vote_average": 7.0,
+      "vote_count": 2183,
+      "popularity": 18.584
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/rH79sB6Nkx4cMW3JzsUy7wK0rhX.jpg",
+      "genre_ids": [
+        28,
+        878,
+        53,
+        27
+      ],
+      "id": 345940,
+      "original_language": "en",
+      "original_title": "The Meg",
+      "overview": "A deep sea submersible pilot revisits his past fears in the Mariana Trench, and accidentally unleashes the seventy foot ancestor of the Great White Shark believed to be extinct.",
+      "poster_path": "/eyWICPcxOuTcDDDbTMOZawoOn8d.jpg",
+      "release_date": "2018-08-09",
+      "title": "The Meg",
+      "video": false,
+      "vote_average": 5.9,
+      "vote_count": 2561,
+      "popularity": 35.457
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jrZTNZmcjUVh7DPy6txp93Aczpa.jpg",
+      "genre_ids": [
+        53,
+        27
+      ],
+      "id": 460019,
+      "original_language": "en",
+      "original_title": "Truth or Dare",
+      "overview": "A harmless game of \"Truth or Dare\" among friends turns deadly when someone—or something—begins to punish those who tell a lie—or refuse the dare.",
+      "poster_path": "/kdkNaQYZ7dhM80LsnAGKpH8ca2g.jpg",
+      "release_date": "2018-04-12",
+      "title": "Truth or Dare",
+      "video": false,
+      "vote_average": 6.0,
+      "vote_count": 1749,
+      "popularity": 14.265
+    },
+    {
+      "id": 447332,
+      "video": false,
+      "vote_count": 5267,
+      "vote_average": 7.3,
+      "title": "A Quiet Place",
+      "release_date": "2018-04-03",
+      "original_language": "en",
+      "original_title": "A Quiet Place",
+      "genre_ids": [
+        18,
+        27,
+        878,
+        53
+      ],
+      "backdrop_path": "/qtO7A1rVaBvqX8CBh92As5NuWjp.jpg",
+      "adult": false,
+      "overview": "A family is forced to live in silence while hiding from creatures that hunt by sound.",
+      "poster_path": "/nAU74GmpUk7t5iklEp3bufwDq4n.jpg",
+      "popularity": 25.073
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/PwI3EfasE9fVuXsmMu9ffJh0Re.jpg",
+      "genre_ids": [
+        9648,
+        27,
+        53
+      ],
+      "id": 406563,
+      "original_language": "en",
+      "original_title": "Insidious: The Last Key",
+      "overview": "Parapsychologist Elise Rainier and her team travel to Five Keys, NM, to investigate a man’s claim of a haunting. Terror soon strikes when Rainier realizes that the house he lives in was her family’s old home.",
+      "poster_path": "/nb9fc9INMg8kQ8L7sE7XTNsZnUX.jpg",
+      "release_date": "2018-01-03",
+      "title": "Insidious: The Last Key",
+      "video": false,
+      "vote_average": 6.1,
+      "vote_count": 1209,
+      "popularity": 16.688
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/o8u0NyEigCEaZHBdCYTRfXR8U4i.jpg",
+      "genre_ids": [
+        27,
+        9648,
+        53
+      ],
+      "id": 396422,
+      "original_language": "en",
+      "original_title": "Annabelle: Creation",
+      "overview": "Several years after the tragic death of their little girl, a dollmaker and his wife welcome a nun and several girls from a shuttered orphanage into their home, soon becoming the target of the dollmaker's possessed creation, Annabelle.",
+      "poster_path": "/tb86j8jVCVsdZnzf8I6cIi65IeM.jpg",
+      "release_date": "2017-08-03",
+      "title": "Annabelle: Creation",
+      "video": false,
+      "vote_average": 6.5,
+      "vote_count": 3000,
+      "popularity": 15.763
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/r4clWIxKeWoqrHspQP0XunuUmB7.jpg",
+      "genre_ids": [
+        28,
+        878,
+        53,
+        27
+      ],
+      "id": 442249,
+      "original_language": "en",
+      "original_title": "The First Purge",
+      "overview": "To push the crime rate below one percent for the rest of the year, the New Founding Fathers of America test a sociological theory that vents aggression for one night in one isolated community. But when the violence of oppressors meets the rage of the others, the contagion will explode from the trial-city borders and spread across the nation.",
+      "poster_path": "/litjsBoiydO6JlO70uOX4N3WnNL.jpg",
+      "release_date": "2018-07-04",
+      "title": "The First Purge",
+      "video": false,
+      "vote_average": 5.8,
+      "vote_count": 1623,
+      "popularity": 22.496
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/A4xNxrRodvXzJWJs2GbBKo1IBk2.jpg",
+      "genre_ids": [
+        53,
+        18
+      ],
+      "id": 405774,
+      "original_language": "en",
+      "original_title": "Bird Box",
+      "overview": "When a mysterious force decimates the world’s population, only one thing is certain: if you see it, you take your life. Facing the unknown, Malorie finds love, hope and a new beginning only for it to unravel. Now she must flee with her two children down a treacherous river to the one place left that may offer sanctuary. But to survive, they'll have to undertake the perilous two-day journey blindfolded.",
+      "poster_path": "/rGfGfgL2pEPCfhIvqHXieXFn7gp.jpg",
+      "release_date": "2018-12-13",
+      "title": "Bird Box",
+      "video": false,
+      "vote_average": 7.0,
+      "vote_count": 4123,
+      "popularity": 33.994
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/slpgZisYNapLoN9FWXqDOC1ExbU.jpg",
+      "genre_ids": [
+        27,
+        9648,
+        53
+      ],
+      "id": 259693,
+      "original_language": "en",
+      "original_title": "The Conjuring 2",
+      "overview": "Lorraine and Ed Warren travel to north London to help a single mother raising four children alone in a house plagued by malicious spirits.",
+      "poster_path": "/e3lBJCedHnZPfNfmBArKHZXXNC0.jpg",
+      "release_date": "2016-05-13",
+      "title": "The Conjuring 2",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 3896,
+      "popularity": 13.934
+    },
+    {
+      "id": 335983,
+      "video": false,
+      "vote_count": 5363,
+      "vote_average": 6.6,
+      "title": "Venom",
+      "release_date": "2018-09-28",
+      "original_language": "en",
+      "original_title": "Venom",
+      "genre_ids": [
+        28,
+        878
+      ],
+      "backdrop_path": "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg",
+      "adult": false,
+      "overview": "Investigative journalist Eddie Brock attempts a comeback following a scandal, but accidentally becomes the host of Venom, a violent, super powerful alien symbiote. Soon, he must rely on his newfound powers to protect the world from a shadowy organization looking for a symbiote of their own.",
+      "poster_path": "/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+      "popularity": 69.139
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/d4wnMDSrQonB9iArMzd90WqaoJ4.jpg",
+      "genre_ids": [
+        14,
+        9648,
+        53,
+        27
+      ],
+      "id": 416234,
+      "original_language": "en",
+      "original_title": "Winchester",
+      "overview": "San Jose, California, 1906. Isolated in her labyrinthine mansion, eccentric firearm heiress Sarah Winchester believes that she is being haunted by the souls of those killed by the guns manufactured by her company.",
+      "poster_path": "/tHDtskokZeO9B3JBdR1dSH0uqad.jpg",
+      "release_date": "2018-02-02",
+      "title": "Winchester",
+      "video": false,
+      "vote_average": 5.8,
+      "vote_count": 807,
+      "popularity": 11.893
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/f4E0ocYeToEuXvczZv6QArrMDJ.jpg",
+      "genre_ids": [
+        878,
+        28,
+        53,
+        12,
+        27
+      ],
+      "id": 346910,
+      "original_language": "en",
+      "original_title": "The Predator",
+      "overview": "When a kid accidentally triggers the universe's most lethal hunters' return to Earth, only a ragtag crew of ex-soldiers and a disgruntled female scientist can prevent the end of the human race.",
+      "poster_path": "/wMq9kQXTeQCHUZOG4fAe5cAxyUA.jpg",
+      "release_date": "2018-09-05",
+      "title": "The Predator",
+      "video": false,
+      "vote_average": 5.2,
+      "vote_count": 1791,
+      "popularity": 34.231
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/7PlZbduXPMJ7SsTD8EOvUVJalmF.jpg",
+      "genre_ids": [
+        27,
+        9648,
+        53
+      ],
+      "id": 434555,
+      "original_language": "en",
+      "original_title": "The Possession of Hannah Grace",
+      "overview": "When a cop who is just out of rehab takes the graveyard shift in a city hospital morgue, she faces a series of bizarre, violent events caused by an evil entity in one of the corpses.",
+      "poster_path": "/hDDb0H0uJp2wjoJBbBHbKlYRbug.jpg",
+      "release_date": "2018-11-29",
+      "title": "The Possession of Hannah Grace",
+      "video": false,
+      "vote_average": 5.0,
+      "vote_count": 253,
+      "popularity": 39.839
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/6P3c80EOm7BodndGBUAJHHsHKrp.jpg",
+      "genre_ids": [
+        28,
+        12,
+        878,
+        35,
+        10751
+      ],
+      "id": 363088,
+      "original_language": "en",
+      "original_title": "Ant-Man and the Wasp",
+      "overview": "Just when his time under house arrest is about to end, Scott Lang once again puts his freedom at risk to help Hope van Dyne and Dr. Hank Pym dive into the quantum realm and try to accomplish, against time and any chance of success, a very dangerous rescue mission.",
+      "poster_path": "/rv1AWImgx386ULjcf62VYaW8zSt.jpg",
+      "release_date": "2018-07-04",
+      "title": "Ant-Man and the Wasp",
+      "video": false,
+      "vote_average": 6.9,
+      "vote_count": 5144,
+      "popularity": 60.565
+    },
+    {
+      "id": 351286,
+      "video": false,
+      "vote_count": 5479,
+      "vote_average": 6.5,
+      "title": "Jurassic World: Fallen Kingdom",
+      "release_date": "2018-06-06",
+      "original_language": "en",
+      "original_title": "Jurassic World: Fallen Kingdom",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "backdrop_path": "/3s9O5af2xWKWR5JzP2iJZpZeQQg.jpg",
+      "adult": false,
+      "overview": "Three years after the demise of Jurassic World, a volcanic eruption threatens the remaining dinosaurs on the isla Nublar, so Claire Dearing, the former park manager, recruits Owen Grady to help prevent the extinction of the dinosaurs once again.",
+      "poster_path": "/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg",
+      "popularity": 36.921
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2gKX53lskaCYk9ycXmaDJKqWiy.jpg",
+      "genre_ids": [
+        27
+      ],
+      "id": 250546,
+      "original_language": "en",
+      "original_title": "Annabelle",
+      "overview": "John Form has found the perfect gift for his expectant wife, Mia - a beautiful, rare vintage doll in a pure white wedding dress. But Mia's delight with Annabelle doesn't last long. On one horrific night, their home is invaded by members of a satanic cult, who violently attack the couple. Spilled blood and terror are not all they leave behind. The cultists have conjured an entity so malevolent that nothing they did will compare to the sinister conduit to the damned that is now... Annabelle.",
+      "poster_path": "/yAgxM61Sn0dYML4C9v3MJFp5zPI.jpg",
+      "release_date": "2014-10-02",
+      "title": "Annabelle",
+      "video": false,
+      "vote_average": 5.6,
+      "vote_count": 3161,
+      "popularity": 12.155
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3CCfgSvtvN3HwVs5hbcC1NhOAzw.jpg",
+      "genre_ids": [
+        18,
+        53,
+        9648
+      ],
+      "id": 489999,
+      "original_language": "en",
+      "original_title": "Searching",
+      "overview": "After David Kim's 16-year-old daughter goes missing, a local investigation is opened and a detective is assigned to the case. But 37 hours later and without a single lead, David decides to search the one place no one has looked yet, where all secrets are kept today: his daughter's laptop.",
+      "poster_path": "/pk9R56ZFlofbBzfwBnHlDyg5DMs.jpg",
+      "release_date": "2018-08-24",
+      "title": "Searching",
+      "video": false,
+      "vote_average": 7.7,
+      "vote_count": 1250,
+      "popularity": 27.628
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/iEQgMiqCIzS1osIuafgctvluGj5.jpg",
+      "genre_ids": [
+        27,
+        10752,
+        28,
+        878
+      ],
+      "id": 438799,
+      "original_language": "en",
+      "original_title": "Overlord",
+      "overview": "France, June 1944. On the eve of D-Day, some American paratroopers fall behind enemy lines after their aircraft crashes while on a mission to destroy a radio tower in a small village near the beaches of Normandy. After reaching their target, the surviving paratroopers realise that, in addition to fighting the Nazi troops that patrol the village, they also must fight against something else.",
+      "poster_path": "/l76Rgp32z2UxjULApxGXAPpYdAP.jpg",
+      "release_date": "2018-11-01",
+      "title": "Overlord",
+      "video": false,
+      "vote_average": 6.7,
+      "vote_count": 756,
+      "popularity": 50.257
+    }
+  ],
+  "total_pages": 2,
+  "total_results": 40
+}

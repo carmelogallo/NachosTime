@@ -74,6 +74,7 @@ private extension AppDelegate {
         stubMovies()
         stubCredits()
         stubSimilar()
+        stubRecommendations()
         stubSearch()
     }
     
@@ -108,6 +109,13 @@ private extension AppDelegate {
     func stubSimilar() {
         let uri = "/3/movie/439079/similar"
         let fixture = Bundle(for: type(of: self)).url(forResource: "similar_successful", withExtension: "json")!
+        let data = try! Data(contentsOf: fixture)
+        MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
+    }
+
+    func stubRecommendations() {
+        let uri = "/3/movie/439079/recommendations"
+        let fixture = Bundle(for: type(of: self)).url(forResource: "recommendations_successful", withExtension: "json")!
         let data = try! Data(contentsOf: fixture)
         MockingjayProtocol.addStub(matcher: matcher(uri: uri, method: .get), builder: jsonData(data))
     }

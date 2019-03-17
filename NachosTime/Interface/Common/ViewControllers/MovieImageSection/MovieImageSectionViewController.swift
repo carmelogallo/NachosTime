@@ -71,9 +71,10 @@ class MovieImageSectionViewController: UIViewController {
         view.addSubview(titleLabel)
 
         // collectionView
-        collectionView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        collectionView.alwaysBounceHorizontal = true
         viewModel.registerCell(in: collectionView)
         view.addSubview(collectionView)
     }

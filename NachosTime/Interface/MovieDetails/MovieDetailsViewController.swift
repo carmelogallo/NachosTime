@@ -10,9 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol MovieDetailsDisplayLogic: class {
-    func displayCastSections(viewModel: MovieImageSectionViewModel)
-    func displayCrewSections(viewModel: MovieImageSectionViewModel)
-    func displaySimilarSection(viewModel: MovieImageSectionViewModel)
+    func displaySection(viewModel: MovieImageSectionViewModel)
     func removeSection(section: MovieImageSectionViewController)
 }
 
@@ -55,7 +53,7 @@ class MovieDetailsViewController: UIViewController {
         // backdropImageView
         loadBackdropImage()
         // interactor
-        viewModel.getSections()
+        viewModel.loadSections()
     }
     
     // MARK: - Private methods
@@ -77,21 +75,7 @@ class MovieDetailsViewController: UIViewController {
 
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 
-    func displayCastSections(viewModel: MovieImageSectionViewModel) {
-        let castSectionViewController = MovieImageSectionViewController(viewModel: viewModel)
-        addChild(castSectionViewController)
-        sectionsStackView.addArrangedSubview(castSectionViewController.view)
-        castSectionViewController.didMove(toParent: self)
-    }
-
-    func displayCrewSections(viewModel: MovieImageSectionViewModel) {
-        let crewSectionViewController = MovieImageSectionViewController(viewModel: viewModel)
-        addChild(crewSectionViewController)
-        sectionsStackView.addArrangedSubview(crewSectionViewController.view)
-        crewSectionViewController.didMove(toParent: self)
-    }
-
-    func displaySimilarSection(viewModel: MovieImageSectionViewModel) {
+    func displaySection(viewModel: MovieImageSectionViewModel) {
         let sectionViewController = MovieImageSectionViewController(viewModel: viewModel)
         addChild(sectionViewController)
         sectionsStackView.addArrangedSubview(sectionViewController.view)

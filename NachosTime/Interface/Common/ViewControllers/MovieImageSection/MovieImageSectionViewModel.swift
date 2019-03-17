@@ -63,8 +63,8 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
     private let movieId: Int
     private let credits: Credits?
     private var imageSection: MovieImageSection?
-    private var similarPage = 1
-    private var isLoadingNextSimilarPage = false
+    private var page = 1
+    private var isLoadingNextPage = false
 
     // MARK: - Object lifecycle
 
@@ -92,7 +92,9 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
             }
             displayCastSection(credits)
         case .similar:
-            getSimilar(of: movieId)
+            loadSimilar()
+        case .recommendations:
+            loadRecommendations()
         }
     }
 
@@ -101,7 +103,7 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
         switch flow {
         case .crew, .cast:
             delta = 0.5
-        case .similar:
+        case .similar, .recommendations:
             delta = 0.7
         }
         return view.bounds.width / 4 * 3 * delta
@@ -153,17 +155,22 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
     }
 
     func loadNextItemsIfNeeded(in scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard case .similar = flow else {
+        guard [MovieImageSection.Flow.similar, MovieImageSection.Flow.recommendations].contains(flow) else {
             return
         }
 
         let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
-        guard !isLoadingNextSimilarPage && distance < scrollView.bounds.width else {
+        guard !isLoadingNextPage && distance < scrollView.bounds.width else {
             return
         }
 
-        isLoadingNextSimilarPage = true
-        getSimilar(of: movieId)
+        isLoadingNextPage = true
+
+        if case .similar = flow {
+            loadSimilar()
+        } else if case .recommendations = flow {
+            loadRecommendations()
+        }
     }
 
 }
@@ -179,7 +186,7 @@ private extension MovieImageSectionViewModel {
         let title = "Cast"
         let sectionInfo = credits.cast.unique.map { MovieImageSection.Info(id: $0.id, imagePath: $0.profilePath, text: $0.name) }
         let imageSection = MovieImageSection(flow: .cast, title: title, info: sectionInfo)
-        displayImageSectionIfNeeded(imageSection)
+        displaySectionIfNeeded(imageSection)
     }
 
     // MARK: Crew
@@ -188,36 +195,50 @@ private extension MovieImageSectionViewModel {
         let title = "Crew"
         let sectionInfo = credits.crew.unique.map { MovieImageSection.Info(id: $0.id, imagePath: $0.profilePath, text: $0.name) }
         let imageSection = MovieImageSection(flow: .crew, title: title, info: sectionInfo)
-        displayImageSectionIfNeeded(imageSection)
+        displaySectionIfNeeded(imageSection)
     }
 
     // MARK: Similar
 
-    func getSimilar(of movieId: Int) {
-        Manager.webService.similar.get(of: movieId, at: similarPage) { [weak self] result in
+    func loadSimilar() {
+        Manager.webService.similar.get(of: movieId, at: page) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .success(let movies):
-                self.displaySimilarSection(movies)
+                self.displaySectionIfNeeded(from: movies, title: "Similar", flow: .similar)
             case .failure:
                 return
             }
 
-            self.similarPage += 1
+            self.page += 1
         }
     }
 
-    func displaySimilarSection(_ movies: Movies) {
-        let title = "Similar"
+    func loadRecommendations() {
+        Manager.webService.recommendations.get(of: movieId, at: page) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success(let movies):
+                self.displaySectionIfNeeded(from: movies, title: "Recommendations", flow: .recommendations)
+            case .failure:
+                return
+            }
+
+            self.page += 1
+        }
+    }
+
+    func displaySectionIfNeeded(from movies: Movies, title: String, flow: MovieImageSection.Flow) {
         let sectionInfo = movies.movies.map { MovieImageSection.Info(id: $0.id, imagePath: $0.posterPath) }
-        let imageSection = MovieImageSection(flow: .similar, title: title, info: sectionInfo)
-        displayImageSectionIfNeeded(imageSection)
+        let imageSection = MovieImageSection(flow: flow, title: title, info: sectionInfo)
+        displaySectionIfNeeded(imageSection)
     }
 
     // MARK: Displaying logic
 
-    func displayImageSectionIfNeeded(_ imageSection: MovieImageSection) {
+    func displaySectionIfNeeded(_ imageSection: MovieImageSection) {
         let currentImageSectionInfoCount = self.imageSection?.info.count ?? 0
         let nextImageSectionInfoCount = imageSection.info.count
 
@@ -239,7 +260,7 @@ private extension MovieImageSectionViewModel {
                 let indexPaths = indexes.map { IndexPath(item: $0, section: 0) }
                 self.imageSection?.info.append(contentsOf: imageSection.info)
                 viewController?.insertNewItems(at: indexPaths) {
-                    self.isLoadingNextSimilarPage = false
+                    self.isLoadingNextPage = false
                 }
             }
         }

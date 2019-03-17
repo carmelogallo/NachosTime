@@ -1,9 +1,9 @@
 //
-// Created by Carmelo Gallo on 2019-03-10.
+// Created by Carmelo Gallo on 2019-03-17.
 // Copyright (c) 2019 Carmelo Gallo. All rights reserved.
 //
 
-class SimilarWebService: SimilarWebServiceProtocol {
+class RecommendationsWebService: RecommendationsWebServiceProtocol {
 
     // MARK: - Private properties
 
@@ -20,8 +20,8 @@ class SimilarWebService: SimilarWebServiceProtocol {
     func get(of movieId: Int, at page: Int, completion: @escaping ((Result<Movies>) -> Void)) {
         let request = WebServiceRequest(
                 method: .get,
-                path: (url: Manager.config.apiUrl + "/movie/\(movieId)/similar", 
-                       query: ["api_key" : Manager.config.apiKey, "page" : "\(page)"]),
+                path: (url: Manager.config.apiUrl + "/movie/\(movieId)/recommendations",
+                        query: ["api_key" : Manager.config.apiKey, "page" : "\(page)"]),
                 headers: ["Content-Type" : "application/json"]
         )
         webService.send(request: request, parser: MoviesParser.parse) { result in
