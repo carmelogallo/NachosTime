@@ -10,14 +10,14 @@ import UIKit
 
 protocol SplashScreenDisplayLogic: class {
     func displayNowPlaying()
-    func displayWebServiceErrorAlert()
+    func displayWebServiceErrorAlert(_ alertController: UIAlertController)
 }
 
 class SplashScreenViewController: UIViewController {
 
     // Business Logic
     
-    var interactor: SplashScreenBusinessLogic?
+    private var viewModel: SplashScreenBusinessLogic = SplashScreenViewModel()
 
     // MARK: - UI Objects
 
@@ -26,9 +26,9 @@ class SplashScreenViewController: UIViewController {
     
     // MARK: - Object Lifecycle
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    required init() {
         super.init(nibName: nil, bundle: nil)
-        setupLogic()
+        viewModel.viewController = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,29 +43,14 @@ class SplashScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadSettings()
-    }
-    
-    // MARK: - Configure methods
-    
-    private func setupLogic() {
-        let viewController = self
-        let interactor = SplashScreenInteractor()
-        viewController.interactor = interactor
-        interactor.viewController = viewController
-    }
-    
-    // MARK: - Configure Methods
-    
-    private func configureViews() {
+        // configure
         configureUI()
         configureConstraints()
+        // loading settings
+        viewModel.loadSettings()
     }
+
+    // MARK: - Configure Methods
     
     private func configureUI() {
         // view
@@ -95,12 +80,6 @@ class SplashScreenViewController: UIViewController {
 
         NSLayoutConstraint.activate(constraints)
     }
-    
-    // MARK: - Private Methods
-    
-    private func loadSettings() {
-        interactor?.doGetSettings()
-    }
 
 }
 
@@ -113,15 +92,8 @@ extension SplashScreenViewController: SplashScreenDisplayLogic {
         let nvc = NowPlayingNavigationController(rootViewController: vc)
         present(nvc, animated: true, completion: nil)
     }
-    
-    func displayWebServiceErrorAlert() {
-        let alertController = UIAlertController(title: "Ops!",
-                                                message: "Samething went wrong.\nPlease try again later.",
-                                                preferredStyle: .alert)
-        let dismiss = UIAlertAction(title: "Dismiss", style: .destructive, handler: { action in
-            exit(0)
-        })
-        alertController.addAction(dismiss)
+
+    func displayWebServiceErrorAlert(_ alertController: UIAlertController) {
         present(alertController, animated: true, completion: nil)
     }
 
