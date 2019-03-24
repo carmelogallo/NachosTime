@@ -165,7 +165,7 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
         }
 
         let distance = scrollView.contentSize.width - (targetContentOffset.pointee.x + scrollView.bounds.width)
-        guard !isLoadingNextPage && distance < scrollView.bounds.width else {
+        guard targetContentOffset.pointee.y > 0 && !isLoadingNextPage && distance < scrollView.bounds.width else {
             return
         }
 
