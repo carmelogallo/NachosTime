@@ -12,6 +12,7 @@ import Kingfisher
 protocol MovieDetailsDisplayLogic: class {
     func displaySection(viewModel: MovieImageSectionViewModel)
     func removeSection(section: MovieImageSectionViewController)
+    func displayMovie(_ movie: Movie)
 }
 
 class MovieDetailsViewController: UIViewController {
@@ -86,6 +87,12 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         section.willMove(toParent: nil)
         sectionsStackView.removeArrangedSubview(section.view)
         section.removeFromParent()
+    }
+
+    func displayMovie(_ movie: Movie) {
+        let viewModel = MovieDetailsViewModel(movie: movie)
+        let viewController = MovieDetailsViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

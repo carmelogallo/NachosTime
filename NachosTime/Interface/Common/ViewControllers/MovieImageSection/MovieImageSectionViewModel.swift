@@ -23,6 +23,7 @@ protocol MovieImageSectionBusinessLogic {
     func starDownloadTask(in cell: UICollectionViewCell)
     func cancelDownloadTask(in cell: UICollectionViewCell)
     func loadNextItemsIfNeeded(in scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+    func didSelectItem(at indexPath: IndexPath)
 }
 
 class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
@@ -60,6 +61,7 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
 
     private let reuseIdentifier = "MovieImageSectionViewCell"
     private let flow: MovieImageSection.Flow
+    private var movies = [Movie]()
     private let movieId: Int
     private let credits: Credits?
     private var imageSection: MovieImageSection?
@@ -178,6 +180,17 @@ class MovieImageSectionViewModel: MovieImageSectionBusinessLogic {
         }
     }
 
+    func didSelectItem(at indexPath: IndexPath) {
+        switch flow {
+        case .crew, .cast:
+//            let people = movies[indexPath.item]
+            break
+        case .similar, .recommendations:
+            let movie = movies[indexPath.item]
+            presentingViewController?.displayMovie(movie)
+        }
+    }
+
 }
 
 
@@ -220,6 +233,7 @@ private extension MovieImageSectionViewModel {
     func processMoviesResult(_ result: Result<Movies>, title: String, flow: MovieImageSection.Flow) {
         switch result {
         case .success(let movies):
+            self.movies.append(contentsOf: movies.movies)
             totalPages = movies.totalPages
             page = movies.page
             displaySectionIfNeeded(from: movies, title: title, flow: flow)
